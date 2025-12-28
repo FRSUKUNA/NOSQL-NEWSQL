@@ -51,62 +51,126 @@ def get_acid_properties() -> Dict[str, str]:
 def get_redis_versions() -> List[dict]:
     print("Récupération des versions de Redis...")
     
-    # URL de la page des versions de Redis
-    base_url = "https://raw.githubusercontent.com/redis/redis/"
-    tags_url = "https://api.github.com/repos/redis/redis/tags"
+    versions: List[dict] = []
     
-    versions = []
-    
+    # 1) Tentative via API GitHub Releases (paginée)
     try:
-        # Récupérer les tags de version depuis GitHub API
-        print("Connexion à l'API GitHub...")
-        response = requests.get(tags_url, headers=headers, timeout=30)
-        response.raise_for_status()
-        tags = response.json()
-        
-        # Filtrer les versions (format X.Y.Z)
-        version_pattern = re.compile(r'^\d+\.\d+\.\d+$')
-        
-        for tag in tags:
-            version = tag['name'].replace('v', '')  # Enlever le 'v' du début
-            
-            # Vérifier si c'est une version valide (format X.Y.Z)
-            if version_pattern.match(version):
-                # Séparer les parties de la version
-                parts = version.split('.')
-                major_version = parts[0]  # Premier chiffre
-                patch_version = '.'.join(parts[1:])  # Le reste
-                
-                # Récupérer la date du commit
-                commit_url = tag['commit']['url']
-                commit_response = requests.get(commit_url, headers=headers, timeout=30)
-                
-                if commit_response.status_code == 200:
-                    commit_data = commit_response.json()
-                    date_str = commit_data['commit']['committer']['date']
-                    # Formater la date
+        per_page = 100
+        page = 1
+        print("Tentative via l'API GitHub Releases (avec pagination)...")
+        while True:
+            api_url = f"https://api.github.com/repos/redis/redis/releases?per_page={per_page}&page={page}"
+            resp = requests.get(api_url, headers=headers, timeout=30)
+            resp.raise_for_status()
+            data = resp.json()
+            if not data:
+                break
+
+            for rel in data:
+                # Ignorer les préversions et brouillons
+                if rel.get('draft') or rel.get('prerelease'):
+                    continue
+                tag = rel.get('tag_name', '').lstrip('v')
+                if not tag:
+                    continue
+
+                parts = tag.split('.')
+                if not all(p.isdigit() for p in parts):
+                    continue
+
+                date_str = rel.get('published_at') or rel.get('created_at')
+                if date_str:
                     date_obj = datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%SZ')
                     formatted_date = date_obj.strftime('%Y-%m-%d')
                 else:
                     formatted_date = "Date non disponible"
-                
+
                 versions.append({
-                    'version': major_version,  # Seulement le premier chiffre
-                    'patch': patch_version,    # Le reste de la version
+                    'version': parts[0],
+                    'patch': '.'.join(parts[1:]) if len(parts) > 1 else '0',
                     'date': formatted_date,
-                    'url': f"https://github.com/redis/redis/releases/tag/v{version}",
-                    'download_url': f"https://download.redis.io/releases/redis-{version}.tar.gz"
+                    'url': f"https://github.com/redis/redis/releases/tag/v{tag}",
+                    'download_url': f"https://download.redis.io/releases/redis-{tag}.tar.gz"
                 })
-                
-                print(f"Trouvé: {version} - {formatted_date}")
-                
-                # Limiter le nombre de versions à récupérer pour les tests
-                if len(versions) >= 20:  # Augmentez ce nombre si nécessaire
-                    break
-                    
+                print(f"Trouvé: {tag} - {formatted_date}")
+
+            page += 1
+            time.sleep(0.5)
+
+        if versions:
+            return versions
     except Exception as e:
-        print(f"Erreur lors de la récupération des versions: {str(e)}")
-    
+        print(f"API GitHub indisponible, bascule vers scraping HTML: {e}")
+
+    # 2) Fallback: scraping HTML des pages Releases
+    try:
+        base_url = "https://github.com/redis/redis/releases"
+        page = 1
+        while True:
+            url = f"{base_url}?page={page}"
+            print(f"Récupération de la page {page} (fallback HTML)...")
+            response = requests.get(url, headers=headers, timeout=30)
+            response.raise_for_status()
+            soup = BeautifulSoup(response.text, 'html.parser')
+
+            # Cartes de release (structure moderne GitHub)
+            cards = soup.select('div[data-test-selector="release-card"]')
+            if not cards:
+                # Essayer des sélecteurs alternatifs
+                cards = soup.select('div.release-entry, div.Box')
+
+            if not cards:
+                break
+
+            for card in cards:
+                try:
+                    link = card.select_one('a[href*="/redis/redis/releases/tag/"]')
+                    if not link:
+                        # chercher globalement si non trouvé dans la carte
+                        link = soup.select_one('a[href*="/redis/redis/releases/tag/"]')
+                    if not link:
+                        continue
+                    tag_text = (link.text or '').strip().lstrip('v')
+                    if not tag_text:
+                        # parfois le texte n'est pas le tag: le tag est dans l'URL
+                        href = link.get('href', '')
+                        m = re.search(r'/releases/tag/v(\d+(?:\.\d+){1,2})', href)
+                        if m:
+                            tag_text = m.group(1)
+                    parts = tag_text.split('.') if tag_text else []
+                    if not parts or not all(p.isdigit() for p in parts):
+                        continue
+
+                    # date
+                    time_el = card.select_one('relative-time, time-ago, time')
+                    if time_el and time_el.has_attr('datetime'):
+                        d = time_el['datetime']
+                        date_obj = datetime.strptime(d, '%Y-%m-%dT%H:%M:%SZ')
+                        formatted_date = date_obj.strftime('%Y-%m-%d')
+                    else:
+                        formatted_date = "Date non disponible"
+
+                    versions.append({
+                        'version': parts[0],
+                        'patch': '.'.join(parts[1:]) if len(parts) > 1 else '0',
+                        'date': formatted_date,
+                        'url': f"https://github.com/redis/redis/releases/tag/v{tag_text}",
+                        'download_url': f"https://download.redis.io/releases/redis-{tag_text}.tar.gz"
+                    })
+                    print(f"Trouvé: {tag_text} - {formatted_date}")
+                except Exception as e:
+                    print(f"Erreur lors du parsing d'une carte release: {e}")
+                    continue
+
+            # pagination
+            next_link = soup.select_one('a.next_page, a[rel="next"]')
+            if not next_link or 'disabled' in (next_link.get('class') or []):
+                break
+            page += 1
+            time.sleep(1)
+    except Exception as e:
+        print(f"Erreur lors du fallback HTML: {e}")
+
     return versions
     
 def main():
@@ -120,8 +184,11 @@ def main():
         print("Aucune version trouvée.")
         return
     
-    # Trier les versions par numéro de version (du plus récent au plus ancien)
-    versions.sort(key=lambda x: [int(n) for n in x['version'].split('.')], reverse=True)
+    # Trier par version complète (ex: 7.4.1 > 7.4.0 > 7.3.9)
+    def parse_version(vd: dict) -> List[int]:
+        full = f"{vd['version']}.{vd['patch']}" if vd.get('patch') else vd['version']
+        return [int(p) for p in full.split('.')]
+    versions.sort(key=parse_version, reverse=True)
     
     # Préparer les données à sauvegarder
     output_data = {
