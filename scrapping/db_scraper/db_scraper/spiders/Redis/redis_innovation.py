@@ -21,124 +21,188 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
 }
 
+
+def _extract_releases_from_soup(soup: BeautifulSoup) -> List[Dict]:
+    releases = []
+    seen_versions = set()
+
+    # GitHub change souvent la structure; le plus stable est de partir des liens /releases/tag/
+    release_links = soup.select('a[href*="/redis/redis/releases/tag/"]') or soup.select('a[href*="/releases/tag/"]')
+    for a in release_links:
+        href = a.get('href', '').strip()
+        text = a.get_text(strip=True)
+
+        tag_candidate = text or (href.split('/')[-1] if href else '')
+        m = re.search(r'v?(\d+\.\d+(?:\.\d+)*)', tag_candidate)
+        if not m:
+            continue
+
+        version_text = m.group(1)
+        if version_text in seen_versions:
+            continue
+        seen_versions.add(version_text)
+
+        version_parts = version_text.split('.')
+        if len(version_parts) < 2:
+            continue
+        if not (version_parts[0].isdigit() and version_parts[1].isdigit()):
+            continue
+
+        # La date est généralement dans le même bloc visuel; on prend le premier relative-time trouvé en parent
+        date_tag = None
+        parent = a
+        for _ in range(0, 6):
+            if parent is None:
+                break
+            date_tag = parent.select_one('relative-time')
+            if date_tag:
+                break
+            parent = parent.parent
+
+        if not date_tag or not date_tag.get('datetime'):
+            formatted_date = "Date non disponible"
+        else:
+            date_str = date_tag['datetime']
+            date_obj = datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%SZ')
+            formatted_date = date_obj.strftime('%Y-%m-%d')
+
+        releases.append({
+            'version': version_parts[0],
+            'patch': '.'.join(version_parts[1:]) if len(version_parts) > 1 else '0',
+            'date': formatted_date,
+            'url': f"https://github.com{href}" if href.startswith('/') else f"https://github.com/redis/redis/releases/tag/v{version_text}",
+            'download_url': f"https://download.redis.io/releases/redis-{version_text}.tar.gz"
+        })
+
+    return releases
+
+
+def _get_releases_from_github_api(max_pages: int) -> List[Dict]:
+    """Fallback via GitHub API (utile si GitHub renvoie un HTML non parseable)."""
+    session = requests.Session()
+    session.headers.update({
+        **headers,
+        'Accept': 'application/vnd.github+json'
+    })
+
+    all_releases: List[Dict] = []
+    seen_versions = set()
+
+    # 100 items/page max pour l'API
+    for page in range(1, max_pages + 1):
+        url = f"https://api.github.com/repos/redis/redis/releases?per_page=100&page={page}"
+        try:
+            resp = session.get(url, timeout=30)
+            if resp.status_code == 403:
+                # Rate limit probable
+                break
+            resp.raise_for_status()
+            data = resp.json()
+            if not isinstance(data, list) or not data:
+                break
+
+            for rel in data:
+                tag = (rel.get('tag_name') or '').strip()
+                m = re.search(r'v?(\d+\.\d+(?:\.\d+)*)', tag)
+                if not m:
+                    continue
+                version_text = m.group(1)
+                if version_text in seen_versions:
+                    continue
+                seen_versions.add(version_text)
+
+                parts = version_text.split('.')
+                if len(parts) < 2:
+                    continue
+
+                published = rel.get('published_at')
+                if published and published.endswith('Z'):
+                    try:
+                        date_obj = datetime.strptime(published, '%Y-%m-%dT%H:%M:%SZ')
+                        formatted_date = date_obj.strftime('%Y-%m-%d')
+                    except Exception:
+                        formatted_date = "Date non disponible"
+                else:
+                    formatted_date = "Date non disponible"
+
+                all_releases.append({
+                    'version': parts[0],
+                    'patch': '.'.join(parts[1:]) if len(parts) > 1 else '0',
+                    'date': formatted_date,
+                    'url': rel.get('html_url') or f"https://github.com/redis/redis/releases/tag/v{version_text}",
+                    'download_url': f"https://download.redis.io/releases/redis-{version_text}.tar.gz"
+                })
+
+            # Si on a déjà beaucoup de releases, inutile de trop paginer
+            if len(all_releases) >= 1000:
+                break
+
+        except Exception:
+            break
+
+    return all_releases
+
 def get_all_releases(max_pages: int = 8) -> List[Dict]:
     """Récupère les versions de Redis depuis GitHub (limité à 8 pages par défaut)"""
     print(f"🔍 Récupération des versions (max {max_pages} pages)...")
     
     all_releases = []
-    page = 1
     session = requests.Session()
-    session.headers.update(headers)
+    session.headers.update({
+        **headers,
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9,fr;q=0.8'
+    })
     
-    while page <= max_pages:
+    for page in range(1, max_pages + 1):
         url = f"https://github.com/redis/redis/releases?page={page}"
         print(f"📄 Page {page}/{max_pages}...", end=' ', flush=True)
         
         try:
-            # Timeout court et pas de vérification SSL pour plus de rapidité
-            response = session.get(url, timeout=10, verify=False)
+            response = session.get(url, timeout=30)
             response.raise_for_status()
             
             soup = BeautifulSoup(response.text, 'html.parser')
-            # Essayer différents sélecteurs pour trouver les éléments de version
-            release_elements = (
-                soup.select('div.Box--condensed') or  # Ancien sélecteur
-                soup.select('div.Box.Box--condensed') or  # Nouveau format
-                soup.select('div.Box')  # Format plus large
-            )
+
+            page_releases = _extract_releases_from_soup(soup)
+            if not page_releases:
+                print("Aucune version trouvée sur cette page (HTML).")
+                # ne pas break immédiatement: si GitHub renvoie une page spéciale, on tente quand même les autres pages
+            else:
+                # Déduplication globale
+                existing = {f"{r['version']}.{r['patch']}" for r in all_releases}
+                for r in page_releases:
+                    key = f"{r['version']}.{r['patch']}"
+                    if key not in existing:
+                        all_releases.append(r)
+                        existing.add(key)
             
-            if not release_elements:
-                print("Aucune version trouvée sur cette page, fin du parcours.")
-                break
-                
-            for element in release_elements:
-                try:
-                    # Extraire le numéro de version - essayer plusieurs sélecteurs
-                    version_tag = (
-                        element.select_one('a.Link--primary') or
-                        element.select_one('a[href*="/releases/tag/"]') or
-                        element.select_one('h2 a') or
-                        element.select_one('a[href^="/redis/redis/releases/tag/"]')
-                    )
-                    if not version_tag:
-                        continue
-                        
-                    version_text = version_tag.text.strip().replace('v', '')
-                    
-                    # Nettoyer et valider le numéro de version
-                    version_text = re.sub(r'[^0-9.]', '', version_text)  # Ne garder que les chiffres et points
-                    version_parts = version_text.split('.')
-                    
-                    # S'assurer qu'on a au moins 2 parties numériques (ex: 7.0, 6.2, etc.)
-                    if len(version_parts) < 2:
-                        continue
-                        
-                    # Vérifier que les deux premières parties sont des nombres
-                    if not (version_parts[0].isdigit() and version_parts[1].isdigit()):
-                        continue
-                        
-                    # Extraire la date
-                    date_tag = element.select_one('relative-time')
-                    if not date_tag:
-                        formatted_date = "Date non disponible"
-                    else:
-                        date_str = date_tag['datetime']
-                        date_obj = datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%SZ')
-                        formatted_date = date_obj.strftime('%Y-%m-%d')
-                    
-                    # Préparer les données de la version
-                    version_data = {
-                        'version': version_parts[0],
-                        'patch': '.'.join(version_parts[1:]) if len(version_parts) > 1 else '0',
-                        'date': formatted_date,
-                        'url': f"https://github.com/redis/redis/releases/tag/v{version_text}",
-                        'download_url': f"https://download.redis.io/releases/redis-{version_text}.tar.gz"
-                    }
-                    
-                    all_releases.append(version_data)
-                    print(f"Version trouvée: {version_text} - {formatted_date}")
-                    
-                except Exception as e:
-                    print(f"Erreur lors du traitement d'une version: {str(e)}")
-                    continue
-            
-            # Vérifier s'il y a une page suivante (essayer plusieurs sélecteurs)
-            next_buttons = [
-                soup.select_one('a.next_page'),
-                soup.select_one('a[rel="next"]'),
-                soup.select_one('a[data-ga-click^="Next"]')
-            ]
-            next_page = next((btn for btn in next_buttons if btn), None)
-            
-            # Vérifier si le bouton est désactivé ou absent
-            if not next_page or 'disabled' in next_page.get('class', []) or 'disabled' in next_page.get('aria-disabled', ''):
-                print("Dernière page atteinte.")
-                break
-                
-            page += 1
-            time.sleep(0.2)  # Temps d'attente minimal entre les requêtes
+            print(f"OK ({len(all_releases)} total)")
+            time.sleep(0.5)
             
         except requests.RequestException as e:
             print(f"\n⚠️ Erreur lors de la récupération de la page {page}: {str(e)}")
-            if hasattr(e, 'response') and e.response is not None:
-                if e.response.status_code == 429:  # Too Many Requests
-                    retry_after = int(e.response.headers.get('Retry-After', 5))
-                    print(f"⚠️ Trop de requêtes. Attente de {retry_after} secondes...")
-                    time.sleep(retry_after)
-                    continue
+            if hasattr(e, 'response') and e.response is not None and e.response.status_code == 429:
+                retry_after = int(e.response.headers.get('Retry-After', 10))
+                print(f"⚠️ Trop de requêtes. Attente de {retry_after} secondes...")
+                time.sleep(retry_after)
+                continue
             break
         except Exception as e:
             print(f"\n❌ Erreur inattendue: {str(e)}")
             break
-            
-        page += 1  # Passer à la page suivante
     
+    # Fallback API si aucune version trouvée via HTML
+    if not all_releases:
+        print("⚠️ Aucune version trouvée via HTML, tentative via GitHub API...")
+        all_releases = _get_releases_from_github_api(max_pages=max_pages)
+
     return all_releases
 
 def load_redis_versions(use_github: bool = True) -> List[Dict]:
     """Charge les versions de Redis depuis GitHub ou depuis le fichier local"""
     if use_github:
-        return get_all_releases()
+        return get_all_releases(max_pages=11)
     else:
         try:
             with open('redis_versions.json', 'r', encoding='utf-8') as f:
@@ -154,37 +218,8 @@ def load_redis_versions(use_github: bool = True) -> List[Dict]:
 def get_release_notes(version: Dict) -> List[Dict]:
     """Récupère les notes de version pour une version spécifique de Redis depuis GitHub."""
     try:
-        # Gérer le format de version (certaines versions ont un format spécial)
-        version_str = f"{version['version']}.{version['patch']}" if version['patch'] != '0' else version['version']
-        
-        # Essayer différents formats de tags
-        tag_variants = [
-            f"{version['version']}.{version['patch']}",  # Format standard (ex: 7.0.0)
-            f"{version['version']}-{version['patch']}",  # Format alternatif (ex: 7-0-0)
-            f"{version_str}",                            # Format d'origine
-            f"v{version_str}",                           # Avec préfixe 'v'
-            f"redis-{version_str}"                       # Avec préfixe 'redis-'
-        ]
-        
-        # Ajouter une variante sans le dernier numéro de version si nécessaire
-        if version['patch'] != '0' and '.' in version['patch']:
-            major, minor = version['patch'].split('.', 1)
-            tag_variants.append(f"{version['version']}.{major}")
-        
-        # Essayer chaque variante jusqu'à ce qu'une fonctionne
-        last_error = None
-        for tag in tag_variants:
-            release_url = f"https://github.com/redis/redis/releases/tag/{tag}"
-            try:
-                response = requests.head(release_url, headers=headers, timeout=10, allow_redirects=True)
-                if response.status_code == 200:
-                    break  # URL valide trouvée
-            except:
-                continue
-        else:
-            # Si aucune variante n'a fonctionné, utiliser la première
-            tag = tag_variants[0]
-            release_url = f"https://github.com/redis/redis/releases/tag/{tag}"
+        version_str = f"{version['version']}.{version['patch']}" if version.get('patch') and version['patch'] != '0' else version['version']
+        release_url = version.get('url') or f"https://github.com/redis/redis/releases/tag/v{version_str}"
         print(f"Récupération des notes pour Redis {version_str}...")
         
         try:
@@ -263,96 +298,101 @@ def detect_section_type(title: str) -> str:
     title_lower = title.lower()
     
     # Catégories d'innovations
-    if any(x in title_lower for x in ['feature', 'new', 'amélioration', 'améliorations', 'amélioré', 'améliorée']):
+    if any(x in title_lower for x in ['performance', 'optimisation', 'rapidité', 'vitesse', 'latency', 'throughput']):
+        return 'performance_improvements'
+    elif any(x in title_lower for x in ['security', 'sécurité', 'vulnérabilité', 'cve']):
+        return 'security_fixes'
+    elif any(x in title_lower for x in ['feature', 'new', 'amélioration', 'améliorations', 'added', 'introduce']):
         return 'new_features'
-    elif any(x in title_lower for x in ['fix', 'bug', 'correction', 'correctif', 'résolution']):
-        return 'bug_fixes'
-    elif any(x in title_lower for x in ['performance', 'optimisation', 'rapidité', 'vitesse']):
-        return 'performance'
-    elif any(x in title_lower for x in ['security', 'sécurité', 'vulnérabilité']):
-        return 'security'
-    elif any(x in title_lower for x in ['breaking change', 'changement majeur', 'incompatibilité']):
+    elif any(x in title_lower for x in ['api', 'protocol', 'client', 'command', 'interface']):
+        return 'api_changes'
+    elif any(x in title_lower for x in ['breaking change', 'changement majeur', 'incompatibilité', 'incompatible']):
         return 'breaking_changes'
-    elif any(x in title_lower for x in ['deprecation', 'obsolescence', 'suppression']):
-        return 'deprecations'
     else:
-        return 'general'
+        return 'other_improvements'
 
-def extract_innovations(sections: List[Dict]) -> Dict[str, List[Dict]]:
-    """Extrait les innovations des sections de notes de version."""
-    innovations = {
+def extract_changes(sections: List[Dict]) -> Dict[str, List[str]]:
+    """Extrait et catégorise les changements à partir des sections de notes de version."""
+    changes = {
+        'performance_improvements': [],
+        'security_fixes': [],
         'new_features': [],
-        'bug_fixes': [],
-        'performance': [],
-        'security': [],
+        'api_changes': [],
         'breaking_changes': [],
-        'deprecations': [],
-        'other': []
+        'other_improvements': []
+    }
+    
+    keyword_map = {
+        'performance_improvements': ['performance', 'optimiz', 'faster', 'speed', 'latency', 'throughput', 'memory'],
+        'security_fixes': ['security', 'cve', 'vulnerability', 'vuln', 'tls', 'ssl', 'auth'],
+        'new_features': ['new', 'feature', 'introduc', 'add', 'support'],
+        'api_changes': ['api', 'protocol', 'command', 'client', 'interface'],
+        'breaking_changes': ['breaking', 'incompatible', 'deprecated', 'removed']
     }
     
     for section in sections:
-        section_type = section.get('type', 'other')
-        content = '\n'.join(section['content'])
+        title = section.get('title', '').strip()
+        section_type = section.get('type', 'other_improvements')
         
-        if section_type in innovations:
-            innovations[section_type].append({
-                'title': section['title'],
-                'content': content
-            })
-        else:
-            innovations['other'].append({
-                'title': section['title'],
-                'content': content
-            })
+        for item in section.get('content', []):
+            text = item.strip()
+            if not text or len(text) < 10:
+                continue
+            
+            change_line = f"{title}: {text}" if title else text
+            lower = change_line.lower()
+            
+            if section_type in changes and section_type != 'other_improvements':
+                changes[section_type].append(change_line)
+                continue
+            
+            categorized = False
+            for cat, kws in keyword_map.items():
+                if any(kw in lower for kw in kws):
+                    changes[cat].append(change_line)
+                    categorized = True
+                    break
+            if not categorized:
+                changes['other_improvements'].append(change_line)
     
-    return innovations
+    for cat in changes:
+        changes[cat] = list(dict.fromkeys(changes[cat]))
+    
+    return changes
 
-def analyze_innovations(version_innovations: Dict[str, Dict]) -> Dict:
-    """Analyse les innovations par version et génère des statistiques."""
-    stats = {
-        'total_versions': len(version_innovations),
-        'total_innovations': 0,
-        'by_category': {
-            'new_features': 0,
-            'bug_fixes': 0,
-            'performance': 0,
-            'security': 0,
-            'breaking_changes': 0,
-            'deprecations': 0,
-            'other': 0
-        },
-        'versions': {}
+def analyze_changes(all_changes: Dict[str, List[str]]) -> Dict:
+    """Analyse les changements et génère des statistiques globales."""
+    analysis = {
+        'summary': {},
+        'key_changes': [],
+        'trends': {}
     }
     
-    for version, innovations in version_innovations.items():
-        version_stats = {
-            'total': 0,
-            'by_category': {}
+    for category, items in all_changes.items():
+        analysis['summary'][category] = {
+            'count': len(items),
+            'items': items[:5]
         }
-        
-        for category, items in innovations.items():
-            count = len(items)
-            version_stats['by_category'][category] = count
-            version_stats['total'] += count
-            stats['by_category'][category] += count
-            stats['total_innovations'] += count
-            
-        stats['versions'][version] = version_stats
     
-    return stats
+    flat = []
+    for category, items in all_changes.items():
+        for it in items:
+            flat.append({'category': category, 'content': it})
+    flat.sort(key=lambda x: len(x['content']), reverse=True)
+    analysis['key_changes'] = flat[:10]
+    
+    analysis['trends'] = {
+        'most_active_category': max(all_changes.keys(), key=lambda k: len(all_changes[k])) if all_changes else 'other_improvements',
+        'total_changes': sum(len(v) for v in all_changes.values())
+    }
+    
+    return analysis
 
-def generate_innovation_report() -> Dict:
-    """Génère un rapport complet sur les innovations de Redis par version."""
-    print("🚀 Début de l'analyse des innovations de Redis...")
+def generate_change_report(max_pages: int = 11) -> Dict:
+    """Génère un rapport complet sur les changements Redis par version."""
+    print("🚀 Début de l'analyse des changements de Redis...")
     
-    # Charger les versions de Redis depuis GitHub (limité à 5 pages)
-    versions = load_redis_versions(use_github=True)
-    
-    # Limiter le nombre de versions à analyser pour plus de rapidité
-    max_versions = 15  # Augmenté à 15 pour couvrir plus de versions
-    if len(versions) > max_versions:
-        print(f"🚀 Limitation à {max_versions} versions pour l'analyse")
-        versions = versions[:max_versions]
+    versions = get_all_releases(max_pages=max_pages)
     if not versions:
         return {'error': 'Aucune version trouvée'}
     
@@ -390,50 +430,76 @@ def generate_innovation_report() -> Dict:
         version_str = f"{v['version']}.{v['patch']}" if v['patch'] != '0' else v['version']
         print(f"  - Redis {version_str} ({v.get('date', 'date inconnue')})")
     
-    # Limiter le nombre de versions à analyser pour les tests
-    max_versions = 10  # À augmenter pour une analyse complète
-    if len(versions) > max_versions:
-        print(f"\n⚠️  Limitation à {max_versions} versions pour les tests (sur {len(versions)} au total)")
-        versions = versions[:max_versions]
-    
-    all_innovations = {}
+    versions_with_changes = []
+    all_changes = {
+        'performance_improvements': [],
+        'security_fixes': [],
+        'new_features': [],
+        'api_changes': [],
+        'breaking_changes': [],
+        'other_improvements': []
+    }
     
     try:
-        # Récupérer les notes de version pour chaque version
         for version in versions:
-            version_str = f"{version['version']}.{version['patch']}" if version['patch'] != '0' else version['version']
+            version_str = f"{version['version']}.{version['patch']}" if version.get('patch') and version['patch'] != '0' else version['version']
             print(f"\nTraitement de la version {version_str}...")
             
-            # Récupérer les sections des notes de version
             sections = get_release_notes(version)
             if not sections:
-                print(f"Aucune section trouvée pour la version {version_str}")
+                versions_with_changes.append({
+                    'version': version_str,
+                    'date': version.get('date', 'Date non disponible'),
+                    'url': version.get('url', ''),
+                    'download_url': version.get('download_url', ''),
+                    'changes_count': 0,
+                    'changes': {k: [] for k in all_changes.keys()},
+                    'total_changes': 0
+                })
                 continue
             
-            # Extraire les innovations
-            innovations = extract_innovations(sections)
-            all_innovations[version_str] = innovations
+            changes = extract_changes(sections)
+            total_changes = sum(len(v) for v in changes.values())
             
-            # Respecter les limites de taux de GitHub
-            time.sleep(2)  # Augmenter le délai pour éviter d'être bloqué
+            versions_with_changes.append({
+                'version': version_str,
+                'date': version.get('date', 'Date non disponible'),
+                'url': version.get('url', ''),
+                'download_url': version.get('download_url', ''),
+                'changes_count': total_changes,
+                'changes': changes,
+                'total_changes': total_changes
+            })
+            
+            for cat in all_changes:
+                all_changes[cat].extend(changes.get(cat, []))
+            
+            time.sleep(1)
         
-        # Analyser les innovations
-        analysis = analyze_innovations(all_innovations)
+        for cat in all_changes:
+            all_changes[cat] = list(dict.fromkeys(all_changes[cat]))
         
-        # Créer le rapport final
+        analysis = analyze_changes(all_changes)
+        
         report = {
             'report_date': datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC'),
-            'versions_analyzed': list(all_innovations.keys()),
-            'analysis': analysis,
-            'details': all_innovations
+            'summary': {
+                'total_versions_analyzed': len(versions_with_changes),
+                'total_changes': sum(v['total_changes'] for v in versions_with_changes),
+                'versions_with_changes': len([v for v in versions_with_changes if v['total_changes'] > 0])
+            },
+            'versions': versions_with_changes,
+            'global_analysis': {
+                'changes_by_category': all_changes,
+                'analysis': analysis
+            }
         }
         
-        # Sauvegarder le rapport
-        output_file = 'redis_github_innovations_report.json'
+        output_file = 'redis_changes_report.json'
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(report, f, indent=4, ensure_ascii=False)
         
-        print(f"\n✅ Rapport d'analyse des innovations sauvegardé dans {output_file}")
+        print(f"\n✅ Rapport d'analyse des changements sauvegardé dans {output_file}")
         return report
         
     except Exception as e:
@@ -446,38 +512,41 @@ def generate_markdown_report(report: Dict):
     if 'error' in report:
         return f"# Erreur\n\n{report['error']}"
     
-    markdown = ["# Rapport d'Innovations Redis\n"]
+    markdown = ["# Rapport de Changements Redis\n"]
     
     # Résumé
     markdown.append("## Résumé\n")
-    markdown.append(f"- **Versions analysées**: {len(report['analysis']['versions'])}")
-    markdown.append(f"- **Total d'innovations**: {report['analysis']['total_innovations']}")
+    markdown.append(f"- **Versions analysées**: {report['summary']['total_versions_analyzed']}")
+    markdown.append(f"- **Total de changements**: {report['summary']['total_changes']}")
     markdown.append("\n### Par catégorie:")
     
-    for category, count in report['analysis']['by_category'].items():
-        if count > 0:
-            markdown.append(f"- **{category.replace('_', ' ').title()}**: {count}")
+    summary = report['global_analysis']['analysis']['summary']
+    for category, data in summary.items():
+        if data['count'] > 0:
+            markdown.append(f"- **{category.replace('_', ' ').title()}**: {data['count']}")
     
     # Détails par version
     markdown.append("\n## Détails par version\n")
     
-    for version, innovations in report['details'].items():
-        markdown.append(f"### Redis {version}")
+    for version_info in report['versions']:
+        markdown.append(f"### Redis {version_info['version']}")
+        markdown.append(f"- Date: {version_info.get('date', 'Date non disponible')}")
+        if version_info.get('url'):
+            markdown.append(f"- URL: {version_info['url']}")
+        markdown.append(f"- Total changements: {version_info.get('total_changes', 0)}")
         
-        for category, items in innovations.items():
+        changes = version_info.get('changes', {})
+        for category, items in changes.items():
             if items:
                 markdown.append(f"\n#### {category.replace('_', ' ').title()} ({len(items)})\n")
-                
-                for item in items:
-                    markdown.append(f"- **{item['title']}**")
-                    # Limiter la longueur du contenu pour le rapport
-                    content = item['content'][:200] + ('...' if len(item['content']) > 200 else '')
-                    markdown.append(f"  > {content}")
+                for item in items[:10]:
+                    content = item[:200] + ('...' if len(item) > 200 else '')
+                    markdown.append(f"- {content}")
         
         markdown.append("\n---\n")
     
     # Enregistrer le rapport Markdown
-    output_file = 'redis_github_innovations_report.md'
+    output_file = 'redis_changes_report.md'
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write('\n'.join(markdown))
     
@@ -492,39 +561,27 @@ def main():
     import urllib3
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     
-    # Générer le rapport d'innovation
-    report = generate_innovation_report()
+    report = generate_change_report(max_pages=11)
     
     if 'error' in report:
         print(f"\n❌ Erreur: {report['error']}")
     else:
         # Afficher un résumé
         print("\n📊 RÉSULTATS")
-        print(f"• Versions analysées: {len(report['analysis']['versions'])}")
-        print(f"• Total d'innovations: {report['analysis']['total_innovations']}")
+        print(f"• Versions analysées: {report['summary']['total_versions_analyzed']}")
+        print(f"• Total de changements: {report['summary']['total_changes']}")
         
         print("\n📈 Répartition par catégorie:")
-        for category, count in report['analysis']['by_category'].items():
-            if count > 0:
-                percentage = (count / report['analysis']['total_innovations']) * 100
-                print(f"   • {category.replace('_', ' ').title()}: {count} ({percentage:.1f}%)")
-        
-        # Afficher les versions avec le plus d'innovations
-        top_versions = sorted(
-            [(v, data['total']) for v, data in report['analysis']['versions'].items() if data['total'] > 0],
-            key=lambda x: x[1],
-            reverse=True
-        )[:5]  # Top 5 au lieu de 3
-        
-        if top_versions:
-            print("\n🏆 Top 5 des versions avec le plus d'innovations:")
-            for i, (version, count) in enumerate(top_versions, 1):
-                print(f"   {i}. Redis {version}: {count} innovations")
+        summary = report['global_analysis']['analysis']['summary']
+        for category, data in summary.items():
+            if data['count'] > 0:
+                percentage = (data['count'] / report['summary']['total_changes']) * 100 if report['summary']['total_changes'] else 0
+                print(f"   • {category.replace('_', ' ').title()}: {data['count']} ({percentage:.1f}%)")
         
         # Calculer et afficher le temps d'exécution
         exec_time = time.time() - start_time
         print(f"\n✅ Analyse terminée en {exec_time:.1f} secondes")
-        print(f"📄 Rapport sauvegardé: redis_github_innovations_report.json")
+        print(f"📄 Rapport sauvegardé: redis_changes_report.json")
 
 if __name__ == "__main__":
     main()
