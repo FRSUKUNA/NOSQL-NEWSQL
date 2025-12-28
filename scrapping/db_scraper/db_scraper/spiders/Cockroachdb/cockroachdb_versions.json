@@ -1,0 +1,185 @@
+{
+    "database_info": {
+        "name": "CockroachDB",
+        "type": "Distributed SQL",
+        "features": [
+            "SQL Standard",
+            "Distribution globale",
+            "Haute disponibilité",
+            "Transactions ACID",
+            "Scalabilité horizontale"
+        ]
+    },
+    "acid_properties": {
+        "atomicity": "Because CockroachDB enables transactions that can span your entire cluster (including cross-range and cross-table transactions), it achieves correctness using a distributed, atomic commit protocol calledParallel Commits.",
+        "consistency": "CockroachDB maintient la cohérence en s'assurant que toutes les transactions respectent les contraintes définies dans le schéma de la base de données (clés primaires, clés étrangères, contraintes CHECK, contraintes UNIQUE, etc.). La base de données passe toujours d'un état valide à un autre état valide. Les transactions qui violeraient ces contraintes sont automatiquement rejetées, préservant ainsi l'intégrité référentielle et logique des données à tout moment.",
+        "isolation": "Isolation is an element ofACID transactionsthat determines how concurrency is controlled, and ultimately guarantees consistency. CockroachDB offers two transaction isolation levels:SERIALIZABLEandREAD COMMITTED. By default, CockroachDB executes all transactions at the strongest ANSI transaction isolation level:SERIALIZABLE, which permits no concurrency anomalies. To place all transactions in a serializable ordering,SERIALIZABLEisolation may requiretransaction restartsandclient-side retry handling. For a demonstration of howSERIALIZABLEprevents anomalies such as write skew, refer toSerializable",
+        "durability": "CockroachDB garantit la durabilité en répliquant automatiquement les données sur plusieurs nœuds (par défaut 3 réplicas). Une fois qu'une transaction est validée (committed), les données sont persistées de manière durable et survivront aux pannes de nœuds ou aux crashes système.",
+        "distributed_sql": "CockroachDB est une base de données SQL distribuée qui supporte le standard SQL avec des transactions ACID complètes sur un cluster distribué géographiquement. Elle combine les avantages du SQL relationnel avec la scalabilité horizontale des systèmes NoSQL.",
+        "high_availability": "CockroachDB offre une haute disponibilité (99.99%+) grâce à la réplication automatique, le consensus Raft pour la cohérence, et la tolérance aux pannes sans point unique de défaillance (SPOF). Le système peut survivre à la perte de nœuds tout en continuant à servir les requêtes."
+    },
+    "versions": [
+        {
+            "version": "26",
+            "patch": "1",
+            "full_version": "26.1",
+            "date": "December 17, 2025",
+            "release_type": "Regular",
+            "url": "https://www.cockroachlabs.com/docs/releases/v26.1",
+            "download_url": "https://www.cockroachlabs.com/docs/releases/v26.1#downloads",
+            "notes": [
+                "Required upgrade",
+                "Optional upgrade",
+                "Contains security fixes"
+            ],
+            "key_changes": [
+                "The releases on this page are testing releases, not supported or intended for production environments. The new features and bug fixes noted on this page may not yet be documented across CockroachDB’s documentation.",
+                "When v26.1 becomes Generally Available (GA), a new v26.1.0 section on this page will describe key features and additional upgrade considerations."
+            ],
+            "features": [
+                "WITH WATCHED",
+                "Failed SQL Connections graph shows failed SQL connection attempts",
+                "SQL Queries Within Routines Per Second dashboard reports on SELECT",
+                "Table Statistics Collections dashboard provides information on auto"
+            ]
+        },
+        {
+            "version": "25",
+            "patch": "4",
+            "full_version": "25.4",
+            "date": "December 12, 2025",
+            "release_type": "Regular",
+            "url": "https://www.cockroachlabs.com/docs/releases/v25.4",
+            "download_url": "https://www.cockroachlabs.com/docs/releases/v25.4#downloads",
+            "notes": [
+                "Required upgrade",
+                "Optional upgrade",
+                "Contains security fixes"
+            ],
+            "key_changes": [
+                "Refer toMajor release typesbefore installing or upgrading for release timing and support details. To learn what's new in this release, refer to itsFeature Highlights.",
+                "For key feature enhancements in v25.4 and other upgrade considerations, refer to the notes forv25.4.0."
+            ],
+            "features": [
+                "Partial statistics with constraining predicates",
+                "Changefeed span frontier persistence"
+            ]
+        },
+        {
+            "version": "25",
+            "patch": "3",
+            "full_version": "25.3",
+            "date": "December 12, 2025",
+            "release_type": "Innovation Release",
+            "url": "https://www.cockroachlabs.com/docs/releases/v25.3",
+            "download_url": "https://www.cockroachlabs.com/docs/releases/v25.3#downloads",
+            "notes": [
+                "Required upgrade",
+                "Optional upgrade",
+                "Contains security fixes"
+            ],
+            "key_changes": [
+                "Refer toMajor release typesbefore installing or upgrading for release timing and support details. To learn what's new in this release, refer to itsFeature Highlights.",
+                "For key feature enhancements in v25.3 and other upgrade considerations, refer to the notes forv25.3.0."
+            ],
+            "features": [
+                "TheCITEXTdata type",
+                "Support for automatically determining the region column for a REGIONAL BY ROW table using a foreign key constraint",
+                "Lock loss detection for weaker isolation levels",
+                "Automatic user provisioning via the LDAP/Active Directory integration",
+                "Theestimated_last_login_timecolumn inSHOW ROLES/SHOW USERSoutput"
+            ]
+        },
+        {
+            "version": "25",
+            "patch": "2",
+            "full_version": "25.2",
+            "date": "December 12, 2025",
+            "release_type": "LTS (Long Term Support)",
+            "url": "https://www.cockroachlabs.com/docs/releases/v25.2",
+            "download_url": "https://www.cockroachlabs.com/docs/releases/v25.2#downloads",
+            "notes": [
+                "Required upgrade",
+                "Contains security fixes"
+            ],
+            "key_changes": [
+                "Feature categoriesCockroachDB CloudPerformance and High AvailabilityChange Data CaptureObservabilitySecuritySQLLicensing",
+                "Additional informationBackward-incompatible changesKey cluster setting changesDeprecationsKnown limitationsAdditional resources"
+            ],
+            "features": [
+                "Row-level security",
+                "Creating a set-returning PL/pgSQL function",
+                "Support for thejsonpathdata type"
+            ]
+        },
+        {
+            "version": "24",
+            "patch": "3",
+            "full_version": "24.3",
+            "date": "December 12, 2025",
+            "release_type": "LTS (Long Term Support)",
+            "url": "https://www.cockroachlabs.com/docs/releases/v24.3",
+            "download_url": "https://www.cockroachlabs.com/docs/releases/v24.3#downloads",
+            "notes": [
+                "Required upgrade",
+                "Optional upgrade",
+                "Contains security fixes"
+            ],
+            "key_changes": [
+                "Feature categoriesCockroachDB LicensingCockroachDB CloudChange Data CaptureDisaster RecoverySQLSecurityObservability",
+                "Additional informationBackward-incompatible changesKey cluster setting changesDeprecationsKnown limitationsAdditional resources"
+            ],
+            "features": [
+                "A cluster must have anEnterprise licenseor atrial licenseset before an upgrade to v24",
+                "New clusters that are initialized for the first time on v24"
+            ]
+        },
+        {
+            "version": "24",
+            "patch": "1",
+            "full_version": "24.1",
+            "date": "October 17, 2025",
+            "release_type": "LTS (Long Term Support)",
+            "url": "https://www.cockroachlabs.com/docs/releases/v24.1",
+            "download_url": "https://www.cockroachlabs.com/docs/releases/v24.1#downloads",
+            "notes": [
+                "Required upgrade",
+                "Optional upgrade",
+                "Contains security fixes"
+            ],
+            "key_changes": [
+                "Feature categoriesPerformanceChange data captureRecoverySecurityMigrationsSQLOperationsObservability",
+                "Additional informationBackward-incompatible changesDeprecationsFeatures that require upgrade finalizationKnown limitationsAdditional resources"
+            ],
+            "features": [
+                "Splitsno longer holdlatchesfor time proportional to the range size while computingMVCCstatistics"
+            ]
+        },
+        {
+            "version": "23",
+            "patch": "2",
+            "full_version": "23.2",
+            "date": "September 4, 2025",
+            "release_type": "LTS (Long Term Support)",
+            "url": "https://www.cockroachlabs.com/docs/releases/v23.2",
+            "download_url": "https://www.cockroachlabs.com/docs/releases/v23.2#downloads",
+            "notes": [
+                "Required upgrade",
+                "Optional upgrade",
+                "Contains security fixes"
+            ],
+            "key_changes": [
+                "Feature categoriesObservabilityMigrationsSecurity and complianceDisaster recoveryDeployment and operationsSQL",
+                "Additional informationBackward-incompatible changesDeprecationsKnown limitationsAdditional resources"
+            ],
+            "features": [
+                "CockroachDB Software License",
+                "Kafka sink utilizing the franz",
+                "SQL function fips",
+                "SELECT FOR UPDATE implementation used under Read Committed isolation",
+                "DistSender metrics"
+            ]
+        }
+    ],
+    "last_updated": "2025-12-28 23:13:23 UTC"
+}
