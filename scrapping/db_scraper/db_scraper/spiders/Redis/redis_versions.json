@@ -1,0 +1,67 @@
+{
+    "acid_properties": {
+        "atomicity": "Atomicity in ACID transactions guarantees that a transaction is treated as a single, indivisible unit of work. If any part of the transaction fails, the entire transaction must be rolled back, meaning that any changes made during the transaction are undone. This ensures that the database remains in a consistent state, regardless of any failures that may occur during the transaction.",
+        "consistency": "TheCAP theoremstates that in a distributed system, it is impossible to guarantee all three of Consistency, Availability, and Partition tolerance. However, it does not suggest sacrificing consistency for availability and partition tolerance. In fact, the theorem poses a trade-off between consistency and partition tolerance. This means that in the event of a network partition, you must choose between consistency and partition tolerance. The CAP theorem is not truly an alternative transaction model but a theoretical framework for understanding the limitations of distributed systems. Transaction models, such as BASE, can be used in conjunction with the principles of CAP to design and implement distributed systems.",
+        "isolation": "This property ensures that each transaction operates independently of other transactions, which means that a transaction’s effects should only become visible to other transactions after it has been committed. This property prevents interference and conflicts between concurrent transactions, and helps maintain the integrity and consistency of the database. It’s important to note that different levels of isolation can be configured for transactions, depending on the specific requirements of the application and the database system being used.",
+        "durability": "This characteristic makes sure that, even in a system failure, the changes made to the database during a transaction are irreversible. Any changes made after a transaction is committed must persist, even if the system is destroyed or loses power."
+    },
+    "versions": [
+        {
+            "version": "8",
+            "patch": "4.0",
+            "date": "2025-11-18",
+            "url": "https://github.com/redis/redis/releases/tag/v8.4.0",
+            "download_url": "https://download.redis.io/releases/redis-8.4.0.tar.gz"
+        },
+        {
+            "version": "8",
+            "patch": "2.3",
+            "date": "2025-11-02",
+            "url": "https://github.com/redis/redis/releases/tag/v8.2.3",
+            "download_url": "https://download.redis.io/releases/redis-8.2.3.tar.gz"
+        },
+        {
+            "version": "1",
+            "patch": "3.12",
+            "date": "2010-05-16",
+            "url": "https://github.com/redis/redis/releases/tag/v1.3.12",
+            "download_url": "https://download.redis.io/releases/redis-1.3.12.tar.gz"
+        },
+        {
+            "version": "1",
+            "patch": "3.11",
+            "date": "2010-05-02",
+            "url": "https://github.com/redis/redis/releases/tag/v1.3.11",
+            "download_url": "https://download.redis.io/releases/redis-1.3.11.tar.gz"
+        },
+        {
+            "version": "1",
+            "patch": "3.10",
+            "date": "2010-04-21",
+            "url": "https://github.com/redis/redis/releases/tag/v1.3.10",
+            "download_url": "https://download.redis.io/releases/redis-1.3.10.tar.gz"
+        },
+        {
+            "version": "1",
+            "patch": "3.9",
+            "date": "2010-04-15",
+            "url": "https://github.com/redis/redis/releases/tag/v1.3.9",
+            "download_url": "https://download.redis.io/releases/redis-1.3.9.tar.gz"
+        },
+        {
+            "version": "1",
+            "patch": "3.8",
+            "date": "2010-03-29",
+            "url": "https://github.com/redis/redis/releases/tag/v1.3.8",
+            "download_url": "https://download.redis.io/releases/redis-1.3.8.tar.gz"
+        },
+        {
+            "version": "1",
+            "patch": "3.7",
+            "date": "2010-03-22",
+            "url": "https://github.com/redis/redis/releases/tag/v1.3.7",
+            "download_url": "https://download.redis.io/releases/redis-1.3.7.tar.gz"
+        }
+    ],
+    "last_updated": "2025-12-28 00:43:38 UTC"
+}
