@@ -10,176 +10,1227 @@
             "Scalabilité horizontale"
         ]
     },
-    "acid_properties": {
-        "atomicity": "Because CockroachDB enables transactions that can span your entire cluster (including cross-range and cross-table transactions), it achieves correctness using a distributed, atomic commit protocol calledParallel Commits.",
-        "consistency": "CockroachDB maintient la cohérence en s'assurant que toutes les transactions respectent les contraintes définies dans le schéma de la base de données (clés primaires, clés étrangères, contraintes CHECK, contraintes UNIQUE, etc.). La base de données passe toujours d'un état valide à un autre état valide. Les transactions qui violeraient ces contraintes sont automatiquement rejetées, préservant ainsi l'intégrité référentielle et logique des données à tout moment.",
-        "isolation": "Isolation is an element ofACID transactionsthat determines how concurrency is controlled, and ultimately guarantees consistency. CockroachDB offers two transaction isolation levels:SERIALIZABLEandREAD COMMITTED. By default, CockroachDB executes all transactions at the strongest ANSI transaction isolation level:SERIALIZABLE, which permits no concurrency anomalies. To place all transactions in a serializable ordering,SERIALIZABLEisolation may requiretransaction restartsandclient-side retry handling. For a demonstration of howSERIALIZABLEprevents anomalies such as write skew, refer toSerializable",
-        "durability": "CockroachDB garantit la durabilité en répliquant automatiquement les données sur plusieurs nœuds (par défaut 3 réplicas). Une fois qu'une transaction est validée (committed), les données sont persistées de manière durable et survivront aux pannes de nœuds ou aux crashes système.",
-        "distributed_sql": "CockroachDB est une base de données SQL distribuée qui supporte le standard SQL avec des transactions ACID complètes sur un cluster distribué géographiquement. Elle combine les avantages du SQL relationnel avec la scalabilité horizontale des systèmes NoSQL.",
-        "high_availability": "CockroachDB offre une haute disponibilité (99.99%+) grâce à la réplication automatique, le consensus Raft pour la cohérence, et la tolérance aux pannes sans point unique de défaillance (SPOF). Le système peut survivre à la perte de nœuds tout en continuant à servir les requêtes."
-    },
-    "versions": [
-        {
-            "version": "26",
-            "patch": "1",
-            "full_version": "26.1",
-            "date": "December 17, 2025",
-            "release_type": "Regular",
-            "url": "https://www.cockroachlabs.com/docs/releases/v26.1",
-            "download_url": "https://www.cockroachlabs.com/docs/releases/v26.1#downloads",
-            "notes": [
-                "Required upgrade",
-                "Optional upgrade",
-                "Contains security fixes"
-            ],
-            "key_changes": [
-                "The releases on this page are testing releases, not supported or intended for production environments. The new features and bug fixes noted on this page may not yet be documented across CockroachDB’s documentation.",
-                "When v26.1 becomes Generally Available (GA), a new v26.1.0 section on this page will describe key features and additional upgrade considerations."
-            ],
-            "features": [
-                "WITH WATCHED",
-                "Failed SQL Connections graph shows failed SQL connection attempts",
-                "SQL Queries Within Routines Per Second dashboard reports on SELECT",
-                "Table Statistics Collections dashboard provides information on auto"
-            ]
+    "versions_hierarchy": {
+        "26": {
+            "major_version": "26",
+            "name": "v26",
+            "year": 2026,
+            "minor_releases": {
+                "26.1": {
+                    "full_version": "26.1",
+                    "minor_version": "1",
+                    "url": "https://www.cockroachlabs.com/docs/releases/v26.1",
+                    "date": "December 17, 2025",
+                    "release_type": "Regular",
+                    "key_changes": [],
+                    "features": [],
+                    "patches": [
+                        {
+                            "version": "26.1.0-beta.1",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "December 17, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "26.1.0-alpha.2",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "December 11, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "26.1.0-alpha.1",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "December 4, 2025",
+                            "is_lts": false
+                        }
+                    ],
+                    "total_patches": 3
+                }
+            }
         },
-        {
-            "version": "25",
-            "patch": "4",
-            "full_version": "25.4",
-            "date": "December 12, 2025",
-            "release_type": "Regular",
-            "url": "https://www.cockroachlabs.com/docs/releases/v25.4",
-            "download_url": "https://www.cockroachlabs.com/docs/releases/v25.4#downloads",
-            "notes": [
-                "Required upgrade",
-                "Optional upgrade",
-                "Contains security fixes"
-            ],
-            "key_changes": [
-                "Refer toMajor release typesbefore installing or upgrading for release timing and support details. To learn what's new in this release, refer to itsFeature Highlights.",
-                "For key feature enhancements in v25.4 and other upgrade considerations, refer to the notes forv25.4.0."
-            ],
-            "features": [
-                "Partial statistics with constraining predicates",
-                "Changefeed span frontier persistence"
-            ]
+        "25": {
+            "major_version": "25",
+            "name": "v25",
+            "year": 2025,
+            "minor_releases": {
+                "25.4": {
+                    "full_version": "25.4",
+                    "minor_version": "4",
+                    "url": "https://www.cockroachlabs.com/docs/releases/v25.4",
+                    "date": "December 12, 2025",
+                    "release_type": "Regular Release",
+                    "key_changes": [],
+                    "features": [
+                        "Partial statistics with constraining predicates",
+                        "Changefeed span frontier persistence"
+                    ],
+                    "patches": [
+                        {
+                            "version": "25.4.2",
+                            "patch_number": "2",
+                            "type": "Production",
+                            "date": "December 12, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.4.1",
+                            "patch_number": "1",
+                            "type": "Production",
+                            "date": "December 3, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.4.0",
+                            "patch_number": "0",
+                            "type": "GA (General Availability)",
+                            "date": "November 3, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.4.0-rc.1",
+                            "patch_number": "0",
+                            "type": "Testing (RC)",
+                            "date": "October 22, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.4.0-beta.3",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "October 16, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.4.0-beta.2",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "October 10, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.4.0-beta.1",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "October 1, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.4.0-alpha.2",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "September 23, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.4.0-alpha.1",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "September 17, 2025",
+                            "is_lts": false
+                        }
+                    ],
+                    "total_patches": 9
+                },
+                "25.3": {
+                    "full_version": "25.3",
+                    "minor_version": "3",
+                    "url": "https://www.cockroachlabs.com/docs/releases/v25.3",
+                    "date": "December 12, 2025",
+                    "release_type": "Innovation Release",
+                    "key_changes": [],
+                    "features": [
+                        "TheCITEXTdata type",
+                        "Support for automatically determining the region column for a REGIONAL BY ROW table using a foreign key constraint",
+                        "Lock loss detection for weaker isolation levels",
+                        "Automatic user provisioning via the LDAP/Active Directory integration",
+                        "Theestimated_last_login_timecolumn inSHOW ROLES/SHOW USERSoutput"
+                    ],
+                    "patches": [
+                        {
+                            "version": "25.3.6",
+                            "patch_number": "6",
+                            "type": "Production",
+                            "date": "December 12, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.3.5",
+                            "patch_number": "5",
+                            "type": "Production",
+                            "date": "November 14, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.3.4",
+                            "patch_number": "4",
+                            "type": "Production",
+                            "date": "October 30, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.3.3",
+                            "patch_number": "3",
+                            "type": "Production",
+                            "date": "October 17, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.3.2",
+                            "patch_number": "2",
+                            "type": "Production",
+                            "date": "September 22, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.3.1",
+                            "patch_number": "1",
+                            "type": "Production",
+                            "date": "August 29, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.3.0",
+                            "patch_number": "0",
+                            "type": "GA (General Availability)",
+                            "date": "August 4, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.3.0-rc.1",
+                            "patch_number": "0",
+                            "type": "Testing (RC)",
+                            "date": "July 23, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.3.0-beta.3",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "July 14, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.3.0-beta.2",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "July 9, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.3.0-beta.1",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "July 2, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.3.0-alpha.3",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "June 23, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.3.0-alpha.2",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "June 16, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.3.0-alpha.1",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "June 9, 2025",
+                            "is_lts": false
+                        }
+                    ],
+                    "total_patches": 14
+                },
+                "25.2": {
+                    "full_version": "25.2",
+                    "minor_version": "2",
+                    "url": "https://www.cockroachlabs.com/docs/releases/v25.2",
+                    "date": "December 12, 2025",
+                    "release_type": "LTS (Long Term Support)",
+                    "key_changes": [
+                        "Feature categoriesCockroachDB CloudPerformance and High AvailabilityChange Data CaptureObservabilitySecuritySQLLicensing",
+                        "Additional informationBackward-incompatible changesKey cluster setting changesDeprecationsKnown limitationsAdditional resources"
+                    ],
+                    "features": [
+                        "Feature categoriesCockroachDB CloudPerformance and High AvailabilityChange Data CaptureObservabilitySecuritySQLLicensing",
+                        "Additional informationBackward-incompatible changesKey cluster setting changesDeprecationsKnown limitationsAdditional resources"
+                    ],
+                    "patches": [
+                        {
+                            "version": "25.2.10",
+                            "patch_number": "10",
+                            "type": "Production (LTS)",
+                            "date": "December 12, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "25.2.9",
+                            "patch_number": "9",
+                            "type": "Production (LTS)",
+                            "date": "November 14, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "25.2.8",
+                            "patch_number": "8",
+                            "type": "Production (LTS)",
+                            "date": "October 30, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "25.2.7",
+                            "patch_number": "7",
+                            "type": "Production (LTS)",
+                            "date": "October 17, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "25.2.6",
+                            "patch_number": "6",
+                            "type": "Production (LTS)",
+                            "date": "September 22, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "25.2.5",
+                            "patch_number": "5",
+                            "type": "Production (LTS)",
+                            "date": "August 22, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "25.2.4",
+                            "patch_number": "4",
+                            "type": "Production (LTS)",
+                            "date": "August 1, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "25.2.3",
+                            "patch_number": "3",
+                            "type": "Production (LTS)",
+                            "date": "July 28, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "25.2.2",
+                            "patch_number": "2",
+                            "type": "Production (LTS)",
+                            "date": "June 25, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "25.2.1",
+                            "patch_number": "1",
+                            "type": "Production (LTS)",
+                            "date": "Date non disponible",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "25.2.0",
+                            "patch_number": "0",
+                            "type": "GA (General Availability)",
+                            "date": "May 12, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.2.0-rc.1",
+                            "patch_number": "0",
+                            "type": "Testing (RC)",
+                            "date": "May 12, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.2.0-beta.3",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "April 28, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.2.0-beta.2",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "April 23, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.2.0-beta.1",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "April 14, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.2.0-alpha.3",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "April 7, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.2.0-alpha.2",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "March 31, 2025",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "25.2.0-alpha.1",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "March 24, 2025",
+                            "is_lts": false
+                        }
+                    ],
+                    "total_patches": 18
+                }
+            }
         },
-        {
-            "version": "25",
-            "patch": "3",
-            "full_version": "25.3",
-            "date": "December 12, 2025",
-            "release_type": "Innovation Release",
-            "url": "https://www.cockroachlabs.com/docs/releases/v25.3",
-            "download_url": "https://www.cockroachlabs.com/docs/releases/v25.3#downloads",
-            "notes": [
-                "Required upgrade",
-                "Optional upgrade",
-                "Contains security fixes"
-            ],
-            "key_changes": [
-                "Refer toMajor release typesbefore installing or upgrading for release timing and support details. To learn what's new in this release, refer to itsFeature Highlights.",
-                "For key feature enhancements in v25.3 and other upgrade considerations, refer to the notes forv25.3.0."
-            ],
-            "features": [
-                "TheCITEXTdata type",
-                "Support for automatically determining the region column for a REGIONAL BY ROW table using a foreign key constraint",
-                "Lock loss detection for weaker isolation levels",
-                "Automatic user provisioning via the LDAP/Active Directory integration",
-                "Theestimated_last_login_timecolumn inSHOW ROLES/SHOW USERSoutput"
-            ]
+        "24": {
+            "major_version": "24",
+            "name": "v24",
+            "year": 2024,
+            "minor_releases": {
+                "24.3": {
+                    "full_version": "24.3",
+                    "minor_version": "3",
+                    "url": "https://www.cockroachlabs.com/docs/releases/v24.3",
+                    "date": "December 12, 2025",
+                    "release_type": "LTS (Long Term Support)",
+                    "key_changes": [
+                        "Feature categoriesCockroachDB LicensingCockroachDB CloudChange Data CaptureDisaster RecoverySQLSecurityObservability",
+                        "Additional informationBackward-incompatible changesKey cluster setting changesDeprecationsKnown limitationsAdditional resources"
+                    ],
+                    "features": [
+                        "Feature categoriesCockroachDB LicensingCockroachDB CloudChange Data CaptureDisaster RecoverySQLSecurityObservability",
+                        "Additional informationBackward-incompatible changesKey cluster setting changesDeprecationsKnown limitationsAdditional resources"
+                    ],
+                    "patches": [
+                        {
+                            "version": "24.3.24",
+                            "patch_number": "24",
+                            "type": "Production (LTS)",
+                            "date": "December 12, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.23",
+                            "patch_number": "23",
+                            "type": "Production (LTS)",
+                            "date": "November 14, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.22",
+                            "patch_number": "22",
+                            "type": "Production (LTS)",
+                            "date": "October 30, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.21",
+                            "patch_number": "21",
+                            "type": "Production (LTS)",
+                            "date": "October 17, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.20",
+                            "patch_number": "20",
+                            "type": "Production (LTS)",
+                            "date": "September 22, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.19",
+                            "patch_number": "19",
+                            "type": "Production (LTS)",
+                            "date": "August 22, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.18",
+                            "patch_number": "18",
+                            "type": "Production (LTS)",
+                            "date": "August 8, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.17",
+                            "patch_number": "17",
+                            "type": "Production (LTS)",
+                            "date": "August 1, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.16",
+                            "patch_number": "16",
+                            "type": "Production (LTS)",
+                            "date": "July 28, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.15",
+                            "patch_number": "15",
+                            "type": "Production (LTS)",
+                            "date": "June 25, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.14",
+                            "patch_number": "14",
+                            "type": "Production (LTS)",
+                            "date": "May 28, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.13",
+                            "patch_number": "13",
+                            "type": "Production (LTS)",
+                            "date": "May 15, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.12",
+                            "patch_number": "12",
+                            "type": "Production (LTS)",
+                            "date": "April 30, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.11",
+                            "patch_number": "11",
+                            "type": "Production (LTS)",
+                            "date": "April 28, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.10",
+                            "patch_number": "10",
+                            "type": "Production (LTS)",
+                            "date": "April 9, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.9",
+                            "patch_number": "9",
+                            "type": "Production (LTS)",
+                            "date": "April 2, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.8",
+                            "patch_number": "8",
+                            "type": "Production (LTS)",
+                            "date": "March 12, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.7",
+                            "patch_number": "7",
+                            "type": "Production (LTS)",
+                            "date": "March 6, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.6",
+                            "patch_number": "6",
+                            "type": "Production (LTS)",
+                            "date": "February 19, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.5",
+                            "patch_number": "5",
+                            "type": "Production (LTS)",
+                            "date": "February 6, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.4",
+                            "patch_number": "4",
+                            "type": "Production (LTS)",
+                            "date": "January 31, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.3",
+                            "patch_number": "3",
+                            "type": "Production (LTS)",
+                            "date": "January 9, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.2",
+                            "patch_number": "2",
+                            "type": "Production (LTS)",
+                            "date": "December 26, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.1",
+                            "patch_number": "1",
+                            "type": "Production (LTS)",
+                            "date": "December 12, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.3.0",
+                            "patch_number": "0",
+                            "type": "GA (General Availability)",
+                            "date": "Date non disponible",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "24.3.0-rc.1",
+                            "patch_number": "0",
+                            "type": "Testing (RC)",
+                            "date": "November 18, 2024",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "24.3.0-beta.3",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "November 5, 2024",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "24.3.0-beta.2",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "October 28, 2024",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "24.3.0-beta.1",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "October 24, 2024",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "24.3.0-alpha.2",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "October 14, 2024",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "24.3.0-alpha.1",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "October 9, 2024",
+                            "is_lts": false
+                        }
+                    ],
+                    "total_patches": 31
+                },
+                "24.1": {
+                    "full_version": "24.1",
+                    "minor_version": "1",
+                    "url": "https://www.cockroachlabs.com/docs/releases/v24.1",
+                    "date": "October 17, 2025",
+                    "release_type": "LTS (Long Term Support)",
+                    "key_changes": [
+                        "Feature categoriesPerformanceChange data captureRecoverySecurityMigrationsSQLOperationsObservability",
+                        "Additional informationBackward-incompatible changesDeprecationsFeatures that require upgrade finalizationKnown limitationsAdditional resources"
+                    ],
+                    "features": [
+                        "Feature categoriesPerformanceChange data captureRecoverySecurityMigrationsSQLOperationsObservability",
+                        "Additional informationBackward-incompatible changesDeprecationsFeatures that require upgrade finalizationKnown limitationsAdditional resources"
+                    ],
+                    "patches": [
+                        {
+                            "version": "24.1.25",
+                            "patch_number": "25",
+                            "type": "Production (LTS)",
+                            "date": "October 17, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.24",
+                            "patch_number": "24",
+                            "type": "Production (LTS)",
+                            "date": "September 22, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.23",
+                            "patch_number": "23",
+                            "type": "Production (LTS)",
+                            "date": "August 22, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.22",
+                            "patch_number": "22",
+                            "type": "Production (LTS)",
+                            "date": "August 1, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.21",
+                            "patch_number": "21",
+                            "type": "Production (LTS)",
+                            "date": "July 28, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.20",
+                            "patch_number": "20",
+                            "type": "Production (LTS)",
+                            "date": "June 25, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.19",
+                            "patch_number": "19",
+                            "type": "Production (LTS)",
+                            "date": "May 28, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.18",
+                            "patch_number": "18",
+                            "type": "Production (LTS)",
+                            "date": "April 30, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.17",
+                            "patch_number": "17",
+                            "type": "Production (LTS)",
+                            "date": "April 28, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.16",
+                            "patch_number": "16",
+                            "type": "Production (LTS)",
+                            "date": "April 9, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.15",
+                            "patch_number": "15",
+                            "type": "Production (LTS)",
+                            "date": "April 3, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.14",
+                            "patch_number": "14",
+                            "type": "Production (LTS)",
+                            "date": "March 6, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.13",
+                            "patch_number": "13",
+                            "type": "Production (LTS)",
+                            "date": "February 19, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.12",
+                            "patch_number": "12",
+                            "type": "Production (LTS)",
+                            "date": "February 6, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.11",
+                            "patch_number": "11",
+                            "type": "Production (LTS)",
+                            "date": "January 31, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.10",
+                            "patch_number": "10",
+                            "type": "Production (LTS)",
+                            "date": "January 9, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.9",
+                            "patch_number": "9",
+                            "type": "Production (LTS)",
+                            "date": "December 26, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.8",
+                            "patch_number": "8",
+                            "type": "Production (LTS)",
+                            "date": "December 12, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.7",
+                            "patch_number": "7",
+                            "type": "Production (LTS)",
+                            "date": "November 18, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.6",
+                            "patch_number": "6",
+                            "type": "Production (LTS)",
+                            "date": "October 17, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.5",
+                            "patch_number": "5",
+                            "type": "Production (LTS)",
+                            "date": "September 25, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.4",
+                            "patch_number": "4",
+                            "type": "Production (LTS)",
+                            "date": "August 29, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.3",
+                            "patch_number": "3",
+                            "type": "Production (LTS)",
+                            "date": "August 1, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.2",
+                            "patch_number": "2",
+                            "type": "Production (LTS)",
+                            "date": "July 2, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.1",
+                            "patch_number": "1",
+                            "type": "Production (LTS)",
+                            "date": "June 14, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "24.1.0",
+                            "patch_number": "0",
+                            "type": "GA (General Availability)",
+                            "date": "May 20, 2024",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "24.1.0-rc.2",
+                            "patch_number": "0",
+                            "type": "Testing (RC)",
+                            "date": "May 16, 2024",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "24.1.0-rc.1",
+                            "patch_number": "0",
+                            "type": "Testing (RC)",
+                            "date": "May 8, 2024",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "24.1.0-beta.3",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "April 30, 2024",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "24.1.0-beta.2",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "April 24, 2024",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "24.1.0-beta.1",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "April 17, 2024",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "24.1.0-alpha.5",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "April 1, 2024",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "24.1.0-alpha.4",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "March 25, 2024",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "24.1.0-alpha.3",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "March 18, 2024",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "24.1.0-alpha.2",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "March 11, 2024",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "24.1.0-alpha.1",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "March 7, 2024",
+                            "is_lts": false
+                        }
+                    ],
+                    "total_patches": 36
+                }
+            }
         },
-        {
-            "version": "25",
-            "patch": "2",
-            "full_version": "25.2",
-            "date": "December 12, 2025",
-            "release_type": "LTS (Long Term Support)",
-            "url": "https://www.cockroachlabs.com/docs/releases/v25.2",
-            "download_url": "https://www.cockroachlabs.com/docs/releases/v25.2#downloads",
-            "notes": [
-                "Required upgrade",
-                "Contains security fixes"
-            ],
-            "key_changes": [
-                "Feature categoriesCockroachDB CloudPerformance and High AvailabilityChange Data CaptureObservabilitySecuritySQLLicensing",
-                "Additional informationBackward-incompatible changesKey cluster setting changesDeprecationsKnown limitationsAdditional resources"
-            ],
-            "features": [
-                "Row-level security",
-                "Creating a set-returning PL/pgSQL function",
-                "Support for thejsonpathdata type"
-            ]
-        },
-        {
-            "version": "24",
-            "patch": "3",
-            "full_version": "24.3",
-            "date": "December 12, 2025",
-            "release_type": "LTS (Long Term Support)",
-            "url": "https://www.cockroachlabs.com/docs/releases/v24.3",
-            "download_url": "https://www.cockroachlabs.com/docs/releases/v24.3#downloads",
-            "notes": [
-                "Required upgrade",
-                "Optional upgrade",
-                "Contains security fixes"
-            ],
-            "key_changes": [
-                "Feature categoriesCockroachDB LicensingCockroachDB CloudChange Data CaptureDisaster RecoverySQLSecurityObservability",
-                "Additional informationBackward-incompatible changesKey cluster setting changesDeprecationsKnown limitationsAdditional resources"
-            ],
-            "features": [
-                "A cluster must have anEnterprise licenseor atrial licenseset before an upgrade to v24",
-                "New clusters that are initialized for the first time on v24"
-            ]
-        },
-        {
-            "version": "24",
-            "patch": "1",
-            "full_version": "24.1",
-            "date": "October 17, 2025",
-            "release_type": "LTS (Long Term Support)",
-            "url": "https://www.cockroachlabs.com/docs/releases/v24.1",
-            "download_url": "https://www.cockroachlabs.com/docs/releases/v24.1#downloads",
-            "notes": [
-                "Required upgrade",
-                "Optional upgrade",
-                "Contains security fixes"
-            ],
-            "key_changes": [
-                "Feature categoriesPerformanceChange data captureRecoverySecurityMigrationsSQLOperationsObservability",
-                "Additional informationBackward-incompatible changesDeprecationsFeatures that require upgrade finalizationKnown limitationsAdditional resources"
-            ],
-            "features": [
-                "Splitsno longer holdlatchesfor time proportional to the range size while computingMVCCstatistics"
-            ]
-        },
-        {
-            "version": "23",
-            "patch": "2",
-            "full_version": "23.2",
-            "date": "September 4, 2025",
-            "release_type": "LTS (Long Term Support)",
-            "url": "https://www.cockroachlabs.com/docs/releases/v23.2",
-            "download_url": "https://www.cockroachlabs.com/docs/releases/v23.2#downloads",
-            "notes": [
-                "Required upgrade",
-                "Optional upgrade",
-                "Contains security fixes"
-            ],
-            "key_changes": [
-                "Feature categoriesObservabilityMigrationsSecurity and complianceDisaster recoveryDeployment and operationsSQL",
-                "Additional informationBackward-incompatible changesDeprecationsKnown limitationsAdditional resources"
-            ],
-            "features": [
-                "CockroachDB Software License",
-                "Kafka sink utilizing the franz",
-                "SQL function fips",
-                "SELECT FOR UPDATE implementation used under Read Committed isolation",
-                "DistSender metrics"
-            ]
+        "23": {
+            "major_version": "23",
+            "name": "v23",
+            "year": 2023,
+            "minor_releases": {
+                "23.2": {
+                    "full_version": "23.2",
+                    "minor_version": "2",
+                    "url": "https://www.cockroachlabs.com/docs/releases/v23.2",
+                    "date": "September 4, 2025",
+                    "release_type": "LTS (Long Term Support)",
+                    "key_changes": [
+                        "Feature categoriesObservabilityMigrationsSecurity and complianceDisaster recoveryDeployment and operationsSQL",
+                        "Additional informationBackward-incompatible changesDeprecationsKnown limitationsAdditional resources"
+                    ],
+                    "features": [
+                        "Feature categoriesObservabilityMigrationsSecurity and complianceDisaster recoveryDeployment and operationsSQL",
+                        "Additional informationBackward-incompatible changesDeprecationsKnown limitationsAdditional resources"
+                    ],
+                    "patches": [
+                        {
+                            "version": "23.2.28",
+                            "patch_number": "28",
+                            "type": "Production (LTS)",
+                            "date": "September 4, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.27",
+                            "patch_number": "27",
+                            "type": "Production (LTS)",
+                            "date": "June 25, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.26",
+                            "patch_number": "26",
+                            "type": "Production (LTS)",
+                            "date": "May 28, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.25",
+                            "patch_number": "25",
+                            "type": "Production (LTS)",
+                            "date": "April 30, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.24",
+                            "patch_number": "24",
+                            "type": "Production (LTS)",
+                            "date": "April 28, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.23",
+                            "patch_number": "23",
+                            "type": "Production (LTS)",
+                            "date": "April 9, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.22",
+                            "patch_number": "22",
+                            "type": "Production (LTS)",
+                            "date": "April 2, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.21",
+                            "patch_number": "21",
+                            "type": "Production (LTS)",
+                            "date": "March 6, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.20",
+                            "patch_number": "20",
+                            "type": "Production (LTS)",
+                            "date": "February 6, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.19",
+                            "patch_number": "19",
+                            "type": "Production (LTS)",
+                            "date": "January 9, 2025",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.18",
+                            "patch_number": "18",
+                            "type": "Production (LTS)",
+                            "date": "December 26, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.17",
+                            "patch_number": "17",
+                            "type": "Production (LTS)",
+                            "date": "December 12, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.16",
+                            "patch_number": "16",
+                            "type": "Production (LTS)",
+                            "date": "November 18, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.15",
+                            "patch_number": "15",
+                            "type": "Production (LTS)",
+                            "date": "November 15, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.14",
+                            "patch_number": "14",
+                            "type": "Production (LTS)",
+                            "date": "October 31, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.13",
+                            "patch_number": "13",
+                            "type": "Production (LTS)",
+                            "date": "October 17, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.12",
+                            "patch_number": "12",
+                            "type": "Production (LTS)",
+                            "date": "September 25, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.11",
+                            "patch_number": "11",
+                            "type": "Production (LTS)",
+                            "date": "September 16, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.10",
+                            "patch_number": "10",
+                            "type": "Production (LTS)",
+                            "date": "August 29, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.9",
+                            "patch_number": "9",
+                            "type": "Production (LTS)",
+                            "date": "August 1, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.8",
+                            "patch_number": "8",
+                            "type": "Production (LTS)",
+                            "date": "July 15, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.7",
+                            "patch_number": "7",
+                            "type": "Production (LTS)",
+                            "date": "July 2, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.6",
+                            "patch_number": "6",
+                            "type": "Production (LTS)",
+                            "date": "June 11, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.5",
+                            "patch_number": "5",
+                            "type": "Production (LTS)",
+                            "date": "May 7, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.4",
+                            "patch_number": "4",
+                            "type": "Production (LTS)",
+                            "date": "April 11, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.3",
+                            "patch_number": "3",
+                            "type": "Production (LTS)",
+                            "date": "March 20, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.2",
+                            "patch_number": "2",
+                            "type": "Production (LTS)",
+                            "date": "February 27, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.1",
+                            "patch_number": "1",
+                            "type": "Production (LTS)",
+                            "date": "February 20, 2024",
+                            "is_lts": true
+                        },
+                        {
+                            "version": "23.2.0",
+                            "patch_number": "0",
+                            "type": "GA (General Availability)",
+                            "date": "February 5, 2024",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "23.2.0-rc.2",
+                            "patch_number": "0",
+                            "type": "Testing (RC)",
+                            "date": "January 9, 2024",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "23.2.0-rc.1",
+                            "patch_number": "0",
+                            "type": "Testing (RC)",
+                            "date": "December 21, 2023",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "23.2.0-beta.3",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "December 13, 2023",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "23.2.0-beta.2",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "December 5, 2023",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "23.2.0-beta.1",
+                            "patch_number": "0",
+                            "type": "Testing (Beta)",
+                            "date": "November 27, 2023",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "23.2.0-alpha.7",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "November 20, 2023",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "23.2.0-alpha.6",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "November 7, 2023",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "23.2.0-alpha.5",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "October 30, 2023",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "23.2.0-alpha.4",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "October 23, 2023",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "23.2.0-alpha.3",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "October 10, 2023",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "23.2.0-alpha.2",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "October 2, 2023",
+                            "is_lts": false
+                        },
+                        {
+                            "version": "23.2.0-alpha.1",
+                            "patch_number": "0",
+                            "type": "Testing (Alpha)",
+                            "date": "September 26, 2023",
+                            "is_lts": false
+                        }
+                    ],
+                    "total_patches": 41
+                }
+            }
         }
-    ],
-    "last_updated": "2025-12-28 23:13:23 UTC"
+    },
+    "statistics": {
+        "total_major_versions": 4,
+        "total_minor_releases": 7,
+        "total_patches": 152,
+        "major_versions_list": [
+            "26",
+            "25",
+            "24",
+            "23"
+        ]
+    },
+    "last_updated": "2025-12-29 01:45:20 UTC"
 }

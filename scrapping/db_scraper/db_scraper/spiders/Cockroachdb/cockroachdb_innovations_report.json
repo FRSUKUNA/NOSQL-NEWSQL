@@ -1,6 +1,6 @@
 {
     "database": "CockroachDB",
-    "report_date": "2025-12-28 23:15:10 UTC",
+    "report_date": "2025-12-29 01:46:47 UTC",
     "summary": {
         "total_versions_analyzed": 6,
         "total_innovations": 4601,
@@ -359,7 +359,7 @@
         {
             "version": "25.4",
             "date": "December 12, 2025",
-            "release_type": "Regular",
+            "release_type": "Regular Release",
             "url": "https://www.cockroachlabs.com/docs/releases/v25.4",
             "sections_count": 90,
             "innovations": {

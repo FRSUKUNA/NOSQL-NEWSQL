@@ -5,6 +5,7 @@ from datetime import datetime
 from typing import Dict, List, Optional
 import re
 import time
+import os  # Ajout important pour les chemins
 
 # Configuration des en-têtes pour les requêtes HTTP
 headers = {
@@ -19,6 +20,10 @@ def get_cockroachdb_release_notes(version: str) -> List[Dict]:
         print(f"Récupération des notes de version pour CockroachDB v{version}...")
         
         response = requests.get(url, headers=headers, timeout=30)
+        # Si 404, on ignore simplement sans planter
+        if response.status_code == 404:
+            print(f"Page non trouvée pour v{version}")
+            return []
         response.raise_for_status()
         
         soup = BeautifulSoup(response.text, 'html.parser')
@@ -60,7 +65,7 @@ def get_cockroachdb_release_notes(version: str) -> List[Dict]:
         
         # Si peu de sections, chercher dans les listes
         if len(sections) < 3:
-            print(f"Recherche alternative pour v{version}...")
+            # print(f"Recherche alternative pour v{version}...") # Moins de bruit
             lists = content.find_all(['ul', 'ol'])
             
             for list_element in lists:
@@ -208,12 +213,17 @@ def analyze_innovations(all_innovations: Dict) -> Dict:
     
     # Tendances
     if all_innovations:
-        most_active = max(all_innovations.keys(), key=lambda k: len(all_innovations[k]))
-        analysis['trends'] = {
-            'most_active_category': most_active,
-            'total_innovations': sum(len(innovations) for innovations in all_innovations.values()),
-            'categories_with_innovations': len([cat for cat, items in all_innovations.items() if items])
-        }
+        # Check si la liste n'est pas vide pour éviter erreur max()
+        non_empty_cats = [k for k in all_innovations.keys() if len(all_innovations[k]) > 0]
+        if non_empty_cats:
+            most_active = max(non_empty_cats, key=lambda k: len(all_innovations[k]))
+            analysis['trends'] = {
+                'most_active_category': most_active,
+                'total_innovations': sum(len(innovations) for innovations in all_innovations.values()),
+                'categories_with_innovations': len(non_empty_cats)
+            }
+        else:
+            analysis['trends'] = {'info': 'Aucune innovation détectée'}
     
     return analysis
 
@@ -223,21 +233,48 @@ def generate_innovation_report() -> Dict:
     print("Début de l'analyse des innovations CockroachDB...")
     print("="*70)
     
+    # --- MODIFICATION: CHEMIN ABSOLU ---
+    target_dir = r"D:\Projet VT\Cockroachdb"
+    input_file = os.path.join(target_dir, 'cockroachdb_versions.json')
+    
     # Charger les versions depuis le fichier JSON
     try:
-        with open('cockroachdb_versions.json', 'r', encoding='utf-8') as f:
+        with open(input_file, 'r', encoding='utf-8') as f:
             versions_data = json.load(f)
-            versions = versions_data.get('versions', [])
+            
+            # --- MODIFICATION CRITIQUE: GESTION DE LA STRUCTURE HIERARCHIQUE ---
+            versions_list = []
+            
+            # Cas 1: Structure hiérarchique (produite par votre nouveau script versions.py)
+            if 'versions_hierarchy' in versions_data:
+                print("📂 Structure hiérarchique détectée. Aplatissement des données...")
+                hierarchy = versions_data['versions_hierarchy']
+                for major in hierarchy.values():
+                    for minor in major.get('minor_releases', {}).values():
+                        versions_list.append(minor)
+            
+            # Cas 2: Ancienne structure plate (au cas où)
+            elif 'versions' in versions_data:
+                versions_list = versions_data['versions']
+                
+            versions = versions_list
+            
     except FileNotFoundError:
-        print("❌ Erreur: Fichier cockroachdb_versions.json non trouvé.")
+        print(f"❌ Erreur: Fichier {input_file} non trouvé.")
         print("📋 Exécutez d'abord CockroachDB_versions.py")
-        return {'error': 'Fichier cockroachdb_versions.json non trouvé'}
+        return {'error': 'Fichier JSON non trouvé'}
     
     if not versions:
         print("Aucune version trouvée dans le fichier JSON.")
         return {'error': 'Aucune version disponible'}
     
     # Analyser les 6 dernières versions
+    # On trie d'abord pour être sûr d'avoir les récentes
+    try:
+        versions.sort(key=lambda x: [int(n) for n in x.get('full_version', '0.0').split('.') if n.isdigit()], reverse=True)
+    except:
+        pass # Si le tri échoue, on prend tel quel
+        
     latest_versions = versions[:6]
     
     # Structure organisée par version
@@ -254,7 +291,9 @@ def generate_innovation_report() -> Dict:
     }
     
     for version_info in latest_versions:
-        version = version_info.get('full_version', f"{version_info['version']}.{version_info['patch']}")
+        # Gestion des différents noms de champs possibles
+        version = version_info.get('full_version', version_info.get('version', 'Unknown'))
+        
         print(f"\n{'─'*70}")
         print(f"📦 Analyse de la version v{version}...")
         print(f"{'─'*70}")
@@ -262,7 +301,7 @@ def generate_innovation_report() -> Dict:
         # Récupérer les notes de version
         sections = get_cockroachdb_release_notes(version)
         
-        time.sleep(2)  # Respecter le serveur
+        time.sleep(1)  # Respecter le serveur
         
         if sections:
             # Extraire les innovations pour cette version
@@ -283,7 +322,8 @@ def generate_innovation_report() -> Dict:
             
             # Ajouter aux totaux globaux
             for category in all_innovations:
-                all_innovations[category].extend(innovations[category])
+                if category in innovations:
+                    all_innovations[category].extend(innovations[category])
             
             print(f"✅ {version_entry['total_innovations']} innovations trouvées")
         else:
@@ -328,13 +368,21 @@ def generate_innovation_report() -> Dict:
         }
     }
 
-    # Sauvegarder le rapport
-    output_file = 'cockroachdb_innovations_report.json'
+    # Sauvegarder le rapport dans le dossier cible
+    output_file = os.path.join(target_dir, 'cockroachdb_innovations_report.json')
+    
+    # Création du dossier si nécessaire
+    if not os.path.exists(target_dir):
+        try:
+            os.makedirs(target_dir)
+        except:
+            pass # Si erreur permission, on essayera d'écrire quand même
+            
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(report, f, indent=4, ensure_ascii=False)
 
     print(f"\n{'='*70}")
-    print(f"✅ Rapport d'innovations sauvegardé dans {output_file}")
+    print(f"✅ Rapport d'innovations sauvegardé dans:\n{output_file}")
     print(f"{'='*70}")
     print(f"📊 Statistiques:")
     print(f"  • Versions analysées: {len(versions_with_innovations)}")
@@ -382,24 +430,27 @@ def main():
     print("📈 TENDANCES GLOBALES")
     print(f"{'='*70}")
     
-    global_analysis = report['global_analysis']['analysis']
-    
-    print(f"Total de versions analysées: {report['summary']['total_versions_analyzed']}")
-    print(f"Versions avec innovations: {report['summary']['versions_with_innovations']}")
-    print(f"Total d'innovations: {report['summary']['total_innovations']}")
-    
-    most_active = global_analysis['trends']['most_active_category'].replace('_', ' ').title()
-    print(f"Catégorie la plus active: {most_active}")
+    if 'global_analysis' in report and 'analysis' in report['global_analysis']:
+        global_analysis = report['global_analysis']['analysis']
+        
+        print(f"Total de versions analysées: {report['summary']['total_versions_analyzed']}")
+        print(f"Versions avec innovations: {report['summary']['versions_with_innovations']}")
+        print(f"Total d'innovations: {report['summary']['total_innovations']}")
+        
+        if 'trends' in global_analysis and 'most_active_category' in global_analysis['trends']:
+            most_active = global_analysis['trends']['most_active_category'].replace('_', ' ').title()
+            print(f"Catégorie la plus active: {most_active}")
 
-    print(f"\n{'='*70}")
-    print("⭐ TOP 5 INNOVATIONS CLÉS")
-    print(f"{'='*70}")
-    
-    for i, innovation in enumerate(global_analysis['key_innovations'][:5], 1):
-        category = innovation['category'].replace('_', ' ').title()
-        content = innovation['content'][:120] + "..." if len(innovation['content']) > 120 else innovation['content']
-        print(f"\n{i}. [{category}]")
-        print(f"   {content}")
+        print(f"\n{'='*70}")
+        print("⭐ TOP 5 INNOVATIONS CLÉS")
+        print(f"{'='*70}")
+        
+        if 'key_innovations' in global_analysis:
+            for i, innovation in enumerate(global_analysis['key_innovations'][:5], 1):
+                category = innovation['category'].replace('_', ' ').title()
+                content = innovation['content'][:120] + "..." if len(innovation['content']) > 120 else innovation['content']
+                print(f"\n{i}. [{category}]")
+                print(f"   {content}")
 
     print(f"\n{'='*70}")
     print("✅ Analyse terminée avec succès!")
@@ -407,3 +458,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
