@@ -1,0 +1,492 @@
+[
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Alerts | MongoDB\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMongoDB EventMongoDB.",
+        "description": "local SF, Jan 15: See the speaker lineup & ship your AI vision faster.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "VULNERABILITÉ",
+        "severite": "ÉLEVÉE",
+        "version": "Non spécifiée",
+        "titre": "See the MongoDB JIRA for a comprehensive list of bugs and feature requests.",
+        "description": "RSS Feed\n\n\nData integrity relatedOperations RelatedSecurity RelatedGeneralData Integrity Related11/20/2025Under certain conditions, including a failover, a cross-shard transaction with apiVersion explicitly set may be partially committed while still being acknowledged as successfully completed to the client.",
+        "date": "2025-11-20",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "or (in other affected versions) cause interruptions to subsequent operations on the documents affected by the transaction.",
+        "description": "Affects:MongoDB Server, MongoDB Atlasversions:5.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →11/20/2025If a cluster undergoes a point-in-time (PIT) restore at a wall-clock time significantly after the TransactionRecordMinimumLifetimeMinutes timeout has elapsed, cross-shard transactions may be silently partially committed while still being acknowledged as successfully completed to the client.",
+        "description": "This can also occur in other rare conditions; see reference link for details.",
+        "date": "2025-11-20",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →11/20/20252dsphere indexes on metric data in time series collections are not correctly maintained when inserting data into the time series collection.",
+        "description": "Index keys may not be generated and inserted into the index, causing geospatial queries optimized by it to return incomplete results.",
+        "date": "2025-11-20",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "ÉLEVÉE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →11/20/2025When running on a standalone replica set while using queryable encryption or on a sharded cluster, write concern errors may be incorrectly suppressed when write errors occur (such as duplicate key errors or schema validation errors) or when the create command completes successfully (in a sharded cluster).",
+        "description": "This can cause applications to incorrectly assume that prior writes were durable, resulting in silent data loss.",
+        "date": "2025-11-20",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "This can only occur if a primary failover and rollback subsequently occur.",
+        "description": "Affects:MongoDB Server, MongoDB Atlas, Mongosync, Mongorestore, Mongoimport, Compassversions:4.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →10/09/2025Under certain situations, when running a join ($lookup, $graphLookup or $unionWith) in one database, followed by a $merge or $out written into another database, the join can read the wrong collection if the foreign collection of the join stage and the output collection of the $merge or $out stage have the same name.",
+        "description": "This will result in incorrect or missing results in the output collection.",
+        "date": "2025-10-09",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →09/16/2025When restoring from a backup, mongorestore silently ignores namespaces containing a newline character, without logging any warning messages.",
+        "description": "This affects mongorestore versions 3.",
+        "date": "2025-09-16",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "In both these scenarios, Atlas uses mongorestore behind the scenes and the fix has already been applied.",
+        "description": "Affects:Atlas, mongorestoreversions:3.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →08/07/2025Time series data can be corrupted if double-precision metrics are inserted in a pattern of multiple successive values with identical non-zero deltas, followed by a measurement where the metric is missing, into a time series collection for a specific meta value and adjacent time range.",
+        "description": "Affects:MongoDB Serverversions:8.",
+        "date": "2025-08-07",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →08/07/2025Performing deletes on time-series collection with a non-metaField filter followed by inserts on an adjacent time range, can result in data inserted after the delete to be prematurely TTL expired and/or missing from query results.",
+        "description": "Affects:Atlas, MongoDB Serverversions:7.",
+        "date": "2025-08-07",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →07/16/2025Combined alert for MongoDB Relational Migrator with multiple data integrity issues affecting data migrations from relational databases into MongoDB.",
+        "description": "These affect Snapshot migrations that contain specific mappings for cyclic dependency loops, ‘array-in-doc-in-array’ nested embeddings, or use of the idempotency user setting.",
+        "date": "2025-07-16",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "These also affect Continuous (CDC) migrations.",
+        "description": "Affects:Relational Migratorversions:1.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →06/17/2025Certain queries that involve an $elemMatch expression with string predicates may use an index with incompatible collation due to a plan cache bug.",
+        "description": "Impacted queries can return results which miss documents that should have been included.",
+        "date": "2025-06-17",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Write operations that rely on queries that incorrectly miss documents may not correctly update those documents.",
+        "description": "This includes updates, deletes, and $merge/$out aggregations with impacted query filters.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →04/28/2025A bug, under certain circumstances, may cause a simple equality (non-_id) predicate query on sharded collections to report no results when a valid result exists.",
+        "description": "Affects:Atlas, MongoDB Serverversions:8.",
+        "date": "2025-04-28",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →03/19/2025When enabling the useBigInt64 option (disabled by default) to deserialize a value through the bson JavaScript library (which is included in the MongoDB Node.",
+        "description": "js driver), negative Int64 values can be parsed as large positive values (greater than 9,223,372,036,854,775,807).",
+        "date": "2025-03-19",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Affects:JavaScript bson library, MongoDB Node.",
+        "description": "js driver, MongoDB Shell, Compass, VS Code Extensionversions:bson library 6.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →03/03/2025In certain situations, a resharded collection may have had retryable writes repeated on its documents multiple times.",
+        "description": "Affects:MongoDB Serverversions:5.",
+        "date": "2025-03-03",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "ÉLEVÉE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →01/29/2025Time Series collections may experience data loss when multiple documents are inserted concurrently with “ordered: false” and retryable writes are enabled.",
+        "description": "Affects:Atlas, MongoDB Serverversions:7.",
+        "date": "2025-01-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "ÉLEVÉE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →01/29/2025Performing a delete with a non-metadata filter on a time-series collection that is sharded on the time field may result in data loss.",
+        "description": "Affects:Atlas, MongoDB Serverversions:7.",
+        "date": "2025-01-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →12/11/2024A reshardCollection operation on a cluster with at least two shards can potentially omit a collections catalog entry in a shards local catalog if a movePrimary operation had previously been issued on the same cluster.",
+        "description": "This impacts operations involving data migration that lookup the database cache namely movePrimary, reshardCollection, moveRange, and moveChunk.",
+        "date": "2024-12-11",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "5.2",
+        "titre": "Reference Link →10/24/2024Queries may return incomplete results when Time Series collections created prior to MongoDB 5.",
+        "description": "2 have been upgraded to MongoDB 6.",
+        "date": "2024-10-24",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "or newer prior to those collections being cloned.",
+        "description": "Relatedly, Time Series collections on MongoDB Rapid Releases 7.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "that had their collection granularity changed via collMod while on those versions, may have also returned incomplete query results.",
+        "description": "Affects:Atlas, MongoDB Serverversions:6.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →09/10/2024The Node.",
+        "description": "js v22.",
+        "date": "2024-09-10",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "PERFORMANCE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "runtime contains a regression related to its handling of UTF-8 encoding that can impact the data integrity of applications using the MongoDB Node.",
+        "description": "js driver.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "MongoDB does not use the affected Node.",
+        "description": "js version in any of its products, however, developers using MongoDB’s Node.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "js driver could experience data integrity issues when data is written to their clusters via the Node.",
+        "description": "js v22.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "js driverversions:Any MongoDB Node.",
+        "description": "js driver version if data was written using Node.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "CRITIQUE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →08/15/2024To balance load and maintain a high quality of service, the Atlas Serverless system occasionally migrates data of serverless instances between different database servers.",
+        "description": "Certain multi-write, non-transactional database commands are not safely auto-retried by Atlas Serverless upon migration completion, which can lead to incorrect updates and deletes behavior.",
+        "date": "2024-08-15",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Affects:Atlas Serverlessversions:5.",
+        "description": "0+ Reference Link →07/02/2024\"Issues during the initial data copy in mongosync 1.",
+        "date": "2024-07-02",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "VULNERABILITÉ",
+        "severite": "ÉLEVÉE",
+        "version": "Non spécifiée",
+        "titre": "may lead to some writes or documents on the source not being replicated to the destination.",
+        "description": "Upgrade to mongosync version 1.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "and the fix has been applied to Atlas Live Migrate.",
+        "description": "\"Affects:Cluster-to-Cluster Sync (mongosync)versions:1.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →04/15/2024Issues affecting multi-document transactions on sharded clusters which can cause sharded multi-document transactions to return incorrect data and possibly miss writes.",
+        "description": "Affects:MongoDB Serverversions:4.",
+        "date": "2024-04-15",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →02/20/2024An issue in mongodump can cause keys in collection options to be dumped in the wrong order.",
+        "description": "These alterations could change the result set returned by a view or change which documents are accepted by a validator.",
+        "date": "2024-02-20",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Affects:Atlas, Mongodumpversions:A fix has been released on Atlas, but free or shared clusters may have been impacted in the past.",
+        "description": "Mongodump 4.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "CRITIQUE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →11/29/2023An issue affecting inserts to Sharded Time Series collections can result in inserted documents on these collections to be immediately orphaned, leading to documents not being returned by queries and potential data loss.",
+        "description": "Affects:MongoDB Serverversions:5.",
+        "date": "2023-11-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "VULNERABILITÉ",
+        "severite": "ÉLEVÉE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →11/10/2023A race condition in mongosync 1.",
+        "description": "5 can lead to some writes on the source not being replicated to the destination.",
+        "date": "2023-11-10",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "ÉLEVÉE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →05/23/2023A storage engine issue can cause inconsistent incremental Ops Manager and Cloud Manager backups.",
+        "description": "Clusters restored from affected incremental backups can crash with checksum errors.",
+        "date": "2023-05-23",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Atlas customers/backups are not affected.",
+        "description": "Affects:Ops Manager and Cloud Managerversions:4.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →03/14/2023A storage engine bug in MongoDB running on ARM64 or POWER architectures may store documents or index entries out of order, leading to inconsistencies and improperly sorted or incomplete query results.",
+        "description": "Affects:MongoDB Serverversions:4.",
+        "date": "2023-03-14",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "Reference Link →09/19/2022A MongoDB agent issue in Atlas, Ops Manager, and Cloud Manager can cause automated \"rolling index builds\" to introduce index inconsistencies.",
+        "description": "MongoDB clusters on other platforms are not affected.",
+        "date": "2022-09-19",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "running on:- Atlas - a fix has been released on Atlas, but clusters may have been impacted in the past.",
+        "description": "- Ops Manager versions 5.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "ÉLEVÉE",
+        "version": "Non spécifiée",
+        "titre": "can introduce corruption during a movePrimary command.",
+        "description": "Affects:MongoDB Serverversions:5.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "can cause inconsistent data after an unclean shutdown and restart.",
+        "description": "Upgrade to version 4.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "MOYENNE",
+        "version": "Non spécifiée",
+        "titre": "allows some inserts to violate unique index constraints.",
+        "description": "Upgrade to version 4.",
+        "date": "2025-12-29",
+        "url": null
+    },
+    {
+        "technologie": "MongoDB",
+        "type": "AUTRE",
+        "severite": "ÉLEVÉE",
+        "version": "Non spécifiée",
+        "titre": "causes crashes on startup and may cause temporary query correctness issues.",
+        "description": "Upgrade to version 4.",
+        "date": "2025-12-29",
+        "url": null
+    }
+]

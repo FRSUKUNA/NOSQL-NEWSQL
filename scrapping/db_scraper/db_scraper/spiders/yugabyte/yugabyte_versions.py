@@ -32,6 +32,22 @@ DOC_2_20_URL = 'https://docs.yugabyte.com/stable/releases/ybdb-releases/v2.20/'
 
 ACID_URL = 'https://www.yugabyte.com/key-concepts/acid-properties/'
 
+SECURITY_KEYWORDS = [
+    "security", "vulnerability", "authentication",
+    "authorization", "privilege", "bypass", "exploit", "cve"
+]
+
+PERFORMANCE_KEYWORDS = [
+    "performance", "latency", "throughput", "slow", "slower", "faster",
+    "optimiz", "regression", "degradation", "degrade", "bottleneck",
+    "memory", "cpu", "qps", "tps", "p99", "p95"
+]
+
+MAJOR_CHANGE_KEYWORDS = [
+    "major", "significant", "critical", "severe", "breaking",
+    "regression", "degradation", "degrade", "outage"
+]
+
 
 def _parse_version_parts(tag: str) -> Optional[Dict[str, str]]:
     m = re.search(r'v?(\d+(?:\.\d+)+)', tag)
@@ -279,6 +295,57 @@ def get_acid_consistency(session: requests.Session) -> Dict[str, str]:
         return defaults
 
 
+def _classify_change(change: str) -> Optional[Dict[str, str]]:
+    """Retourne None si pas d'alerte, sinon {'type': ..., 'severity': ...}."""
+    c = change.lower()
+
+    is_security = any(k in c for k in SECURITY_KEYWORDS)
+    is_perf = any(k in c for k in PERFORMANCE_KEYWORDS)
+    is_major = any(k in c for k in MAJOR_CHANGE_KEYWORDS)
+
+    # 1) Vulnérabilité critique: CVE / exploit / bypass / privilege escalation / vuln
+    if is_security:
+        if any(k in c for k in ["cve", "exploit", "bypass", "privilege", "escalat", "vulnerability", "security fix"]):
+            return {'type': 'VULNERABILITÉ', 'severity': 'Critique'}
+        # Mention sécurité plus faible => pas d'alerte (conformément à ta règle "vulnérabilité critique")
+        return None
+
+    # 2) Changement majeur de performance: régression/dégradation ou mention perf + "major" etc.
+    if is_perf:
+        if any(k in c for k in ["regression", "degradation", "degrade", "outage"]):
+            return {'type': 'PERFORMANCE', 'severity': 'Critique'}
+        if is_major:
+            return {'type': 'PERFORMANCE', 'severity': 'Élevée'}
+        return None
+
+    return None
+
+
+def detect_alerts(version_data: Dict) -> List[Dict]:
+    alerts: List[Dict] = []
+    version_str = f"{version_data.get('version', '')}.{version_data.get('patch', '')}".strip('.')
+    date_str = version_data.get('date', 'Date non disponible')
+
+    for change in version_data.get('changes', []) or []:
+        if not isinstance(change, str):
+            continue
+
+        classification = _classify_change(change)
+        if not classification:
+            continue
+
+        alerts.append({
+            "technology": "YugabyteDB",
+            "type": classification['type'],
+            "severity": classification['severity'],
+            "version": version_str,
+            "description": change,
+            "date": date_str
+        })
+
+    return alerts
+
+
 def get_all_releases(max_pages: int = 25) -> List[Dict]:
     print(f"Récupération des versions YugabyteDB sur GitHub (pages 1..{max_pages})...")
 
@@ -459,12 +526,21 @@ def main():
     # Re-trier (car exécution parallèle => ordre non déterministe)
     output.sort(key=lambda x: [int(x['version'])] + [int(p) if p.isdigit() else 0 for p in x['patch'].split('.')], reverse=True)
 
+    alerts: List[Dict] = []
+    for version_data in output:
+        alerts.extend(detect_alerts(version_data))
+
     output_file = 'yugabyte_versions.json'
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump({'acid_consistency': acid_consistency, 'versions': output}, f, indent=4, ensure_ascii=False)
 
+    alerts_file = 'yugabyte_alert.json'
+    with open(alerts_file, 'w', encoding='utf-8') as f:
+        json.dump(alerts, f, indent=4, ensure_ascii=False)
+
     print(f"\nRapport sauvegardé dans {output_file}")
     print(f"Versions: {len(output)}")
+    print(f"Alertes sécurité: {len(alerts)}")
 
 
 if __name__ == '__main__':

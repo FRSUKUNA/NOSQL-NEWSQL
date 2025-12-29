@@ -1,0 +1,650 @@
+[
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Élevée",
+        "version": "2025.1.0.0",
+        "description": "Catalog caching . Provides ability to find catalog tables which can be preloaded to improve latency for first query in connection or after DDL in the cluster. GA Compressed catalog tuples when storing in the PG catalog cache to reduce the memory consumption. GA Optimized DDL performance by enabling targeted catalog cache invalidation, significantly reducing impact on concurrent DMLs. This avoids rebuilding the entire cache in most cases. GA",
+        "date": "2025-07-23"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Élevée",
+        "version": "2025.1.0.0",
+        "description": "Optimized DDL performance by enabling targeted catalog cache invalidation, significantly reducing impact on concurrent DMLs. This avoids rebuilding the entire cache in most cases. GA",
+        "date": "2025-07-23"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2025.1.0.0",
+        "description": "Query Plan Management (QPM) introduced to ensure stable and adaptable query performance by preventing plan regression and automatically detecting optimal new plans. EA",
+        "date": "2025-07-23"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2024.2.6.0",
+        "description": "Fixes a vulnerability allowing incorrect database row access or modification. #25330",
+        "date": "2025-10-31"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2024.2.6.0",
+        "description": "Fixes a regression bug that caused an OBJECT_NOT_FOUND error during an index alteration, ensuring smoother table modifications. #28849",
+        "date": "2025-10-31"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Élevée",
+        "version": "2024.2.3.0",
+        "description": "This release brings significant enhancements focused on performance, flexibility, and operational improvements:",
+        "date": "2025-05-16"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2024.2.2.0",
+        "description": "Ensures cached plans correctly depend on user roles, addressing CVE-2024-10976 . #25330",
+        "date": "2025-02-28"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Élevée",
+        "version": "2024.2.0.0",
+        "description": "This enhancement significantly reduces communication overhead between the PostgreSQL backend and TServer, which plays a critical role in both read and write flows. We observed a 10+% increase in throughput and a 10+% decrease in latency in workloads like TPCC and YCSB. This improvement is particularly impactful in the following scenarios:",
+        "date": "2024-12-09"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Élevée",
+        "version": "2024.1.0.0",
+        "description": "YSQL Cost-based optimizer . Added support for cost based optimizer for YSQL. EA DDL concurrency . Support for isolating DDLs per database. Specifically, a DDL in one database does not cause catalog cache refreshes or aborts transactions due to breaking change in another database. DDL atomicity . Ensures that YSQL DDLs are fully atomic between YSQL and DocDB layers, that is in case of any errors, they are fully rolled back, and in case of success they are applied fully. Currently, such inconsistencies are rare but can happen. ALTER TABLE support . Adds support for the following variants of ALTER TABLE ADD COLUMN: with a SERIAL data type with a volatile DEFAULT with a PRIMARY KEY Lower latency for large scans with size-based fetching . A static size based fetch limit value to control how many rows can be returned in one request from DocDB. EA",
+        "date": "2024-06-04"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.20.10.0",
+        "description": "Ensures cached plans correctly depend on user roles, addressing CVE-2024-10976 . #25330",
+        "date": "2025-04-01"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.20.2.0",
+        "description": "Automates recovery of index tables impacted by a bug, preventing performance degradation and disk size leak, by ensuring schema.table_properties.retain_delete_markers is reset to false when index backfilling is done. #19731",
+        "date": "2024-03-04"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.20.1.1",
+        "description": "Added a regression test for nested correlated subquery. #20316",
+        "date": "2024-01-11"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.20.1.0",
+        "description": "Mitigates CVE-2023-39417 by importing a security-focused upstream Postgres commit from REL_11_STABLE for YSQL users. #14419",
+        "date": "2023-12-27"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.20.1.0",
+        "description": "Fixes CVE-2020-1720 by importing upstream Postgres commit from REL_11_STABLE, enabling support for ALTER <object>DEPENDS ON EXTENSION in future for objects like function, procedure, routine, trigger, materialized view, and index. #14419",
+        "date": "2023-12-27"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Élevée",
+        "version": "2.20.1.0",
+        "description": "Increase the oom_score_adj (Out of Memory score adjustment) of the YSQL webserver to 900, the same as PG backends, prioritizing its termination when it significantly consumes memory. #20028",
+        "date": "2023-12-27"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Élevée",
+        "version": "2.20.1.0",
+        "description": "Balances load during tablet creation across all drives, preventing bottlenecks and underutilized drives during remote-bootstrapping; uses total number of tablets assigned for tie-breaking. #19846",
+        "date": "2023-12-27"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.19.2.0",
+        "description": "[ 14114 ] [ 18266 ] [DocDB] Fix upgrade issue with GetTransactionStatusResponsePB proto message due to recent regression",
+        "date": "2023-09-11"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.19.2.0",
+        "description": "[ 18286 ] [ 14114 ] [ 18435 ] [YSQL] Fix regression caused by error code set in reported deadlocks",
+        "date": "2023-09-11"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.19.2.0",
+        "description": "[ 18626 ] [YSQL] fix scan recheck perf regression",
+        "date": "2023-09-11"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.18.6.0",
+        "description": "Automates recovery of index tables impacted by a bug, preventing performance degradation and disk size leak, by ensuring schema.table_properties.retain_delete_markers is reset to false when index backfilling is done. #19731",
+        "date": "2024-02-06"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.18.5.0",
+        "description": "Prevents potential SQL injections in extension scripts by rejecting substitutions of extension schemas or owners, mitigating vulnerability CVE-2023-39417. #14419",
+        "date": "2023-12-21"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Élevée",
+        "version": "2.18.5.0",
+        "description": "Increase the oom_score_adj (Out of Memory score adjustment) of the YSQL webserver to 900, the same as PG backends, prioritizing its termination when it significantly consumes memory. #20028",
+        "date": "2023-12-21"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.18.5.0",
+        "description": "Enables automatic recovery of index tables for bugs detected in the context of all new index tables created from 2.14; prevents retention of tombstones in SST files, mitigates performance degradation and disk size leak. #19731",
+        "date": "2023-12-21"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Élevée",
+        "version": "2.18.5.0",
+        "description": "Restart the postmaster whenever a process is killed while writing in a critical section, preventing corrupted state and CPU consumption due to infinite loops. #20255",
+        "date": "2023-12-21"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.18.0.0",
+        "description": "[ 16571 ] [DOCDB] Fix InboundCall::trace() regression",
+        "date": "2023-05-16"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.17.3.0",
+        "description": "[ 16048 ] [YSQL] Fix regression in performance of queries returning large columns",
+        "date": "2023-05-04"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.17.2.0",
+        "description": "[ 15795 ] [YSQL] Disable yb_bypass_cond_recheck by default",
+        "date": "2023-03-27"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.17.2.0",
+        "description": "[ 13888 ] [YSQL] Fix expected test output in regression test org.yb.pgsql.TestPgRegressTablegroup.testPgRegressTablegroup",
+        "date": "2023-03-27"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.17.2.0",
+        "description": "[ 16048 ] [YSQL] Fix regression in performance of queries returning large columns",
+        "date": "2023-03-27"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.17.2.0",
+        "description": "[DB-4390] Fix CVE vulnerabilities",
+        "date": "2023-03-27"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.17.1.0",
+        "description": "[ 15253 ] Fixing CVE vulnerabilities by upadting jars",
+        "date": "2023-02-07"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.17.1.0",
+        "description": "[ 15165 ] [DocDB] Fix sidecars related regressions",
+        "date": "2023-02-07"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.16.9.0",
+        "description": "Introduces enhanced security by enabling CVE-2023-39417 mitigation, implementing upstream Postgres changes from REL_11_STABLE. #14419",
+        "date": "2024-01-23"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.16.9.0",
+        "description": "Enables automatic recovery of index tables for bugs detected in the context of all new index tables created from 2.14; prevents retention of tombstones in SST files, mitigates performance degradation and disk size leak. #19731",
+        "date": "2024-01-23"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Élevée",
+        "version": "2.16.9.0",
+        "description": "Restart the postmaster whenever a process is killed while writing in a critical section, preventing corrupted state and CPU consumption due to infinite loops. #20255",
+        "date": "2024-01-23"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.16.3.0",
+        "description": "[ 16048 ] [YSQL] Fix regression in performance of queries returning large columns",
+        "date": "2023-04-18"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.16.2.0",
+        "description": "[ 16048 ] [YSQL] Fix regression in performance of queries returning large columns",
+        "date": "2023-03-07"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.15.3.0",
+        "description": "[PLAT-5457] Patching nginx for CVE-2021-23017 image vulnerability",
+        "date": "2022-10-27"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Élevée",
+        "version": "2.15.3.0",
+        "description": "[ 13203 ] [DocDB] Reduce frequency and criticality of slow fsync operation logs",
+        "date": "2022-10-27"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.15.3.0",
+        "description": "[ 14155 ] [YSQL] Fix create database time out regression",
+        "date": "2022-10-27"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.15.1.0",
+        "description": "[PLAT-3196] Fix schedule script remote execution API security vulnerability",
+        "date": "2022-07-21"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.15.1.0",
+        "description": "[PLAT-4472] Swagger-Play2 Vulnerability",
+        "date": "2022-07-21"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.15.0.0",
+        "description": "[PLAT-3976] Upgrading spring-security-core to fix Snyk vulnerability",
+        "date": "2022-06-27"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.14.15.0",
+        "description": "Prevents potential SQL injections in extension scripts by rejecting substitutions of extension schemas or owners, mitigating vulnerability CVE-2023-39417. #14419",
+        "date": "2024-01-17"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Élevée",
+        "version": "2.14.15.0",
+        "description": "Increase the oom_score_adj (Out of Memory score adjustment) of the YSQL webserver to 900, the same as PG backends, prioritizing its termination when it significantly consumes memory. #20028",
+        "date": "2024-01-17"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.14.15.0",
+        "description": "Enables automatic recovery of index tables for bugs detected in the context of all new index tables created from 2.14; prevents retention of tombstones in SST files, mitigates performance degradation and disk size leak. #19731",
+        "date": "2024-01-17"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Élevée",
+        "version": "2.14.15.0",
+        "description": "Restart the postmaster whenever a process is killed while writing in a critical section, preventing corrupted state and CPU consumption due to infinite loops. #20255",
+        "date": "2024-01-17"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.14.11.0",
+        "description": "[PLAT-7729] Updating version of snakeyaml to 2.0 to fix CVEs, also making required code changes to make code compile",
+        "date": "2023-07-20"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.14.7.0",
+        "description": "[PLAT-6423] [PLAT-4689] Fix YugabyteDB Anywhere vulnerability",
+        "date": "2023-03-10"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.14.7.0",
+        "description": "[PLAT-7159] YugabyteDB Anywhere security vulnerability fixes",
+        "date": "2023-03-10"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.14.3.0",
+        "description": "[ 14155 ] [YSQL] Fix create database time out regression",
+        "date": "2022-10-07"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.13.2.0",
+        "description": "Additions to the yb_db_admin role: [ 11666 ] [YSQL] Allow yb_db_admin to create, assign, and drop tablespaces [ 11756 ] [YSQL] Allow yb_db_admin role to ALTER functions [ 11766 ] [YSQL] Enable yb_db_admin role to alter table [ 11845 ] [YSQL] Enable yb_db_admin role to have superuser privileges when setting session authorization [ 12120 ] [YSQL] Enable yb_db_admin role to set session_replication_role [ 12152 ] [YSQL] Allow yb_db_admin to CREATE/ALTER/DROP schemas",
+        "date": "2022-05-25"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.13.2.0",
+        "description": "[ 11845 ] [YSQL] Enable yb_db_admin role to have superuser privileges when setting session authorization",
+        "date": "2022-05-25"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.13.1.0",
+        "description": "There is now a new admin role called yb_db_admin : [ 11666 ] Allow yb_db_admin to create, assign, and drop tablespaces [ 11668 ] Allow yb_db_admin to CREATE/ALTER bypassrls attribute [ 11756 ] Allow yb_db_admin role to ALTER functions [ 11766 ] Enable yb_db_admin role to alter table [ 11877 ] Allow yb_db_admin role to use event triggers [ 12120 ] Enable yb_db_admin role to set session_replication_role [ 12152 ] Allow yb_db_admin to CREATE/ALTER/DROP schemas",
+        "date": "2022-04-20"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.13.1.0",
+        "description": "[ 11668 ] Allow yb_db_admin to CREATE/ALTER bypassrls attribute",
+        "date": "2022-04-20"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.12.8.0",
+        "description": "[PLAT-4450] Systemd restart issue regression fix",
+        "date": "2022-07-06"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.12.6.1",
+        "description": "[PLAT-4450] Systemd restart issue regression fix",
+        "date": "2022-07-11"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.12.2.0",
+        "description": "[ 11668 ] [YSQL] Allow yb_db_admin to CREATE/ALTER bypassrls attribute",
+        "date": "2022-03-30"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.11.2.0",
+        "description": "[ 10479 ] [docdb] Multi-RAFT V0 - Batch Heartbeat Requests (Bypass Heartbeats)",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.11.2.0",
+        "description": "[ PLAT-2316 ] Fix local privilege escalation issue with collect_metrics script",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.11.1.0",
+        "description": "[ 10431 ] [YSQL] Import pg_dump: fix mis-dumping of non-global default privileges.",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.11.0.0",
+        "description": "[ 10317 ] [YSQL] Import Allow users with BYPASSRLS to alter their own passwords.",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.11.0.0",
+        "description": "[ PLAT-2200 ] [UI] Fix regression with HA \"standby\" overlay",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.11.0.0",
+        "description": "[ 10254 ] [YSQL] Fix 100% CPU usage regression bug in SELECT with FOR KEY SHARE/IN/missing keys",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.8.0.0",
+        "description": "] [UI] Fix regression with HA \"standby\" overlay",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.8.0.0",
+        "description": "] [YSQL] Fix 100% CPU usage regression bug in SELECT with FOR KEY SHARE/IN/missing keys",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.8.0.0",
+        "description": "Allow users with BYPASSRLS to alter their own passwords.",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.6.4.0",
+        "description": "[ 10317 ] [YSQL] Import \"Allow users with BYPASSRLS to alter their own passwords.\"",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.6.1.1",
+        "description": "This release is a patch to v2.6.1.0, and addresses an LDAP authentication vulnerability in YCQL.",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.5.2.0",
+        "description": "[ 6903 ] YSQL: Imported from PostgreSQL: Fix pg_dump for GRANT OPTION among initial privileges.",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.5.2.0",
+        "description": "[ 6943 ] YSQL: Imported from PostgreSQL: Fix ALTER DEFAULT PRIVILEGES with duplicated objects",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.5.1.0",
+        "description": "] Fixed degraded performance on Live Queries tab caused by huge number of DOM nodes in rows",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Élevée",
+        "version": "2.4.0.0",
+        "description": "Critical fixes for transaction cleanup applicable to aborted transactions (observed frequently as servers reaching soft memory limit)",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Élevée",
+        "version": "2.3.1.0",
+        "description": "Fix CREATE TABLE is 4-5x slower using Docker on Mac than not using Docker. Speeds up table creation by buffering writes to postgres system tables, caching pinned objects, and significantly reducing write RPC calls. #3503",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.3.0.0",
+        "description": "Support GRANT/REVOKE/ALTER DEFAULT PRIVILEGES for tablegroups. #5087 #5160",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.3.0.0",
+        "description": "Bypass CSRF checks when registering and logging in due to bug with CSRF token not being set. #5533",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "VULNERABILITÉ",
+        "severity": "Critique",
+        "version": "2.3.0.0",
+        "description": "Add BackupAdmin role to authorize users to create a backup and restore tasks on universes, but not given other administrative privileges. #4694",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Élevée",
+        "version": "2.2.2.0",
+        "description": "Implement DNS cache to significantly reduce CPU loads due to a large number of DNS resolution requests (especially for YCQL connections). Adds dns_cache_expiration_ms flag (default is 1 minute). #5201",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.1.8.2",
+        "description": "Performance degradation in CassandraSecondaryIndex workload resolved. #4401",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "2.1.8.1",
+        "description": "Performance degradation in CassandraSecondaryIndex workload resolved. #4401",
+        "date": "Date non disponible"
+    },
+    {
+        "technology": "YugabyteDB",
+        "type": "PERFORMANCE",
+        "severity": "Critique",
+        "version": "1.1.0",
+        "description": "[ 900a733 ]  Fix CassandraSecondaryIndex degradation",
+        "date": "Date non disponible"
+    }
+]
