@@ -2,460 +2,281 @@ import requests
 from bs4 import BeautifulSoup
 import json
 from datetime import datetime
-from typing import Dict, List, Optional
 import re
 import time
-import os  # Ajout important pour les chemins
+import os
 
-# Configuration des en-têtes pour les requêtes HTTP
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
 }
 
-def get_cockroachdb_release_notes(version: str) -> List[Dict]:
-    """Récupère les notes de version pour une version spécifique de CockroachDB."""
+def extract_bug_fixes_operational_changes(soup: BeautifulSoup) -> dict:
+    """
+    Extrait UNIQUEMENT les paragraphes qui commencent par:
+    - "Fixed a bug..."
+    - "Updated TTL job..."
+    - "Previously..."
+    - Autres patterns similaires
+    """
+    results = {
+        'bug_fixes': [],
+        'operational_changes': []
+    }
+    
     try:
-        # URL des release notes CockroachDB
+        # Trouver toutes les sections Bug Fixes et Operational Changes
+        headings = soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5'])
+        
+        for heading in headings:
+            heading_text = heading.get_text(strip=True).lower()
+            
+            # Section Bug Fixes
+            if any(pattern in heading_text for pattern in ['bug fix', 'bug fixes', 'bugs fixed']):
+                content = extract_paragraphs_after_heading(heading)
+                results['bug_fixes'].extend(content)
+            
+            # Section Operational Changes
+            elif any(pattern in heading_text for pattern in ['operational change', 'operational changes']):
+                content = extract_paragraphs_after_heading(heading)
+                results['operational_changes'].extend(content)
+    
+    except Exception as e:
+        print(f"⚠️  Erreur extraction: {e}")
+    
+    return results
+
+
+def extract_paragraphs_after_heading(heading) -> list:
+    """
+    Extrait TOUS les paragraphes après un titre jusqu'au prochain titre.
+    Récupère uniquement le contenu brut, jamais les titres.
+    """
+    paragraphs = []
+    current = heading.find_next_sibling()
+    
+    while current:
+        # Arrêter si nouveau titre
+        if current.name and current.name.startswith('h'):
+            break
+        
+        # Extraire paragraphes
+        if current.name == 'p':
+            text = current.get_text(strip=True)
+            if len(text) > 30:
+                # Nettoyer
+                text = re.sub(r'\s*#\d+\s*$', '', text)
+                text = re.sub(r'\[#\d+\]', '', text)
+                text = re.sub(r'\s+', ' ', text).strip()
+                if text:
+                    paragraphs.append(text)
+        
+        # Extraire listes
+        elif current.name in ['ul', 'ol']:
+            for li in current.find_all('li', recursive=False):
+                text = li.get_text(strip=True)
+                if len(text) > 30:
+                    text = re.sub(r'\s*#\d+\s*$', '', text)
+                    text = re.sub(r'\[#\d+\]', '', text)
+                    text = re.sub(r'\s+', ' ', text).strip()
+                    if text:
+                        paragraphs.append(text)
+        
+        # Extraire divs avec contenu
+        elif current.name == 'div':
+            for p in current.find_all('p'):
+                text = p.get_text(strip=True)
+                if len(text) > 30:
+                    text = re.sub(r'\s*#\d+\s*$', '', text)
+                    text = re.sub(r'\[#\d+\]', '', text)
+                    text = re.sub(r'\s+', ' ', text).strip()
+                    if text:
+                        paragraphs.append(text)
+            
+            for ul in current.find_all(['ul', 'ol']):
+                for li in ul.find_all('li', recursive=False):
+                    text = li.get_text(strip=True)
+                    if len(text) > 30:
+                        text = re.sub(r'\s*#\d+\s*$', '', text)
+                        text = re.sub(r'\[#\d+\]', '', text)
+                        text = re.sub(r'\s+', ' ', text).strip()
+                        if text:
+                            paragraphs.append(text)
+        
+        current = current.find_next_sibling()
+    
+    return paragraphs
+
+
+def get_version_data(version: str) -> dict:
+    """Récupère les données pour une version spécifique."""
+    try:
         url = f"https://www.cockroachlabs.com/docs/releases/v{version}"
-        print(f"Récupération des notes de version pour CockroachDB v{version}...")
+        print(f"\n{'='*80}")
+        print(f"📦 VERSION v{version}")
+        print(f"{'='*80}")
+        print(f"🔗 URL: {url}")
         
         response = requests.get(url, headers=headers, timeout=30)
-        # Si 404, on ignore simplement sans planter
         if response.status_code == 404:
-            print(f"Page non trouvée pour v{version}")
-            return []
+            print(f"⚠️  Page non trouvée")
+            return None
         response.raise_for_status()
         
         soup = BeautifulSoup(response.text, 'html.parser')
-        
-        # Récupérer le contenu principal
         content = soup.find('article') or soup.find('main') or soup.find('div', class_='markdown-body')
+        
         if not content:
-            print(f"Contenu principal non trouvé pour la version {version}")
-            return []
+            print(f"⚠️  Contenu non trouvé")
+            return None
         
-        sections = []
-        current_section = {'title': 'Introduction', 'content': [], 'type': 'general'}
+        # Extraire bug fixes et operational changes
+        data = extract_bug_fixes_operational_changes(content)
         
-        # Parser le contenu
-        for element in content.find_all(['h1', 'h2', 'h3', 'h4', 'p', 'ul', 'li', 'div']):
-            element_text = element.get_text(strip=True)
-            
-            if element.name in ['h1', 'h2', 'h3', 'h4']:
-                # Sauvegarder la section précédente si elle contient du contenu
-                if current_section['content']:
-                    sections.append(current_section)
-                
-                # Commencer une nouvelle section
-                title = element_text
-                section_type = detect_section_type(title)
-                current_section = {
-                    'title': title,
-                    'content': [],
-                    'type': section_type,
-                    'version': version
-                }
-            elif element_text and len(element_text) > 15:
-                # Ajouter le contenu à la section courante
-                current_section['content'].append(element_text)
+        print(f"\n✅ Résultats:")
+        print(f"   • Bug Fixes: {len(data['bug_fixes'])}")
+        print(f"   • Operational Changes: {len(data['operational_changes'])}")
         
-        # Ajouter la dernière section si elle contient du contenu
-        if current_section['content']:
-            sections.append(current_section)
+        # Afficher TOUS les bug fixes
+        if data['bug_fixes']:
+            print(f"\n{'─'*80}")
+            print(f"🐛 BUG FIXES (Total: {len(data['bug_fixes'])})")
+            print(f"{'─'*80}")
+            for idx, fix in enumerate(data['bug_fixes'], 1):
+                print(f"\n[{idx}] {fix}")
         
-        # Si peu de sections, chercher dans les listes
-        if len(sections) < 3:
-            # print(f"Recherche alternative pour v{version}...") # Moins de bruit
-            lists = content.find_all(['ul', 'ol'])
-            
-            for list_element in lists:
-                items = list_element.find_all('li')
-                list_content = [item.get_text(strip=True) for item in items if len(item.get_text(strip=True)) > 15]
-                
-                if list_content:
-                    sections.append({
-                        'title': 'Release Notes',
-                        'content': list_content,
-                        'type': 'general',
-                        'version': version
-                    })
+        # Afficher TOUS les operational changes
+        if data['operational_changes']:
+            print(f"\n{'─'*80}")
+            print(f"⚙️  OPERATIONAL CHANGES (Total: {len(data['operational_changes'])})")
+            print(f"{'─'*80}")
+            for idx, change in enumerate(data['operational_changes'], 1):
+                print(f"\n[{idx}] {change}")
         
-        print(f"Sections trouvées pour v{version}: {len(sections)}")
-        return sections
+        if not data['bug_fixes'] and not data['operational_changes']:
+            print(f"\n⚠️  Aucun Bug Fix ou Operational Change trouvé")
+        
+        return {
+            'version': version,
+            'url': url,
+            'bug_fixes': data['bug_fixes'],
+            'operational_changes': data['operational_changes'],
+            'total_bug_fixes': len(data['bug_fixes']),
+            'total_operational_changes': len(data['operational_changes'])
+        }
         
     except Exception as e:
-        print(f"Erreur lors de la récupération des notes de version v{version}: {e}")
-        return []
+        print(f"❌ Erreur: {e}")
+        return None
 
-def detect_section_type(title: str) -> str:
-    """Détecte le type de section en fonction du titre."""
-    title_lower = title.lower()
-    
-    # Catégories spécifiques à CockroachDB
-    if any(keyword in title_lower for keyword in ['performance', 'optimization', 'speed', 'latency', 'throughput']):
-        return 'performance'
-    elif any(keyword in title_lower for keyword in ['security', 'vulnerability', 'authentication', 'authorization', 'encryption']):
-        return 'security'
-    elif any(keyword in title_lower for keyword in ['feature', 'new', 'added', 'introduced', 'enhancement']):
-        return 'feature'
-    elif any(keyword in title_lower for keyword in ['sql', 'query', 'statement', 'syntax']):
-        return 'sql_features'
-    elif any(keyword in title_lower for keyword in ['distributed', 'replication', 'cluster', 'node', 'geo']):
-        return 'distribution'
-    elif any(keyword in title_lower for keyword in ['availability', 'failover', 'recovery', 'backup', 'restore']):
-        return 'high_availability'
-    elif any(keyword in title_lower for keyword in ['bug', 'fix', 'fixed', 'issue', 'problem']):
-        return 'bug_fixes'
-    elif any(keyword in title_lower for keyword in ['breaking', 'deprecated', 'removed', 'changed']):
-        return 'breaking_changes'
-    else:
-        return 'general'
 
-def extract_innovations(sections: List[Dict]) -> Dict[str, List[str]]:
-    """Extrait les innovations des sections de notes de version."""
-    innovations = {
-        'performance_improvements': [],
-        'security_enhancements': [],
-        'new_sql_features': [],
-        'distribution_improvements': [],
-        'high_availability_features': [],
-        'bug_fixes': [],
-        'breaking_changes': [],
-        'other_improvements': []
-    }
+def main():
+    """Fonction principale."""
+    print("\n" + "="*80)
+    print("🚀 EXTRACTION DES BUG FIXES ET OPERATIONAL CHANGES - COCKROACHDB")
+    print("="*80)
     
-    innovation_keywords = {
-        'performance_improvements': ['performance', 'optimization', 'faster', 'speed', 'latency', 'throughput', 'improved'],
-        'security_enhancements': ['security', 'authentication', 'authorization', 'encryption', 'rbac', 'ssl', 'tls'],
-        'new_sql_features': ['sql', 'query', 'statement', 'function', 'operator', 'syntax', 'command'],
-        'distribution_improvements': ['distributed', 'replication', 'cluster', 'geo', 'region', 'zone', 'partition'],
-        'high_availability_features': ['availability', 'failover', 'recovery', 'backup', 'restore', 'resilience'],
-        'bug_fixes': ['bug', 'fix', 'fixed', 'issue', 'resolved', 'corrected'],
-        'breaking_changes': ['breaking', 'deprecated', 'removed', 'incompatible', 'changed']
-    }
-    
-    # Mapper les types de section aux catégories d'innovation
-    type_to_category = {
-        'performance': 'performance_improvements',
-        'security': 'security_enhancements',
-        'sql_features': 'new_sql_features',
-        'distribution': 'distribution_improvements',
-        'high_availability': 'high_availability_features',
-        'bug_fixes': 'bug_fixes',
-        'breaking_changes': 'breaking_changes',
-        'feature': 'new_sql_features'
-    }
-    
-    for section in sections:
-        section_text = ' '.join(section['content'])
-        section_type = section['type']
-        
-        # Ajouter le contenu à la catégorie appropriée basée sur le type
-        if section_type in type_to_category:
-            category = type_to_category[section_type]
-            innovations[category].extend([
-                f"{section['title']}: {content[:200]}"
-                for content in section['content']
-                if len(content) > 25
-            ])
-        
-        # Recherche supplémentaire par mots-clés pour affiner
-        for category, keywords in innovation_keywords.items():
-            if any(keyword in section_text.lower() for keyword in keywords):
-                relevant_content = [
-                    f"{section['title']}: {content[:200]}"
-                    for content in section['content']
-                    if len(content) > 25 and any(keyword in content.lower() for keyword in keywords)
-                ]
-                innovations[category].extend(relevant_content)
-    
-    # Nettoyer les doublons tout en préservant l'ordre
-    for category in innovations:
-        seen = set()
-        unique_items = []
-        for item in innovations[category]:
-            # Créer une clé unique basée sur les 100 premiers caractères
-            key = item[:100]
-            if key not in seen:
-                seen.add(key)
-                unique_items.append(item)
-        innovations[category] = unique_items
-    
-    return innovations
-
-def analyze_innovations(all_innovations: Dict) -> Dict:
-    """Analyse les innovations et génère des insights."""
-    analysis = {
-        'summary': {},
-        'key_innovations': [],
-        'trends': {}
-    }
-    
-    # Résumé par catégorie
-    for category, innovations in all_innovations.items():
-        analysis['summary'][category] = {
-            'count': len(innovations),
-            'items': innovations[:5]  # Top 5 par catégorie
-        }
-    
-    # Innovations clés (toutes catégories confondues)
-    all_items = []
-    for category, innovations in all_innovations.items():
-        for item in innovations:
-            all_items.append({
-                'category': category,
-                'content': item
-            })
-    
-    # Trier par longueur (considérer les plus détaillées comme plus importantes)
-    all_items.sort(key=lambda x: len(x['content']), reverse=True)
-    analysis['key_innovations'] = all_items[:15]
-    
-    # Tendances
-    if all_innovations:
-        # Check si la liste n'est pas vide pour éviter erreur max()
-        non_empty_cats = [k for k in all_innovations.keys() if len(all_innovations[k]) > 0]
-        if non_empty_cats:
-            most_active = max(non_empty_cats, key=lambda k: len(all_innovations[k]))
-            analysis['trends'] = {
-                'most_active_category': most_active,
-                'total_innovations': sum(len(innovations) for innovations in all_innovations.values()),
-                'categories_with_innovations': len(non_empty_cats)
-            }
-        else:
-            analysis['trends'] = {'info': 'Aucune innovation détectée'}
-    
-    return analysis
-
-def generate_innovation_report() -> Dict:
-    """Génère un rapport complet sur les innovations CockroachDB organisé par version."""
-    print("="*70)
-    print("Début de l'analyse des innovations CockroachDB...")
-    print("="*70)
-    
-    # --- MODIFICATION: CHEMIN ABSOLU ---
     target_dir = r"D:\Projet VT\Cockroachdb"
     input_file = os.path.join(target_dir, 'cockroachdb_versions.json')
     
-    # Charger les versions depuis le fichier JSON
+    # Charger les versions
     try:
         with open(input_file, 'r', encoding='utf-8') as f:
             versions_data = json.load(f)
             
-            # --- MODIFICATION CRITIQUE: GESTION DE LA STRUCTURE HIERARCHIQUE ---
             versions_list = []
-            
-            # Cas 1: Structure hiérarchique (produite par votre nouveau script versions.py)
             if 'versions_hierarchy' in versions_data:
-                print("📂 Structure hiérarchique détectée. Aplatissement des données...")
+                print("📂 Chargement des versions depuis la hiérarchie...")
                 hierarchy = versions_data['versions_hierarchy']
                 for major in hierarchy.values():
                     for minor in major.get('minor_releases', {}).values():
                         versions_list.append(minor)
-            
-            # Cas 2: Ancienne structure plate (au cas où)
             elif 'versions' in versions_data:
                 versions_list = versions_data['versions']
-                
-            versions = versions_list
             
+            versions = versions_list
+    
     except FileNotFoundError:
-        print(f"❌ Erreur: Fichier {input_file} non trouvé.")
-        print("📋 Exécutez d'abord CockroachDB_versions.py")
-        return {'error': 'Fichier JSON non trouvé'}
+        print(f"❌ Fichier non trouvé: {input_file}")
+        print("📋 Exécutez d'abord cockroachdb_versions.py")
+        return
+    except Exception as e:
+        print(f"❌ Erreur: {e}")
+        return
     
     if not versions:
-        print("Aucune version trouvée dans le fichier JSON.")
-        return {'error': 'Aucune version disponible'}
+        print("❌ Aucune version disponible")
+        return
     
-    # Analyser les 6 dernières versions
-    # On trie d'abord pour être sûr d'avoir les récentes
+    # Trier les versions
     try:
-        versions.sort(key=lambda x: [int(n) for n in x.get('full_version', '0.0').split('.') if n.isdigit()], reverse=True)
+        versions.sort(
+            key=lambda x: [int(n) for n in x.get('full_version', '0.0').split('.') if n.isdigit()],
+            reverse=True
+        )
     except:
-        pass # Si le tri échoue, on prend tel quel
-        
-    latest_versions = versions[:6]
+        pass
     
-    # Structure organisée par version
-    versions_with_innovations = []
-    all_innovations = {
-        'performance_improvements': [],
-        'security_enhancements': [],
-        'new_sql_features': [],
-        'distribution_improvements': [],
-        'high_availability_features': [],
-        'bug_fixes': [],
-        'breaking_changes': [],
-        'other_improvements': []
-    }
+    print(f"\n📊 {len(versions)} versions à analyser")
     
-    for version_info in latest_versions:
-        # Gestion des différents noms de champs possibles
+    # Collecter les données
+    all_data = []
+    
+    for idx, version_info in enumerate(versions, 1):
         version = version_info.get('full_version', version_info.get('version', 'Unknown'))
         
-        print(f"\n{'─'*70}")
-        print(f"📦 Analyse de la version v{version}...")
-        print(f"{'─'*70}")
+        print(f"\n[{idx}/{len(versions)}]", end=" ")
         
-        # Récupérer les notes de version
-        sections = get_cockroachdb_release_notes(version)
+        data = get_version_data(version)
         
-        time.sleep(1)  # Respecter le serveur
+        if data:
+            data['date'] = version_info.get('date', 'Date non disponible')
+            data['release_type'] = version_info.get('release_type', 'N/A')
+            all_data.append(data)
         
-        if sections:
-            # Extraire les innovations pour cette version
-            innovations = extract_innovations(sections)
-            
-            # Créer l'entrée pour cette version
-            version_entry = {
-                'version': version,
-                'date': version_info.get('date', 'Date non disponible'),
-                'release_type': version_info.get('release_type', 'N/A'),
-                'url': version_info.get('url', ''),
-                'sections_count': len(sections),
-                'innovations': innovations,
-                'total_innovations': sum(len(innovations[cat]) for cat in innovations)
-            }
-            
-            versions_with_innovations.append(version_entry)
-            
-            # Ajouter aux totaux globaux
-            for category in all_innovations:
-                if category in innovations:
-                    all_innovations[category].extend(innovations[category])
-            
-            print(f"✅ {version_entry['total_innovations']} innovations trouvées")
-        else:
-            print(f"⚠️  Aucune section trouvée pour la version v{version}")
-            versions_with_innovations.append({
-                'version': version,
-                'date': version_info.get('date', 'Date non disponible'),
-                'release_type': version_info.get('release_type', 'N/A'),
-                'url': version_info.get('url', ''),
-                'sections_count': 0,
-                'innovations': {cat: [] for cat in all_innovations.keys()},
-                'total_innovations': 0
-            })
+        time.sleep(1.5)  # Respecter le serveur
     
-    # Nettoyer les doublons dans les totaux globaux
-    for category in all_innovations:
-        seen = set()
-        unique_items = []
-        for item in all_innovations[category]:
-            key = item[:100]
-            if key not in seen:
-                seen.add(key)
-                unique_items.append(item)
-        all_innovations[category] = unique_items
+    # Sauvegarder le rapport
+    output_file = os.path.join(target_dir, 'bug_fixes_operational_changes_report.json')
     
-    # Analyser les innovations globales
-    analysis = analyze_innovations(all_innovations)
-    
-    # Créer le rapport final
     report = {
         'database': 'CockroachDB',
         'report_date': datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC'),
-        'summary': {
-            'total_versions_analyzed': len(versions_with_innovations),
-            'total_innovations': sum(v['total_innovations'] for v in versions_with_innovations),
-            'versions_with_innovations': len([v for v in versions_with_innovations if v['total_innovations'] > 0])
-        },
-        'versions': versions_with_innovations,
-        'global_analysis': {
-            'innovations_by_category': all_innovations,
-            'analysis': analysis
-        }
+        'total_versions': len(all_data),
+        'total_bug_fixes': sum(v['total_bug_fixes'] for v in all_data),
+        'total_operational_changes': sum(v['total_operational_changes'] for v in all_data),
+        'versions': all_data
     }
-
-    # Sauvegarder le rapport dans le dossier cible
-    output_file = os.path.join(target_dir, 'cockroachdb_innovations_report.json')
     
-    # Création du dossier si nécessaire
-    if not os.path.exists(target_dir):
-        try:
-            os.makedirs(target_dir)
-        except:
-            pass # Si erreur permission, on essayera d'écrire quand même
-            
-    with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(report, f, indent=4, ensure_ascii=False)
-
-    print(f"\n{'='*70}")
-    print(f"✅ Rapport d'innovations sauvegardé dans:\n{output_file}")
-    print(f"{'='*70}")
-    print(f"📊 Statistiques:")
-    print(f"  • Versions analysées: {len(versions_with_innovations)}")
-    print(f"  • Total d'innovations: {report['summary']['total_innovations']}")
-    print(f"  • Versions avec innovations: {report['summary']['versions_with_innovations']}")
-
-    return report
-
-def main():
-    """Fonction principale pour exécuter l'analyse des innovations."""
-    print("\n" + "="*70)
-    print("🚀 ANALYSE DES INNOVATIONS COCKROACHDB")
-    print("="*70 + "\n")
-
-    # Générer le rapport d'innovations
-    report = generate_innovation_report()
-
-    if 'error' in report:
-        print(f"\n❌ Erreur: {report['error']}")
-        return
-
-    # Afficher un résumé par version
-    print("\n" + "="*70)
-    print("📋 RÉSUMÉ DES INNOVATIONS PAR VERSION")
-    print("="*70)
+    try:
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(report, f, indent=4, ensure_ascii=False)
+        
+        print(f"\n{'='*80}")
+        print(f"✅ RAPPORT SAUVEGARDÉ")
+        print(f"{'='*80}")
+        print(f"📁 Fichier: {output_file}")
+        print(f"\n📊 STATISTIQUES GLOBALES:")
+        print(f"   • Versions analysées: {report['total_versions']}")
+        print(f"   • Total Bug Fixes: {report['total_bug_fixes']}")
+        print(f"   • Total Operational Changes: {report['total_operational_changes']}")
     
-    for version_info in report['versions']:
-        release_badge = "🟢" if version_info.get('release_type') == 'Regular' else "🔵"
-        print(f"\n{release_badge} Version v{version_info['version']} ({version_info.get('release_type', 'N/A')}) - {version_info['date']}")
-        print(f"   Total: {version_info['total_innovations']} innovations")
-        
-        for category, innovations in version_info['innovations'].items():
-            if innovations:
-                category_display = category.replace('_', ' ').title()
-                print(f"   • {category_display}: {len(innovations)} items")
-                
-                # Afficher les 2 premiers items
-                for item in innovations[:2]:
-                    # Tronquer pour l'affichage
-                    display_item = item[:90] + "..." if len(item) > 90 else item
-                    print(f"     - {display_item}")
-
-    # Afficher les tendances globales
-    print(f"\n{'='*70}")
-    print("📈 TENDANCES GLOBALES")
-    print(f"{'='*70}")
+    except Exception as e:
+        print(f"❌ Erreur sauvegarde: {e}")
     
-    if 'global_analysis' in report and 'analysis' in report['global_analysis']:
-        global_analysis = report['global_analysis']['analysis']
-        
-        print(f"Total de versions analysées: {report['summary']['total_versions_analyzed']}")
-        print(f"Versions avec innovations: {report['summary']['versions_with_innovations']}")
-        print(f"Total d'innovations: {report['summary']['total_innovations']}")
-        
-        if 'trends' in global_analysis and 'most_active_category' in global_analysis['trends']:
-            most_active = global_analysis['trends']['most_active_category'].replace('_', ' ').title()
-            print(f"Catégorie la plus active: {most_active}")
-
-        print(f"\n{'='*70}")
-        print("⭐ TOP 5 INNOVATIONS CLÉS")
-        print(f"{'='*70}")
-        
-        if 'key_innovations' in global_analysis:
-            for i, innovation in enumerate(global_analysis['key_innovations'][:5], 1):
-                category = innovation['category'].replace('_', ' ').title()
-                content = innovation['content'][:120] + "..." if len(innovation['content']) > 120 else innovation['content']
-                print(f"\n{i}. [{category}]")
-                print(f"   {content}")
-
-    print(f"\n{'='*70}")
-    print("✅ Analyse terminée avec succès!")
-    print(f"{'='*70}\n")
+    # Afficher résumé par version
+    print(f"\n{'='*80}")
+    print("📋 RÉSUMÉ PAR VERSION")
+    print(f"{'='*80}")
+    
+    for data in all_data:
+        badge = "🟢" if 'LTS' in data.get('release_type', '') else "🔵"
+        print(f"\n{badge} v{data['version']} - {data.get('release_type', 'N/A')} - {data.get('date', 'N/A')}")
+        print(f"   • Bug Fixes: {data['total_bug_fixes']}")
+        print(f"   • Operational Changes: {data['total_operational_changes']}")
+    
+    print(f"\n{'='*80}")
+    print("✅ EXTRACTION TERMINÉE")
+    print(f"{'='*80}\n")
 
 if __name__ == "__main__":
     main()
-    
