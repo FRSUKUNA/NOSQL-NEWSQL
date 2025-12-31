@@ -8,7 +8,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 import json
 import re
 import time
-
 # ===================== CONFIGURATION CHROME =====================
 chrome_options = Options()
 chrome_options.add_argument("--headless=new")
@@ -154,7 +153,7 @@ try:
             })
 
     # ===================== SAUVEGARDE =====================
-    with open("mongodb_versions_with_changelog.json", "w", encoding="utf-8") as f:
+    with open("..\..\..\..\..\API\sources\mongodb-versions.json", "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=4)
 
     print(f"\n✅ {len(result)} patchs sauvegardés")
