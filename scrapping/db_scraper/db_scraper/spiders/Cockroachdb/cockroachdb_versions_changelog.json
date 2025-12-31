@@ -1,0 +1,26 @@
+{
+  "database_info": {
+    "name": "CockroachDB",
+    "type": "Distributed SQL",
+    "scraping_date": "2025-12-31 02:37:03 UTC",
+    "source_url": "https://www.cockroachlabs.com/docs/releases/"
+  },
+  "statistics": {
+    "total_sections": 2,
+    "total_patches": 0
+  },
+  "versions": [
+    {
+      "major_version": "Unknown",
+      "section_title": "Major releases",
+      "total_patches": 0,
+      "patches": []
+    },
+    {
+      "major_version": "Unknown",
+      "section_title": "Patch releases",
+      "total_patches": 0,
+      "patches": []
+    }
+  ]
+}

@@ -494,10 +494,34 @@ def generate_change_report(max_pages: int = 11) -> Dict:
                 'analysis': analysis
             }
         }
-        
-        output_file = 'redis_changes_report.json'
+
+        output_file ="..\\..\\..\\..\\..\\API\\sources\\redis-versions.json"
         with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(report, f, indent=4, ensure_ascii=False)
+            output_versions = []
+            for version_info in versions_with_changes:
+                version_str = (version_info.get('version') or '').strip()
+                major_version = ''
+                version_parts = version_str.split('.') if version_str else []
+                if len(version_parts) >= 2:
+                    major_version = '.'.join(version_parts[:2])
+
+                raw_changes: List[str] = []
+                changes_by_category = version_info.get('changes')
+                if isinstance(changes_by_category, dict):
+                    for _, items in changes_by_category.items():
+                        if isinstance(items, list):
+                            raw_changes.extend(items)
+                elif isinstance(changes_by_category, list):
+                    raw_changes = changes_by_category
+
+                output_versions.append({
+                    'major_version': major_version,
+                    'patch_version': version_str,
+                    'date': version_info.get('date', ''),
+                    'changes': raw_changes
+                })
+
+            json.dump(output_versions, f, indent=4, ensure_ascii=False)
         
         print(f"\n✅ Rapport d'analyse des changements sauvegardé dans {output_file}")
         return report

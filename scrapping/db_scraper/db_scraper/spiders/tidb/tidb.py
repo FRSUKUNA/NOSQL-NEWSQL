@@ -343,8 +343,33 @@ try:
 
     # ===================== SAUVEGARDE =====================
     # Enregistrer les résultats dans un fichier JSON
-    with open('tidb_versions.json', 'w', encoding='utf-8') as f:
-        json.dump(result, f, ensure_ascii=False, indent=2)
+    with open("..\\..\\..\\..\\..\\API\\sources\\tidb-versions.json", 'w', encoding='utf-8') as f:
+        output = []
+        for major in result:
+            major_out = {
+                'major_version': major.get('major_version', ''),
+                'patches': []
+            }
+            for patch in major.get('patches', []) or []:
+                changes = patch.get('changes', {})
+                flat_changes = []
+                if isinstance(changes, dict):
+                    improvements = changes.get('improvements', [])
+                    bug_fixes = changes.get('bug_fixes', [])
+                    if isinstance(improvements, list):
+                        flat_changes.extend(improvements)
+                    if isinstance(bug_fixes, list):
+                        flat_changes.extend(bug_fixes)
+                elif isinstance(changes, list):
+                    flat_changes = changes
+
+                patch_out = dict(patch)
+                patch_out['changes'] = flat_changes
+                major_out['patches'].append(patch_out)
+
+            output.append(major_out)
+
+        json.dump(output, f, ensure_ascii=False, indent=2)
     
     print("Scraping terminé avec succès!")
     print(f"{len(result)} versions majeures trouvées.")

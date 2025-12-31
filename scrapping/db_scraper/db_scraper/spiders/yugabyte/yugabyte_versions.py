@@ -530,9 +530,22 @@ def main():
     for version_data in output:
         alerts.extend(detect_alerts(version_data))
 
-    output_file = 'yugabyte_versions.json'
+    output_file = "..\..\..\..\..\API\sources\yugabyte-versions.json"
     with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump({'acid_consistency': acid_consistency, 'versions': output}, f, indent=4, ensure_ascii=False)
+        json.dump(
+            [
+                {
+                    'major_version': v.get('version', ''),
+                    'patch_version': f"{v.get('version', '')}.{v.get('patch', '')}".strip('.'),
+                    'date': v.get('date', ''),
+                    'changes': v.get('changes', []) or [],
+                }
+                for v in output
+            ],
+            f,
+            indent=4,
+            ensure_ascii=False,
+        )
 
     alerts_file = 'yugabyte_alert.json'
     with open(alerts_file, 'w', encoding='utf-8') as f:

@@ -320,22 +320,21 @@ def main():
     # Trier les versions par numéro de version (du plus récent au plus ancien)
     versions.sort(key=lambda x: [int(n) for n in x['full_version'].split('.')], reverse=True)
     
-    # Préparer les données à sauvegarder
-    output_data = {
-        'consistency_properties': consistency_properties,
-        'versions': versions,
-        'last_updated': datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC'),
-        'total_versions': len(versions),
-        'total_changes': sum(v['changes_count'] for v in versions)
-    }
-    
     # Sauvegarder dans un fichier JSON
-    output_file = 'cassandra_versions.json'
+    output_file = '..\..\..\..\..\API\sources\cassandra_versions.json'
     with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(output_data, f, indent=4, ensure_ascii=False)
+        output = []
+        for v in versions:
+            output.append({
+                'major_version': v.get('version', ''),
+                'patch_version': v.get('full_version', ''),
+                'date': v.get('date', ''),
+                'changes': v.get('changes', []) or []
+            })
+        json.dump(output, f, indent=4, ensure_ascii=False)
     
     print(f"\n{len(versions)} versions trouvées et sauvegardées dans {output_file}")
-    print(f"Total des changements: {output_data['total_changes']}")
+    print(f"Total des changements: {sum(v['changes_count'] for v in versions)}")
     
     print("\nPropriétés de consistency récupérées:")
     for prop, value in consistency_properties.items():
