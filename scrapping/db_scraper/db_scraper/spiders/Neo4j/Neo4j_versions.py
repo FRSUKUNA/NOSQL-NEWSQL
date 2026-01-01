@@ -99,6 +99,71 @@ def get_acid_properties() -> Dict[str, str]:
     
     return acid_properties
 
+def extract_changes_for_version(version) -> List[str]:
+    """Extrait les changements pour une version spécifique depuis les release notes."""
+    print(f"  Extraction des changements pour la version {version}...")
+    changes = []
+    
+    try:
+        # URL des release notes pour cette version
+        url = f"https://neo4j.com/docs/{version}/release-notes/"
+        print(f"    Connexion à {url}...")
+        
+        response = requests.get(url, headers=headers, timeout=30)
+        response.raise_for_status()
+        
+        soup = BeautifulSoup(response.text, 'html.parser')
+        
+        # Chercher le contenu principal
+        content = soup.find('article') or soup.find('main') or soup.find('div', class_='content') or soup
+        
+        # Chercher les sections de changements
+        # Patterns pour trouver les changements
+        change_patterns = [
+            # Listes (ul/li)
+            lambda soup: soup.find_all('ul'),
+            # Paragraphes avec des mots-clés
+            lambda soup: [p for p in soup.find_all('p') if any(keyword in p.get_text().lower() for keyword in ['fix', 'add', 'improve', 'update', 'remove', 'change', 'support', 'new'])],
+            # Sections avec des titres spécifiques
+            lambda soup: [section for section in soup.find_all(['section', 'div']) if any(keyword in section.get_text().lower() for keyword in ['changes', 'fixes', 'improvements', 'features'])]
+        ]
+        
+        for pattern_func in change_patterns:
+            elements = pattern_func(content)
+            
+            for element in elements:
+                if element.name == 'ul':
+                    # Traiter les listes
+                    for li in element.find_all('li'):
+                        text = li.get_text(strip=True)
+                        if text and len(text) > 10:  # Ignorer les textes trop courts
+                            changes.append(text)
+                else:
+                    # Traiter les paragraphes/sections
+                    text = element.get_text(strip=True)
+                    if text and len(text) > 20:  # Ignorer les textes trop courts
+                        # Diviser en phrases si c'est un long paragraphe
+                        sentences = text.split('. ')
+                        for sentence in sentences:
+                            sentence = sentence.strip()
+                            if sentence and len(sentence) > 10:
+                                changes.append(sentence + '.' if not sentence.endswith('.') else sentence)
+            
+            # Si on a trouvé des changements, on arrête
+            if changes:
+                break
+        
+        # Nettoyer et dédupliquer
+        changes = list(set([change.strip() for change in changes if change.strip()]))
+        changes.sort()  # Trier pour avoir un ordre cohérent
+        
+        print(f"    {len(changes)} changements trouvés")
+        
+    except Exception as e:
+        print(f"    Erreur lors de l'extraction des changements: {str(e)}")
+    
+    return changes
+
 def get_neo4j_versions() -> List[dict]:
     """Récupère les versions de Neo4j depuis la documentation officielle."""
     print("Récupération des versions de Neo4j...")
@@ -189,6 +254,7 @@ def get_neo4j_versions() -> List[dict]:
                 patch_version = '.'.join(parts[1:]) if len(parts) > 1 else '0'
                 
                 versions.append({
+                    "database": "Neo4j",
                     'version': major_version,
                     'patch': patch_version,
                     'date': "Date non disponible",
@@ -217,17 +283,29 @@ def main():
     # Trier les versions par numéro de version (du plus récent au plus ancien)
     versions.sort(key=lambda x: [int(n) for n in x['version'].split('.')], reverse=True)
     
-    # Préparer les données à sauvegarder
-    output_data = {
-        'acid_properties': acid_properties,
-        'versions': versions,
-        'last_updated': datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')
-    }
+    # Préparer les données à sauvegarder au format demandé
+    output_list = []
+    for version in versions:
+        major_version = version.get('version', '')
+        patch = version.get('patch', '')
+        # Concaténer major_version + patch pour obtenir patch_version complet
+        full_version = f"{major_version}.{patch}" if patch else major_version
+        
+        # Extraire les changements pour cette version
+        changes = extract_changes_for_version(full_version)
+        
+        output_list.append({
+            "database": "Neo4j",
+            "major_version": major_version,
+            "patch_version": full_version,
+            "date": version.get('date', ''),
+            "changes": changes
+        })
     
-    # Sauvegarder dans un fichier JSON
-    output_file = 'neo4j_versions.json'
+    # Sauvegarder dans un fichier JSON avec le format plat
+    output_file = '..\\..\\..\\..\\..\\API\\sources\\neo4j-versions.json'
     with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(output_data, f, indent=4, ensure_ascii=False)
+        json.dump(output_list, f, indent=4, ensure_ascii=False)
     
     print(f"\n{len(versions)} versions trouvées et sauvegardées dans {output_file}")
     print("\nPropriétés ACID/consistency récupérées:")

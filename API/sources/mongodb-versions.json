@@ -1,5 +1,6 @@
 [
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.29",
     "date": "Upcoming",
@@ -42,6 +43,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.26",
     "date": "Nov 21, 2025",
@@ -142,6 +144,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.24",
     "date": "Sep 10, 2025",
@@ -167,6 +170,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.23",
     "date": "Aug 13, 2025",
@@ -217,6 +221,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.22",
     "date": "Jul 18, 2025",
@@ -308,6 +313,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.21",
     "date": "Jun 04, 2025",
@@ -368,6 +374,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.20",
     "date": "Apr 29, 2025",
@@ -396,6 +403,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.18",
     "date": "Mar 19, 2025",
@@ -437,6 +445,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.17",
     "date": "Feb 21, 2025",
@@ -480,6 +489,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.16",
     "date": "Dec 20, 2024",
@@ -583,6 +593,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.14",
     "date": "Aug 26, 2024",
@@ -753,6 +764,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.12",
     "date": "Jun 28, 2024",
@@ -856,6 +868,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.11",
     "date": "May 23, 2024",
@@ -921,6 +934,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.9",
     "date": "Apr 26, 2024",
@@ -1009,6 +1023,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.8",
     "date": "Apr 3, 2024",
@@ -1049,6 +1064,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.7",
     "date": "Mar 18, 2024",
@@ -1136,6 +1152,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.6",
     "date": "Feb 28, 2024",
@@ -1258,6 +1275,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.5",
     "date": "Jan 5, 2024",
@@ -1370,6 +1388,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.4",
     "date": "Nov 27, 2023",
@@ -1416,6 +1435,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.3",
     "date": "Nov 9, 2023",
@@ -1506,6 +1526,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.2",
     "date": "Sep 29, 2023",
@@ -1625,6 +1646,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "7.0",
     "patch_version": "7.0.1",
     "date": "Sep 5, 2023",
@@ -1699,6 +1721,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "8.0",
     "patch_version": "8.0.16",
     "date": "Nov 19, 2025",
@@ -1822,6 +1845,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "8.0",
     "patch_version": "8.0.15",
     "date": "Oct 2, 2025",
@@ -1831,6 +1855,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "8.0",
     "patch_version": "8.0.14",
     "date": "Sep 25, 2025",
@@ -1973,6 +1998,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "8.0",
     "patch_version": "8.0.13",
     "date": "Aug 21, 2025",
@@ -2082,6 +2108,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "8.0",
     "patch_version": "8.0.12",
     "date": "July 23, 2025",
@@ -2180,6 +2207,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "8.0",
     "patch_version": "8.0.10",
     "date": "Jun 04, 2025",
@@ -2310,6 +2338,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "8.0",
     "patch_version": "8.0.9",
     "date": "May 1, 2025",
@@ -2353,6 +2382,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "8.0",
     "patch_version": "8.0.8",
     "date": "Apr 14, 2025",
@@ -2361,6 +2391,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "8.0",
     "patch_version": "8.0.6",
     "date": "Mar 19, 2025",
@@ -2390,6 +2421,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "8.0",
     "patch_version": "8.0.5",
     "date": "Feb 20, 2025",
@@ -2663,6 +2695,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "8.0",
     "patch_version": "8.0.4",
     "date": "Dec 9, 2024",
@@ -2790,6 +2823,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "8.0",
     "patch_version": "8.0.1",
     "date": "Oct 9, 2024",
@@ -2822,6 +2856,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "8.2",
     "patch_version": "8.2.2",
     "date": "Nov 19, 2025",
@@ -2932,6 +2967,7 @@
     ]
   },
   {
+    "database": "MongoDB",
     "major_version": "8.2",
     "patch_version": "8.2.1",
     "date": "Oct 3, 2025",

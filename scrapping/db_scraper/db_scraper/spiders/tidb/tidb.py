@@ -342,15 +342,13 @@ try:
 
 
     # ===================== SAUVEGARDE =====================
-    # Enregistrer les résultats dans un fichier JSON
+    # Enregistrer les résultats dans un fichier JSON avec le format demandé
     with open("..\\..\\..\\..\\..\\API\\sources\\tidb-versions.json", 'w', encoding='utf-8') as f:
         output = []
         for major in result:
-            major_out = {
-                'major_version': major.get('major_version', ''),
-                'patches': []
-            }
+            major_version = major.get('major_version', '')
             for patch in major.get('patches', []) or []:
+                # Aplatir les changements
                 changes = patch.get('changes', {})
                 flat_changes = []
                 if isinstance(changes, dict):
@@ -363,11 +361,14 @@ try:
                 elif isinstance(changes, list):
                     flat_changes = changes
 
-                patch_out = dict(patch)
-                patch_out['changes'] = flat_changes
-                major_out['patches'].append(patch_out)
-
-            output.append(major_out)
+                # Créer l'entrée au format demandé
+                output.append({
+                    "database": "Tidb",
+                    "major_version": major_version,
+                    "patch_version": patch.get('version', ''),
+                    "date": patch.get('date', ''),
+                    "changes": flat_changes
+                })
 
         json.dump(output, f, ensure_ascii=False, indent=2)
     

@@ -515,6 +515,7 @@ def generate_change_report(max_pages: int = 11) -> Dict:
                     raw_changes = changes_by_category
 
                 output_versions.append({
+                    "database": "Redis",
                     'major_version': major_version,
                     'patch_version': version_str,
                     'date': version_info.get('date', ''),

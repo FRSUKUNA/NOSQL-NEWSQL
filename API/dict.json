@@ -1,0 +1,20 @@
+ {
+    "performance": [
+        "performance", "optimize", "latency", "throughput",
+        "scalability", "speed", "faster", "timeout", "metrics",
+        "eviction"
+    ],
+    "bug_fix": [
+        "fix", "bug", "crash", "hang", "race", "deadlock",
+        "error", "fail", "issue", "incorrect"
+    ],
+    "new_feature": [
+        "add", "introduce", "new", "support",
+        "enable", "feature", "initial", "allow"
+    ],
+    "security": [
+        "security", "auth", "authentication",
+        "authorization", "permission",
+        "vulnerability", "cve", "encryption", "sast"
+    ]
+}

@@ -313,12 +313,12 @@ def main():
         }
         
         # Sauvegarder les résultats
-        target_dir = r"c:\Users\Dell\VT\scrapping\db_scraper\db_scraper\spiders\Cockroachdb"
+        target_dir = r"c:\Users\Dell\VT\API\sources"
         
         if not os.path.exists(target_dir):
             os.makedirs(target_dir)
         
-        output_file = os.path.join(target_dir, 'cockroachdb_h3_releases.json')
+        output_file = os.path.join(target_dir, 'cockroachdb-versions.json')
         
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(output_data, f, indent=4, ensure_ascii=False)

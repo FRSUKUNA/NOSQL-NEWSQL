@@ -534,7 +534,8 @@ def main():
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(
             [
-                {
+                {    
+                    'database': 'YugabyteDB',
                     'major_version': v.get('version', ''),
                     'patch_version': f"{v.get('version', '')}.{v.get('patch', '')}".strip('.'),
                     'date': v.get('date', ''),

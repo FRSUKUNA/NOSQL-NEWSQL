@@ -1,5 +1,6 @@
 [
     {
+        "database": "YugabyteDB",
         "major_version": "2025",
         "patch_version": "2025.2.0.0",
         "date": "2025-12-11",
@@ -40,6 +41,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2025",
         "patch_version": "2025.1.2.2",
         "date": "2025-12-17",
@@ -50,6 +52,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2025",
         "patch_version": "2025.1.2.1",
         "date": "2025-12-02",
@@ -60,6 +63,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2025",
         "patch_version": "2025.1.2.0",
         "date": "2025-11-20",
@@ -165,6 +169,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2025",
         "patch_version": "2025.1.1.2",
         "date": "2025-10-20",
@@ -179,6 +184,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2025",
         "patch_version": "2025.1.1.1",
         "date": "2025-10-03",
@@ -197,6 +203,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2025",
         "patch_version": "2025.1.0.1",
         "date": "2025-08-05",
@@ -209,6 +216,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2025",
         "patch_version": "2025.1.0.0",
         "date": "2025-07-23",
@@ -262,6 +270,18 @@
         ]
     },
     {
+        "database": "YugabyteDB",
+        "major_version": "2024",
+        "patch_version": "2024.2.7.1",
+        "date": "2025-12-31",
+        "changes": [
+            "Build: 2024.2.7.1-b1",
+            "Third-party licenses: YugabyteDB , YugabyteDB Anywhere",
+            "Add flag for parameter yb_ignore_bool_cond_for_legacy_estimate. #29831"
+        ]
+    },
+    {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.7.0",
         "date": "2025-12-30",
@@ -276,7 +296,6 @@
             "Adds ASH instrumentation to snapshots for better tracking of backup and snapshot bottlenecks. #23200",
             "Capture TCMalloc and MemTrackers stats in logs when exceeding the root memtracker soft memory limit for easier memory issues investigation. #29050",
             "Adds tablet replica SST and WAL size to master UI and sorts tablets by partition key. #29407",
-            "Reverts a commit due to a misunderstanding about the effects of failures when writing to the CDC state table. #28014",
             "Reduces logging levels in CatalogManager::FindXReplStreamsMarkedForDeletion() for cleaner logs. #29637",
             "Allows setting YSQL configuration parameters to a whitespace empty value without causing error. #27106",
             "Ensures deletion of table entries without causing parsing failure due to empty strings. #29240",
@@ -309,6 +328,7 @@
             "Truncates user and database names longer than 64 characters to prevent buffer overflow. #29331",
             "Avoids TCP deadlock by not using od_write in od_frontend_remote_client . #29303",
             "Prevents data loss by replacing min_replay_txn_start_ht with min_replay_txn_first_write_ht for improved transaction loading during bootstrap. #29642",
+            "Reverts a commit due to a misunderstanding about the effects of failures when writing to the CDC state table. #28014",
             "Prevent loss of records due to bugs in the PeerMessageQueue::ReadReplicatedMessagesForConsistentCDC implementation. #29060",
             "Allows large transactions for unqualified tables to stream correctly, preventing the virtual WAL from getting stuck. #28744",
             "Fixes CDC issue with virtual WAL restart after a DDL, preventing record decoding failure. #29136",
@@ -321,6 +341,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.6.2",
         "date": "2025-12-22",
@@ -331,6 +352,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.6.1",
         "date": "2025-11-11",
@@ -343,6 +365,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.6.0",
         "date": "2025-10-31",
@@ -414,6 +437,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.5.1",
         "date": "2025-09-11",
@@ -424,6 +448,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.5.0",
         "date": "2025-08-29",
@@ -484,6 +509,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.4.2",
         "date": "2025-12-16",
@@ -494,6 +520,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.4.1",
         "date": "2025-08-20",
@@ -515,6 +542,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.4.0",
         "date": "2025-07-14",
@@ -594,6 +622,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.3.3",
         "date": "2025-08-11",
@@ -604,6 +633,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.3.2",
         "date": "2025-06-24",
@@ -616,6 +646,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.3.1",
         "date": "2025-06-13",
@@ -627,6 +658,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.3.0",
         "date": "2025-05-16",
@@ -643,6 +675,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.2.5",
         "date": "2025-08-05",
@@ -653,6 +686,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.2.4",
         "date": "2025-05-19",
@@ -663,6 +697,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.2.3",
         "date": "2025-05-06",
@@ -673,6 +708,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.2.2",
         "date": "2025-04-09",
@@ -682,6 +718,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.2.1",
         "date": "2025-03-11",
@@ -691,6 +728,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.2.0",
         "date": "2025-02-28",
@@ -710,6 +748,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.1.0",
         "date": "2025-01-30",
@@ -723,6 +762,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.2.0.0",
         "date": "2024-12-09",
@@ -769,6 +809,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.1.6.1",
         "date": "2025-07-23",
@@ -779,6 +820,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.1.6.0",
         "date": "2025-04-25",
@@ -788,6 +830,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.1.5.0",
         "date": "2025-02-18",
@@ -797,6 +840,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.1.4.0",
         "date": "2025-01-09",
@@ -807,6 +851,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.1.3.1",
         "date": "2024-11-20",
@@ -818,6 +863,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.1.3.0",
         "date": "2024-10-08",
@@ -830,6 +876,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.1.2.0",
         "date": "2024-09-03",
@@ -845,6 +892,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.1.1.0",
         "date": "2024-07-31",
@@ -859,6 +907,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2024",
         "patch_version": "2024.1.0.0",
         "date": "2024-06-04",
@@ -902,6 +951,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.25.2.0",
         "date": "Date non disponible",
@@ -911,6 +961,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.25.1.0",
         "date": "Date non disponible",
@@ -920,6 +971,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.25.0.0",
         "date": "Date non disponible",
@@ -929,6 +981,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.23.1.0",
         "date": "Date non disponible",
@@ -938,6 +991,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.23.0.0",
         "date": "Date non disponible",
@@ -947,6 +1001,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.21.1.0",
         "date": "Date non disponible",
@@ -956,6 +1011,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.21.0.1",
         "date": "Date non disponible",
@@ -965,6 +1021,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.21.0.0",
         "date": "Date non disponible",
@@ -974,6 +1031,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.12.0",
         "date": "2025-10-06",
@@ -1003,6 +1061,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.11.1",
         "date": "2025-07-14",
@@ -1013,6 +1072,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.11.0",
         "date": "2025-07-02",
@@ -1043,6 +1103,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.10.0",
         "date": "2025-04-01",
@@ -1062,6 +1123,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.9.0",
         "date": "2025-01-28",
@@ -1100,6 +1162,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.8.1",
         "date": "2024-12-16",
@@ -1110,6 +1173,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.8.0",
         "date": "2024-12-02",
@@ -1145,6 +1209,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.7.2",
         "date": "2024-11-22",
@@ -1155,6 +1220,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.7.1",
         "date": "2024-10-16",
@@ -1166,6 +1232,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.7.0",
         "date": "2024-09-30",
@@ -1208,6 +1275,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.6.0",
         "date": "2024-08-23",
@@ -1246,6 +1314,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.5.0",
         "date": "2024-07-10",
@@ -1292,6 +1361,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.4.1",
         "date": "2024-06-21",
@@ -1305,6 +1375,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.4.0",
         "date": "2024-05-23",
@@ -1339,6 +1410,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.3.1",
         "date": "2024-05-14",
@@ -1349,6 +1421,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.2.4",
         "date": "2024-09-12",
@@ -1359,6 +1432,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.2.3",
         "date": "2024-06-27",
@@ -1369,6 +1443,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.2.2",
         "date": "2024-04-01",
@@ -1379,6 +1454,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.2.1",
         "date": "2024-03-22",
@@ -1390,6 +1466,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.2.0",
         "date": "2024-03-04",
@@ -1479,6 +1556,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.1.3",
         "date": "2024-01-25",
@@ -1490,6 +1568,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.1.2",
         "date": "2024-01-17",
@@ -1499,6 +1578,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.1.1",
         "date": "2024-01-11",
@@ -1511,6 +1591,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.1.0",
         "date": "2023-12-27",
@@ -1586,6 +1667,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.0.2",
         "date": "2023-12-15",
@@ -1594,6 +1676,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.0.1",
         "date": "2023-12-05",
@@ -1605,6 +1688,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.20.0.0",
         "date": "2023-11-13",
@@ -1680,6 +1764,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.19.3.0",
         "date": "2023-10-25",
@@ -1826,6 +1911,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.19.2.0",
         "date": "2023-09-11",
@@ -2044,6 +2130,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.19.0.0",
         "date": "2023-06-20",
@@ -2200,6 +2287,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.18.9.0",
         "date": "2024-08-15",
@@ -2218,6 +2306,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.18.8.1",
         "date": "2024-07-18",
@@ -2228,6 +2317,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.18.8.0",
         "date": "2024-06-21",
@@ -2269,6 +2359,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.18.7.0",
         "date": "2024-04-01",
@@ -2293,6 +2384,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.18.6.0",
         "date": "2024-02-06",
@@ -2344,6 +2436,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.18.5.2",
         "date": "2024-01-17",
@@ -2353,6 +2446,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.18.5.1",
         "date": "2024-01-10",
@@ -2363,6 +2457,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.18.5.0",
         "date": "2023-12-21",
@@ -2444,6 +2539,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.18.4.2",
         "date": "2023-11-08",
@@ -2454,6 +2550,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.18.4.1",
         "date": "2023-11-06",
@@ -2464,6 +2561,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.18.4.0",
         "date": "2023-10-25",
@@ -2525,6 +2623,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.18.3.1",
         "date": "2023-10-19",
@@ -2535,6 +2634,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.18.3.0",
         "date": "2023-09-20",
@@ -2580,6 +2680,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.18.2.1",
         "date": "2023-08-16",
@@ -2669,6 +2770,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.18.1.0",
         "date": "2023-06-27",
@@ -2754,6 +2856,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.18.0.1",
         "date": "2023-05-30",
@@ -2766,6 +2869,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.18.0.0",
         "date": "2023-05-16",
@@ -2917,6 +3021,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.17.3.0",
         "date": "2023-05-04",
@@ -3099,6 +3204,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.17.2.0",
         "date": "2023-03-27",
@@ -3301,6 +3407,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.17.1.0",
         "date": "2023-02-07",
@@ -3583,6 +3690,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.17.0.0",
         "date": "2022-12-08",
@@ -3631,6 +3739,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.16.9.0",
         "date": "2024-01-23",
@@ -3701,6 +3810,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.16.8.0",
         "date": "2023-10-12",
@@ -3733,6 +3843,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.16.7.0",
         "date": "2023-09-15",
@@ -3775,6 +3886,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.16.6.1",
         "date": "2023-08-07",
@@ -3785,6 +3897,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.16.6.0",
         "date": "2023-07-20",
@@ -3831,6 +3944,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.16.5.0",
         "date": "2023-05-30",
@@ -3860,6 +3974,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.16.4.0",
         "date": "2023-05-10",
@@ -3895,6 +4010,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.16.3.0",
         "date": "2023-04-18",
@@ -3945,6 +4061,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.16.2.0",
         "date": "2023-03-07",
@@ -3985,6 +4102,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.16.1.1",
         "date": "2023-02-13",
@@ -3996,6 +4114,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.16.1.0",
         "date": "2023-02-02",
@@ -4032,6 +4151,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.16.0.1",
         "date": "2023-01-06",
@@ -4042,6 +4162,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.16.0.0",
         "date": "2022-12-14",
@@ -4172,6 +4293,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.15.3.2",
         "date": "2022-11-09",
@@ -4185,6 +4307,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.15.3.0",
         "date": "2022-10-27",
@@ -4551,6 +4674,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.15.2.1",
         "date": "2022-10-11",
@@ -4561,6 +4685,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.15.2.0",
         "date": "2022-09-15",
@@ -4711,6 +4836,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.15.1.0",
         "date": "2022-07-21",
@@ -5000,6 +5126,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.15.0.1",
         "date": "2022-07-12",
@@ -5041,6 +5168,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.15.0.0",
         "date": "2022-06-27",
@@ -5236,6 +5364,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.17.0",
         "date": "2024-05-02",
@@ -5251,6 +5380,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.16.0",
         "date": "2024-04-17",
@@ -5275,6 +5405,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.15.0",
         "date": "2024-01-17",
@@ -5344,6 +5475,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.14.0",
         "date": "2023-10-19",
@@ -5373,6 +5505,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.13.0",
         "date": "2023-09-20",
@@ -5407,6 +5540,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.12.0",
         "date": "2023-08-30",
@@ -5441,6 +5575,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.11.1",
         "date": "2023-08-07",
@@ -5451,6 +5586,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.11.0",
         "date": "2023-07-20",
@@ -5503,6 +5639,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.10.4",
         "date": "2023-11-21",
@@ -5514,6 +5651,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.10.3",
         "date": "2023-10-03",
@@ -5526,6 +5664,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.10.2",
         "date": "2023-06-15",
@@ -5536,6 +5675,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.10.1",
         "date": "2023-06-08",
@@ -5549,6 +5689,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.10.0",
         "date": "2023-05-30",
@@ -5590,6 +5731,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.9.0",
         "date": "2023-05-01",
@@ -5625,6 +5767,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.8.0",
         "date": "2023-04-04",
@@ -5654,6 +5797,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.7.0",
         "date": "2023-03-10",
@@ -5758,6 +5902,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.6.1",
         "date": "2023-01-30",
@@ -5775,6 +5920,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.6.0",
         "date": "2023-01-06",
@@ -5842,6 +5988,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.5.0",
         "date": "2022-11-17",
@@ -5873,6 +6020,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.4.0",
         "date": "2022-10-27",
@@ -5922,6 +6070,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.3.1",
         "date": "2022-10-12",
@@ -5932,6 +6081,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.3.0",
         "date": "2022-10-07",
@@ -5981,6 +6131,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.2.1",
         "date": "2022-10-21",
@@ -5991,6 +6142,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.2.0",
         "date": "2022-09-14",
@@ -6045,6 +6197,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.1.0",
         "date": "2022-08-09",
@@ -6108,6 +6261,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.14.0.0",
         "date": "2022-07-14",
@@ -6281,6 +6435,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.13.2.0",
         "date": "2022-05-25",
@@ -6504,6 +6659,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.13.1.0",
         "date": "2022-04-20",
@@ -6687,6 +6843,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.13.0.1",
         "date": "2022-03-14",
@@ -6698,6 +6855,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.13.0.0",
         "date": "2022-03-07",
@@ -6990,6 +7148,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.12.12.0",
         "date": "2023-02-13",
@@ -7004,6 +7163,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.12.11.0",
         "date": "2023-01-06",
@@ -7065,6 +7225,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.12.10.0",
         "date": "2022-09-12",
@@ -7146,6 +7307,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.12.9.2",
         "date": "2022-08-31",
@@ -7161,6 +7323,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.12.9.1",
         "date": "2022-07-20",
@@ -7171,6 +7334,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.12.9.0",
         "date": "2022-07-14",
@@ -7197,6 +7361,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.12.8.0",
         "date": "2022-07-06",
@@ -7215,6 +7380,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.12.7.0",
         "date": "2022-06-24",
@@ -7256,6 +7422,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.12.6.1",
         "date": "2022-07-11",
@@ -7270,6 +7437,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.12.6.0",
         "date": "2022-06-09",
@@ -7307,6 +7475,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.12.5.0",
         "date": "2022-05-18",
@@ -7388,6 +7557,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.12.4.2",
         "date": "2022-06-17",
@@ -7402,6 +7572,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.12.3.0",
         "date": "2022-04-08",
@@ -7434,6 +7605,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.12.2.0",
         "date": "2022-03-30",
@@ -7520,6 +7692,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.12.1.0",
         "date": "2022-02-22",
@@ -7639,6 +7812,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.11.2.0",
         "date": "Date non disponible",
@@ -7795,6 +7969,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.11.1.0",
         "date": "Date non disponible",
@@ -7946,6 +8121,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.11.0.0",
         "date": "Date non disponible",
@@ -8161,6 +8337,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.9.1.0",
         "date": "Date non disponible",
@@ -8384,6 +8561,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.9.0.0",
         "date": "Date non disponible",
@@ -8513,6 +8691,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.8.12.0",
         "date": "Date non disponible",
@@ -8522,6 +8701,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.8.11.0",
         "date": "Date non disponible",
@@ -8531,6 +8711,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.8.10.0",
         "date": "Date non disponible",
@@ -8540,6 +8721,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.8.9.1",
         "date": "Date non disponible",
@@ -8549,6 +8731,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.8.9.0",
         "date": "Date non disponible",
@@ -8558,6 +8741,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.8.8.0",
         "date": "Date non disponible",
@@ -8567,6 +8751,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.8.7.0",
         "date": "Date non disponible",
@@ -8576,6 +8761,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.8.6.0",
         "date": "Date non disponible",
@@ -8585,6 +8771,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.8.5.0",
         "date": "Date non disponible",
@@ -8594,6 +8781,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.8.4.0",
         "date": "Date non disponible",
@@ -8603,6 +8791,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.8.3.0",
         "date": "Date non disponible",
@@ -8612,6 +8801,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.8.2.0",
         "date": "Date non disponible",
@@ -8621,6 +8811,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.8.1.0",
         "date": "Date non disponible",
@@ -8670,6 +8861,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.8.0.0",
         "date": "Date non disponible",
@@ -9018,6 +9210,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.7.2.0",
         "date": "Date non disponible",
@@ -9216,6 +9409,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.7.1.1",
         "date": "Date non disponible",
@@ -9425,6 +9619,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.7.0.0",
         "date": "Date non disponible",
@@ -9473,6 +9668,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.6.20.0",
         "date": "Date non disponible",
@@ -9482,6 +9678,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.6.19.0",
         "date": "Date non disponible",
@@ -9491,6 +9688,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.6.18",
         "date": "Date non disponible",
@@ -9500,6 +9698,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.6.17.0",
         "date": "Date non disponible",
@@ -9509,6 +9708,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.6.5.0",
         "date": "Date non disponible",
@@ -9524,6 +9724,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.6.4.0",
         "date": "Date non disponible",
@@ -9540,6 +9741,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.6.3.0",
         "date": "Date non disponible",
@@ -9560,6 +9762,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.6.2.0",
         "date": "Date non disponible",
@@ -9597,6 +9800,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.6.1.1",
         "date": "Date non disponible",
@@ -9613,6 +9817,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.6.1.0",
         "date": "Date non disponible",
@@ -9659,6 +9864,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.6.0.0",
         "date": "Date non disponible",
@@ -9868,6 +10074,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.5.3.4",
         "date": "Date non disponible",
@@ -9876,6 +10083,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.5.3.1",
         "date": "Date non disponible",
@@ -9923,6 +10131,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.5.3.0",
         "date": "Date non disponible",
@@ -9971,6 +10180,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.5.2.0",
         "date": "Date non disponible",
@@ -10085,6 +10295,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.5.1.0",
         "date": "Date non disponible",
@@ -10225,6 +10436,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.5.0.0",
         "date": "Date non disponible",
@@ -10291,6 +10503,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.4.5",
         "date": "Date non disponible",
@@ -10313,6 +10526,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.4.4.0",
         "date": "Date non disponible",
@@ -10326,6 +10540,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.4.3.0",
         "date": "Date non disponible",
@@ -10340,6 +10555,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.4.2.0",
         "date": "Date non disponible",
@@ -10387,6 +10603,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.4.1.0",
         "date": "Date non disponible",
@@ -10425,6 +10642,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.4.0.0",
         "date": "Date non disponible",
@@ -10534,6 +10752,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.3.3.0",
         "date": "Date non disponible",
@@ -10594,6 +10813,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.3.2.0",
         "date": "Date non disponible",
@@ -10637,6 +10857,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.3.1.0",
         "date": "Date non disponible",
@@ -10652,6 +10873,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.3.0.0",
         "date": "Date non disponible",
@@ -10792,6 +11014,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.2.7.0",
         "date": "Date non disponible",
@@ -10812,6 +11035,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.2.6.0",
         "date": "Date non disponible",
@@ -10825,6 +11049,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.2.5.0",
         "date": "Date non disponible",
@@ -10843,6 +11068,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.2.4.0",
         "date": "Date non disponible",
@@ -10895,6 +11121,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.2.3.0",
         "date": "Date non disponible",
@@ -10949,6 +11176,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.2.2.0",
         "date": "Date non disponible",
@@ -10996,6 +11224,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.2.0.0",
         "date": "Date non disponible",
@@ -11070,6 +11299,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.1.8.2",
         "date": "Date non disponible",
@@ -11146,6 +11376,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.1.8.1",
         "date": "Date non disponible",
@@ -11221,6 +11452,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.1.6",
         "date": "Date non disponible",
@@ -11243,6 +11475,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.1.5",
         "date": "Date non disponible",
@@ -11291,6 +11524,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.1.4",
         "date": "Date non disponible",
@@ -11337,6 +11571,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.1.3",
         "date": "Date non disponible",
@@ -11403,6 +11638,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.1.2",
         "date": "Date non disponible",
@@ -11441,6 +11677,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.1.1",
         "date": "Date non disponible",
@@ -11457,6 +11694,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.1.0",
         "date": "Date non disponible",
@@ -11479,6 +11717,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.0.11",
         "date": "Date non disponible",
@@ -11518,6 +11757,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.0.10",
         "date": "Date non disponible",
@@ -11534,6 +11774,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.0.9",
         "date": "Date non disponible",
@@ -11571,6 +11812,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.0.8",
         "date": "Date non disponible",
@@ -11595,6 +11837,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.0.7",
         "date": "Date non disponible",
@@ -11616,6 +11859,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.0.6",
         "date": "Date non disponible",
@@ -11653,6 +11897,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.0.5",
         "date": "Date non disponible",
@@ -11703,6 +11948,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.0.3",
         "date": "Date non disponible",
@@ -11758,6 +12004,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.0.1",
         "date": "Date non disponible",
@@ -11801,6 +12048,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "2",
         "patch_version": "2.0.0",
         "date": "Date non disponible",
@@ -11853,6 +12101,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "1",
         "patch_version": "1.3.1",
         "date": "Date non disponible",
@@ -11884,6 +12133,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "1",
         "patch_version": "1.3.0",
         "date": "Date non disponible",
@@ -11917,6 +12167,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "1",
         "patch_version": "1.2.12",
         "date": "Date non disponible",
@@ -11941,6 +12192,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "1",
         "patch_version": "1.2.4",
         "date": "Date non disponible",
@@ -12024,6 +12276,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "1",
         "patch_version": "1.2.0",
         "date": "Date non disponible",
@@ -12391,6 +12644,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "1",
         "patch_version": "1.1.0",
         "date": "Date non disponible",
@@ -12467,6 +12721,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "1",
         "patch_version": "1.0.5",
         "date": "Date non disponible",
@@ -12534,6 +12789,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "1",
         "patch_version": "1.0.4",
         "date": "Date non disponible",
@@ -12606,6 +12862,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "1",
         "patch_version": "1.0.0",
         "date": "Date non disponible",
@@ -12616,6 +12873,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "0",
         "patch_version": "0.9.8",
         "date": "Date non disponible",
@@ -12674,6 +12932,7 @@
         ]
     },
     {
+        "database": "YugabyteDB",
         "major_version": "0",
         "patch_version": "0.9.7",
         "date": "Date non disponible",
@@ -12693,42 +12952,6 @@
             "[ 702d528 ]  Use multi-level indexes by default",
             "[ 72ffc21 ] Fixing reactor-test: DelayedTask::AbortTask should still call the callback for tasks that    have not been scheduled",
             "[ c0c4c7b ]  Add paging to table iterator to fix RaftConsensusITest.TestAutoCreateReplica"
-        ]
-    },
-    {
-        "major_version": "0",
-        "patch_version": "0.9.6",
-        "date": "Date non disponible",
-        "changes": [
-            "Support for using Kubernetes style cnames in YugaByte CQL client natively! The sample applications can easily be run as a Kubernetes service now.",
-            "Lots of perf fixes for running YugaByte on machines with large number of CPUs.",
-            "Added built-in time functions such as now(), totimestamp(), tounixtimestamp() and unixtimestampof().",
-            "Support for high-performance batch transaction codepath with intra-batch dependencies.",
-            "[ fadfd84 ] Use a separate thread pool for consensus service",
-            "[ 71fc829 ] Initialize being_compacted to false",
-            "[ db55a6f ] Support Kubernetes style cname in YugaByteDB clients",
-            "[ c27f929 ] Correct apply of repeated keys in txn",
-            "[ 8ceaeb9 ] Enable creating multiple outstanding pipelines per IO thread",
-            "[ 699a58e ] Handle intra-dependency in batch request / transaction",
-            "[ 39100f4 ] Replace upgrade lock with shared_lock and unique_lock",
-            "[ f17b2a8 ] Implementing now(), totimestamp(), tounixtimestamp() and unixtimestampof() functions for YQL.",
-            "[ 024730e ] Use circular buffer for receive",
-            "[ c619be7 ] Reserve the number of subkeys from ParseCollection",
-            "[ de6a268 ] Handle intra-dependency in batch request / transaction",
-            "[ a26f8d2 ] Need to remove the special tserver service queue sizes on \"low-cpu\" machines.",
-            "[ 3857155 ] Change distributed transaction test cases to test writing to the same hash / primary key in the same transaction.",
-            "[ 99d4adb ] Group lookup tablet requests",
-            "[ 0bd8878 ] Set iterate_upper_bound to avoid seeking over deleted keys in RocksDB.",
-            "[ 88cf84e ] Introduce limits for queued commands and don't drop connection on read buffer overflow",
-            "[ 2250acb ] #59 : Set GIT_DIR to /tmp when building AWS SDK so that it does not pick up YugaByte DB version as its own",
-            "[ b4a9b8e ] Reduce log spew for unavailable peer",
-            "[ 0261099 ] Make Redis read buffer size and number of concurrent master lookups in meta cache configurable",
-            "[ f3e9672 ] Gflag for block cache num shards",
-            "[ b0553d9 ] Porting nonredundant functionalities of local_cluster_ctl to yb-ctl.",
-            "[ dc6e2e2 ] Log spew during tablet startup under load.",
-            "[ 4ad88df ] system_redis.redis should not be counted as an user table",
-            "[ 7302b1f ] Correct handling of failure to retry RPC command",
-            "[ f90a83f ] Fix TransactionManager destruction"
         ]
     }
 ]

@@ -1,5 +1,6 @@
 [
     {
+        "database": "Redis",
         "major_version": "8.4",
         "patch_version": "8.4.0",
         "date": "Date non disponible",
@@ -45,6 +46,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "8.4",
         "patch_version": "8.4",
         "date": "Date non disponible",
@@ -110,6 +112,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "8.2",
         "patch_version": "8.2.3",
         "date": "Date non disponible",
@@ -128,6 +131,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "8.2",
         "patch_version": "8.2.2",
         "date": "Date non disponible",
@@ -160,6 +164,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "8.2",
         "patch_version": "8.2.1",
         "date": "Date non disponible",
@@ -176,6 +181,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "8.2",
         "patch_version": "8.2.0",
         "date": "Date non disponible",
@@ -224,6 +230,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "8.2",
         "patch_version": "8.2",
         "date": "Date non disponible",
@@ -259,6 +266,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "8.0",
         "patch_version": "8.0.5",
         "date": "Date non disponible",
@@ -276,6 +284,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "8.0",
         "patch_version": "8.0.4",
         "date": "Date non disponible",
@@ -299,6 +308,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "8.0",
         "patch_version": "8.0.3",
         "date": "Date non disponible",
@@ -314,6 +324,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "8.0",
         "patch_version": "8.0.2",
         "date": "Date non disponible",
@@ -325,6 +336,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "8.0",
         "patch_version": "8.0.1",
         "date": "Date non disponible",
@@ -339,6 +351,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "8.0",
         "patch_version": "8.0.0",
         "date": "Date non disponible",
@@ -398,12 +411,14 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "",
         "patch_version": "8",
         "date": "Date non disponible",
         "changes": []
     },
     {
+        "database": "Redis",
         "major_version": "7.4",
         "patch_version": "7.4.7",
         "date": "Date non disponible",
@@ -413,6 +428,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.4",
         "patch_version": "7.4.6",
         "date": "Date non disponible",
@@ -433,6 +449,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.4",
         "patch_version": "7.4.5",
         "date": "Date non disponible",
@@ -444,6 +461,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.4",
         "patch_version": "7.4.4",
         "date": "Date non disponible",
@@ -456,6 +474,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.4",
         "patch_version": "7.4.3",
         "date": "Date non disponible",
@@ -471,6 +490,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.4",
         "patch_version": "7.4.2",
         "date": "Date non disponible",
@@ -494,6 +514,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.4",
         "patch_version": "7.4.1",
         "date": "Date non disponible",
@@ -506,6 +527,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.4",
         "patch_version": "7.4.0",
         "date": "Date non disponible",
@@ -524,6 +546,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.4",
         "patch_version": "7.4",
         "date": "Date non disponible",
@@ -537,6 +560,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.2",
         "patch_version": "7.2.12",
         "date": "Date non disponible",
@@ -546,6 +570,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.2",
         "patch_version": "7.2.11",
         "date": "Date non disponible",
@@ -559,6 +584,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.2",
         "patch_version": "7.2.10",
         "date": "Date non disponible",
@@ -570,6 +596,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.2",
         "patch_version": "7.2.9",
         "date": "Date non disponible",
@@ -582,6 +609,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.2",
         "patch_version": "7.2.8",
         "date": "Date non disponible",
@@ -595,6 +623,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.2",
         "patch_version": "7.2.7",
         "date": "Date non disponible",
@@ -614,6 +643,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.2",
         "patch_version": "7.2.6",
         "date": "Date non disponible",
@@ -627,6 +657,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.2",
         "patch_version": "7.2.5",
         "date": "Date non disponible",
@@ -643,6 +674,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.2",
         "patch_version": "7.2.4",
         "date": "Date non disponible",
@@ -656,6 +688,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.2",
         "patch_version": "7.2.3",
         "date": "Date non disponible",
@@ -667,6 +700,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.2",
         "patch_version": "7.2.2",
         "date": "Date non disponible",
@@ -684,6 +718,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.2",
         "patch_version": "7.2.1",
         "date": "Date non disponible",
@@ -696,6 +731,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.2",
         "patch_version": "7.2.0",
         "date": "Date non disponible",
@@ -713,6 +749,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.2",
         "patch_version": "7.2",
         "date": "Date non disponible",
@@ -762,6 +799,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.0",
         "patch_version": "7.0.15",
         "date": "Date non disponible",
@@ -771,6 +809,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.0",
         "patch_version": "7.0.14",
         "date": "Date non disponible",
@@ -780,6 +819,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.0",
         "patch_version": "7.0.13",
         "date": "Date non disponible",
@@ -793,6 +833,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.0",
         "patch_version": "7.0.12",
         "date": "Date non disponible",
@@ -811,6 +852,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.0",
         "patch_version": "7.0.11",
         "date": "Date non disponible",
@@ -825,6 +867,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.0",
         "patch_version": "7.0.10",
         "date": "Date non disponible",
@@ -840,6 +883,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.0",
         "patch_version": "7.0.9",
         "date": "Date non disponible",
@@ -862,6 +906,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.0",
         "patch_version": "7.0.8",
         "date": "Date non disponible",
@@ -879,6 +924,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.0",
         "patch_version": "7.0.7",
         "date": "Date non disponible",
@@ -888,6 +934,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.0",
         "patch_version": "7.0.6",
         "date": "Date non disponible",
@@ -923,6 +970,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.0",
         "patch_version": "7.0.5",
         "date": "Date non disponible",
@@ -952,6 +1000,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.0",
         "patch_version": "7.0.4",
         "date": "Date non disponible",
@@ -962,6 +1011,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.0",
         "patch_version": "7.0.3",
         "date": "Date non disponible",
@@ -997,6 +1047,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.0",
         "patch_version": "7.0.2",
         "date": "Date non disponible",
@@ -1008,6 +1059,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.0",
         "patch_version": "7.0.1",
         "date": "Date non disponible",
@@ -1056,6 +1108,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "7.0",
         "patch_version": "7.0.0",
         "date": "Date non disponible",
@@ -1105,6 +1158,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "",
         "patch_version": "7",
         "date": "Date non disponible",
@@ -1147,6 +1201,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.21",
         "date": "Date non disponible",
@@ -1156,6 +1211,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.20",
         "date": "Date non disponible",
@@ -1169,6 +1225,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.19",
         "date": "Date non disponible",
@@ -1180,6 +1237,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.18",
         "date": "Date non disponible",
@@ -1189,6 +1247,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.17",
         "date": "Date non disponible",
@@ -1198,6 +1257,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.16",
         "date": "Date non disponible",
@@ -1209,6 +1269,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.14",
         "date": "Date non disponible",
@@ -1218,6 +1279,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.13",
         "date": "Date non disponible",
@@ -1229,6 +1291,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.12",
         "date": "Date non disponible",
@@ -1243,6 +1306,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.11",
         "date": "Date non disponible",
@@ -1260,6 +1324,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.10",
         "date": "Date non disponible",
@@ -1269,6 +1334,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.9",
         "date": "Date non disponible",
@@ -1284,6 +1350,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.8",
         "date": "Date non disponible",
@@ -1308,6 +1375,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.7",
         "date": "Date non disponible",
@@ -1343,6 +1411,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.6",
         "date": "Date non disponible",
@@ -1381,6 +1450,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.5",
         "date": "Date non disponible",
@@ -1420,6 +1490,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.4",
         "date": "Date non disponible",
@@ -1441,6 +1512,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.3",
         "date": "Date non disponible",
@@ -1461,6 +1533,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.2",
         "date": "Date non disponible",
@@ -1530,6 +1603,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.1",
         "date": "Date non disponible",
@@ -1553,6 +1627,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2.0",
         "date": "Date non disponible",
@@ -1595,6 +1670,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.2",
         "patch_version": "6.2",
         "date": "Date non disponible",
@@ -1640,6 +1716,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.0",
         "patch_version": "6.0.20",
         "date": "Date non disponible",
@@ -1651,6 +1728,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.0",
         "patch_version": "6.0.19",
         "date": "Date non disponible",
@@ -1662,6 +1740,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.0",
         "patch_version": "6.0.18",
         "date": "Date non disponible",
@@ -1677,6 +1756,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.0",
         "patch_version": "6.0.17",
         "date": "Date non disponible",
@@ -1692,6 +1772,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.0",
         "patch_version": "6.0.16",
         "date": "Date non disponible",
@@ -1715,6 +1796,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.0",
         "patch_version": "6.0.15",
         "date": "Date non disponible",
@@ -1741,6 +1823,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.0",
         "patch_version": "6.0.14",
         "date": "Date non disponible",
@@ -1754,6 +1837,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.0",
         "patch_version": "6.0.13",
         "date": "Date non disponible",
@@ -1770,6 +1854,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.0",
         "patch_version": "6.0.12",
         "date": "Date non disponible",
@@ -1779,6 +1864,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.0",
         "patch_version": "6.0.11",
         "date": "Date non disponible",
@@ -1799,6 +1885,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.0",
         "patch_version": "6.0.10",
         "date": "Date non disponible",
@@ -1851,6 +1938,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.0",
         "patch_version": "6.0.9",
         "date": "Date non disponible",
@@ -1859,6 +1947,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.0",
         "patch_version": "6.0.8",
         "date": "Date non disponible",
@@ -1867,6 +1956,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.0",
         "patch_version": "6.0.7",
         "date": "Date non disponible",
@@ -1875,6 +1965,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "6.0",
         "patch_version": "6.0.6",
         "date": "Date non disponible",
@@ -1883,6 +1974,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "5.0",
         "patch_version": "5.0.14",
         "date": "Date non disponible",
@@ -1901,6 +1993,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "5.0",
         "patch_version": "5.0.13",
         "date": "Date non disponible",
@@ -1913,6 +2006,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "5.0",
         "patch_version": "5.0.12",
         "date": "Date non disponible",
@@ -1922,6 +2016,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "5.0",
         "patch_version": "5.0.11",
         "date": "Date non disponible",
@@ -1941,6 +2036,7 @@
         ]
     },
     {
+        "database": "Redis",
         "major_version": "5.0",
         "patch_version": "5.0.10",
         "date": "Date non disponible",

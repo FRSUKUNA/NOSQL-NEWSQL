@@ -326,6 +326,7 @@ def main():
         output = []
         for v in versions:
             output.append({
+                "database": "Cassandra",
                 'major_version': v.get('version', ''),
                 'patch_version': v.get('full_version', ''),
                 'date': v.get('date', ''),

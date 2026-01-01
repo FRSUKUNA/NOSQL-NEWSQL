@@ -182,6 +182,7 @@ def extract_patches_with_changelog(version_url: str, major_version: str) -> List
                     print(f" ({len(changes)} changements)", end="")
                     
                     patches.append({
+                        'database': 'CockroachDB',
                         'major_version': major_version,
                         'patch_version': patch_version,
                         'date': date,
@@ -237,14 +238,14 @@ def main():
             print("-" * 40)
 
         # Sauvegarde
-        target_dir = r"D:\Projet VT\Cockroachdb"
+        target_dir = r"c:\Users\Dell\VT\API\sources"
         if not os.path.exists(target_dir):
             try:
                 os.makedirs(target_dir, exist_ok=True)
             except:
                 target_dir = "."
 
-        output_file = os.path.join(target_dir, 'cockroachdb_versions.json')
+        output_file = os.path.join(target_dir, 'cockroachdb-versions.json')
 
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(all_patches_result, f, indent=4, ensure_ascii=False)

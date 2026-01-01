@@ -146,6 +146,7 @@ try:
             print(f"   ➜ Patch {patch_version}")
 
             result.append({
+                "database": "MongoDB",
                 "major_version": major_version,
                 "patch_version": patch_version,
                 "date": date,
