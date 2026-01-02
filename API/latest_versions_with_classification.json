@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "total_databases": 6,
+    "categories_processed": [
+      "columnar",
+      "document",
+      "graph",
+      "key_value",
+      "distributed_sql"
+    ],
+    "types_processed": [
+      "NoSQL",
+      "NewSQL"
+    ],
+    "generation_date": "2026-01-02T03:01:06.771564"
+  },
+  "databases": [
+    {
+      "database": "Cassandra",
+      "major_version": "5.1",
+      "patch_version": "5.1.0",
+      "date": "NaT",
+      "category": "columnar",
+      "type": "NoSQL"
+    },
+    {
+      "database": "MongoDB",
+      "major_version": "7.0",
+      "patch_version": "7.0.26",
+      "date": "2025-11-21 00:00:00",
+      "category": "document",
+      "type": "NoSQL"
+    },
+    {
+      "database": "Neo4j",
+      "major_version": "2025.11",
+      "patch_version": "0",
+      "date": "NaT",
+      "category": "graph",
+      "type": "NewSQL"
+    },
+    {
+      "database": "Redis",
+      "major_version": "8.4",
+      "patch_version": "8.4.0",
+      "date": "NaT",
+      "category": "key_value",
+      "type": "NoSQL"
+    },
+    {
+      "database": "Tidb",
+      "major_version": "8.5",
+      "patch_version": "8.5.4",
+      "date": "2025-11-27 00:00:00",
+      "category": "distributed_sql",
+      "type": "NewSQL"
+    },
+    {
+      "database": "YugabyteDB",
+      "major_version": "2024",
+      "patch_version": "2024.2.7.1",
+      "date": "2025-12-31 00:00:00",
+      "category": "distributed_sql",
+      "type": "NewSQL"
+    }
+  ],
+  "statistics": {
+    "by_category": {
+      "distributed_sql": 2,
+      "columnar": 1,
+      "document": 1,
+      "graph": 1,
+      "key_value": 1
+    },
+    "by_type": {
+      "NoSQL": 3,
+      "NewSQL": 3
+    }
+  }
+}

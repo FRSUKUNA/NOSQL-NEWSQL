@@ -1,0 +1,91 @@
+{
+  "database_info": {
+    "name": "CockroachDB",
+    "type": "Distributed SQL Database",
+    "url": "https://www.cockroachlabs.com/docs/releases",
+    "scraping_method": "H3 with releases focus"
+  },
+  "h3_releases_sections": [
+    {
+      "h3_title": "Upcoming releases",
+      "versions": [],
+      "content": [
+        "The following releases and their descriptions represent proposed plans that are subject to change. Please contact your account representative with any questions."
+      ]
+    }
+  ],
+  "version_details": {
+    "26.1": {
+      "version": "26.1",
+      "title": "v26.1",
+      "downloads": [],
+      "release_notes_url": null,
+      "release_type": "Production"
+    },
+    "25.4": {
+      "version": "25.4",
+      "title": "v25.4",
+      "downloads": [],
+      "release_notes_url": null,
+      "release_type": "Production"
+    },
+    "25.3": {
+      "version": "25.3",
+      "title": "v25.3",
+      "downloads": [],
+      "release_notes_url": null,
+      "release_type": "Production"
+    },
+    "25.2": {
+      "version": "25.2",
+      "title": "v25.2",
+      "downloads": [],
+      "release_notes_url": null,
+      "release_type": "Production"
+    },
+    "24.3": {
+      "version": "24.3",
+      "title": "v24.3",
+      "downloads": [],
+      "release_notes_url": null,
+      "release_type": "Production"
+    },
+    "24.1": {
+      "version": "24.1",
+      "title": "v24.1",
+      "downloads": [],
+      "release_notes_url": null,
+      "release_type": "Production"
+    },
+    "23.2": {
+      "version": "23.2",
+      "title": "v23.2",
+      "downloads": [],
+      "release_notes_url": null,
+      "release_type": "Production"
+    }
+  },
+  "recent_releases": [],
+  "statistics": {
+    "total_h3_sections": 1,
+    "total_versions_detailed": 7,
+    "total_recent_releases": 0
+  },
+  "last_updated": "2026-01-02 01:58:12 UTC",
+  "ai_analysis": {
+    "dominant_type": "performance",
+    "summary": {
+      "performance": 0,
+      "bug_fix": 0,
+      "new_feature": 0,
+      "security": 0,
+      "refactoring": 0,
+      "maintenance": 0,
+      "monitoring": 0,
+      "configuration": 0,
+      "testing": 0,
+      "other": 0
+    },
+    "details": []
+  }
+}

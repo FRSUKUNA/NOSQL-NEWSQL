@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 import json
+import os
 import re
 import time
 # ===================== CONFIGURATION CHROME =====================
@@ -154,7 +155,7 @@ try:
             })
 
     # ===================== SAUVEGARDE =====================
-    with open("..\..\..\..\..\API\sources\mongodb-versions.json", "w", encoding="utf-8") as f:
+    with open(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..', '..', '..', 'API', 'sources', 'mongodb-versions.json')), "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=4)
 
     print(f"\n✅ {len(result)} patchs sauvegardés")

@@ -1,0 +1,8 @@
+database,major_version,patch_version,date,category,type
+Cassandra,5.1,5.1.0,,columnar,NoSQL
+CockroachDB,26.1,26.1.0-beta.1,2025-12-17,distributed_sql,NewSQL
+MongoDB,7.0,7.0.26,2025-11-21,document,NoSQL
+Neo4j,2025.11,0,,graph,NewSQL
+Redis,8.4,8.4.0,,key_value,NoSQL
+Tidb,8.5,8.5.4,2025-11-27,distributed_sql,NewSQL
+YugabyteDB,2024,2024.2.7.1,2025-12-31,distributed_sql,NewSQL

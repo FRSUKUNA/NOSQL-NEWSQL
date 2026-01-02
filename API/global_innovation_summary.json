@@ -1,0 +1,2488 @@
+{
+  "generation_date": "2026-01-02T03:09:56.786703",
+  "total_databases": 6,
+  "database_summaries": {
+    "Cassandra": {
+      "total_innovations": 220,
+      "categories_detected": [
+        "distributed_computing",
+        "memory_acceleration",
+        "blockchain_web3",
+        "security_privacy",
+        "ai_ml_integration",
+        "vector_search"
+      ],
+      "category_counts": {
+        "distributed_computing": 128,
+        "memory_acceleration": 60,
+        "blockchain_web3": 26,
+        "security_privacy": 6,
+        "ai_ml_integration": 2,
+        "vector_search": 6
+      },
+      "category_details": {
+        "distributed_computing": [
+          {
+            "description": "Ensure peers with LEFT status are expired from gossip state (CASSANDRA-21035)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Update system schema tables with new distributed keyspace on upgrade (CASSANDRA-20872)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix issue when running cms reconfiguration with paxos repair disabled (CASSANDRA-20869)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Improve isGossipOnlyMember and location lookup performance (CASSANDRA-21039)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Gossip entries for hibernating non-members don't block truncate (CASSANDRA-21003)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Introduce separate GCInspector thresholds for concurrent GC events (CASSANDRA-20980)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Replace blocking wait with non-blocking delay in paxos repair (CASSANDRA-20983)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Make legacy index rebuilds safe on Gossip -> TCM upgrades (CASSANDRA-20887)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Add support for BEGIN TRANSACTION to allow mutations that touch multiple partitions (CASSANDRA-20857)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Optimize DataPlacement lookup by ReplicationParams (CASSANDRA-20804)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix ShortPaxosSimulationTest and AccordSimulationRunner do not execute from the cli (CASSANDRA-20805)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Improve performance when getting writePlacementsAllSettled from ClusterMetadata (CASSANDRA-20526)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Add nodetool command to dump the contents of the system_views.{cluster_metadata_log, cluster_metadata_directory} tables (CASSANDRA-20525)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Avoid failing queries when epoch changes and replica goes up/down (CASSANDRA-20489)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix Paxos repair interrupts running transactions (CASSANDRA-20469)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Various gossip to TCM upgrade fixes (CASSANDRA-20483)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Repair Paxos for the distributed metadata log when CMS membership changes (CASSANDRA-20467)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix PartitionUpdate.isEmpty deserialization issue to avoid potential EOFException (CASSANDRA-20345)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Avoid adding LEFT nodes to tokenMap on upgrade from gossip (CASSANDRA-20344)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Allow empty placements when deserializing cluster metadata (CASSANDRA-20343)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Paxos Repair: NoSuchElementException on DistributedSchema.getKeyspaceMetadata (CASSANDRA-20320)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Improve performance of DistributedSchema.validate for large schemas (CASSANDRA-20360)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Add system_views.partition_key_statistics for querying SSTable metadata (CASSANDRA-20161)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Make sure we can parse the expanded CQL before writing it to the log or sending it to replicas (CASSANDRA-20218)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Restore optimization in MultiCBuilder around building one clustering (CASSANDRA-20129)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Ensure that RFP queries potentially stale replicas even with only key columns in the row filter (CASSANDRA-19938)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Deprecate use of gossip state for paxos electorate verification (CASSANDRA-19904)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix incorrect nodetool suggestion when gossip mode is running (CASSANDRA-19905)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix BETWEEN filtering for reversed clustering columns (CASSANDRA-19878)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Allow getendpoints for system tables and make sure getNaturalReplicas work for MetaStrategy (CASSANDRA-19846)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Disallow denylisting keys in system_cluster_metadata (CASSANDRA-19713)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix gossip status after replacement (CASSANDRA-19712)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Ignore repair requests for system_cluster_metadata (CASSANDRA-19711)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Avoid ClassCastException when verifying tables with reversed partitioner (CASSANDRA-19710)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Always repair the full range when repairing system_cluster_metadata (CASSANDRA-19709)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Use table-specific partitioners during Paxos repair (CASSANDRA-19714)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Support querying LocalStrategy tables with any partitioner (CASSANDRA-19692)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Replace Stream iteration with for-loop for SimpleRestriction::bindAndGetClusteringElements (CASSANDRA-19679)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Add cluster metadata id to gossip syn messages (CASSANDRA-19613)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Improve handling of transient replicas during range movements (CASSANDRA-19344)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Use Transformation.Kind.id in local and distributed log tables (CASSANDRA-19516)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Remove period field from ClusterMetadata and metadata log tables (CASSANDRA-19482)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix StorageService::constructRangeToEndpointMap for non-distributed keyspaces (CASSANDRA-19255)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Harry model and in-JVM tests for partition-restricted 2i queries (CASSANDRA-18275)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Transactional Cluster Metadata [CEP-21] (CASSANDRA-18330)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Make source distribution buildable by ant artifacts as doc/scripts/process-native-protocol-specs-in-docker.sh was not executable (CASSANDRA-20802)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Ensure replica filtering protection does not trigger unnecessary short read protection reads (CASSANDRA-20639)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Optimize initial skipping logic for SAI queries on large partitions (CASSANDRA-20191)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "SAI marks an index as non-empty when a partial partition/row modifications is flushed due to repair (CASSANDRA-20567)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Avoid fetching entire partitions on unresolved static rows in RFP when no static column predicates exist (CASSANDRA-20243)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix incorrect results of min / max in-built functions on clustering columns in descending order (CASSANDRA-20295)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Avoid memory allocation in offheap_object's NativeCell.valueSize() and NativeClustering.dataSize() (CASSANDRA-20162)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Streamline the serialized format for index status gossip messages (CASSANDRA-20058)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Batch clusterings into single SAI partition post-filtering reads (CASSANDRA-19497)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Use SinglePartitionReadCommand for index queries that use strict filtering (CASSANDRA-19968)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix mixed mode paxos ttl commit hang (CASSANDRA-20514)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix paxos mixed mode infinite loop (CASSANDRA-20493)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Add NativeTransportMaxConcurrentConnectionsPerIp to StorageProxyMBean (CASSANDRA-20642)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Gossip doesn't converge due to race condition when updating EndpointStates multiple fields (CASSANDRA-20659)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Do not attach rows and partitions to QueryCancellationChecker when already attached (CASSANDRA-20135)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "IndexOutOfBoundsException when accessing partition where the column was deleted (CASSANDRA-20108)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Support UDTs and vectors as clustering keys in descending order (CASSANDRA-20050)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix CQL in snapshot's schema which did not contained UDTs used as reverse clustering columns (CASSANDRA-20036)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix indexing of a frozen collection that is the clustering key and reversed (CASSANDRA-19889)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Ensure peers with LEFT status are expired from gossip state (CASSANDRA-21035)",
+            "source": "ai_analysis",
+            "category": "monitoring"
+          },
+          {
+            "description": "Update system schema tables with new distributed keyspace on upgrade (CASSANDRA-20872)",
+            "source": "ai_analysis",
+            "category": "new_feature"
+          },
+          {
+            "description": "Fix issue when running cms reconfiguration with paxos repair disabled (CASSANDRA-20869)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Improve isGossipOnlyMember and location lookup performance (CASSANDRA-21039)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Gossip entries for hibernating non-members don't block truncate (CASSANDRA-21003)",
+            "source": "ai_analysis",
+            "category": "security"
+          },
+          {
+            "description": "Introduce separate GCInspector thresholds for concurrent GC events (CASSANDRA-20980)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Replace blocking wait with non-blocking delay in paxos repair (CASSANDRA-20983)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Make legacy index rebuilds safe on Gossip -> TCM upgrades (CASSANDRA-20887)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Add support for BEGIN TRANSACTION to allow mutations that touch multiple partitions (CASSANDRA-20857)",
+            "source": "ai_analysis",
+            "category": "new_feature"
+          },
+          {
+            "description": "Optimize DataPlacement lookup by ReplicationParams (CASSANDRA-20804)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Fix ShortPaxosSimulationTest and AccordSimulationRunner do not execute from the cli (CASSANDRA-20805)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Improve performance when getting writePlacementsAllSettled from ClusterMetadata (CASSANDRA-20526)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Add nodetool command to dump the contents of the system_views.{cluster_metadata_log, cluster_metadata_directory} tables (CASSANDRA-20525)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Avoid failing queries when epoch changes and replica goes up/down (CASSANDRA-20489)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Fix Paxos repair interrupts running transactions (CASSANDRA-20469)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Various gossip to TCM upgrade fixes (CASSANDRA-20483)",
+            "source": "ai_analysis",
+            "category": "maintenance"
+          },
+          {
+            "description": "Repair Paxos for the distributed metadata log when CMS membership changes (CASSANDRA-20467)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Fix PartitionUpdate.isEmpty deserialization issue to avoid potential EOFException (CASSANDRA-20345)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Avoid adding LEFT nodes to tokenMap on upgrade from gossip (CASSANDRA-20344)",
+            "source": "ai_analysis",
+            "category": "maintenance"
+          },
+          {
+            "description": "Allow empty placements when deserializing cluster metadata (CASSANDRA-20343)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Paxos Repair: NoSuchElementException on DistributedSchema.getKeyspaceMetadata (CASSANDRA-20320)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Improve performance of DistributedSchema.validate for large schemas (CASSANDRA-20360)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Add system_views.partition_key_statistics for querying SSTable metadata (CASSANDRA-20161)",
+            "source": "ai_analysis",
+            "category": "new_feature"
+          },
+          {
+            "description": "Make sure we can parse the expanded CQL before writing it to the log or sending it to replicas (CASSANDRA-20218)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Restore optimization in MultiCBuilder around building one clustering (CASSANDRA-20129)",
+            "source": "ai_analysis",
+            "category": "maintenance"
+          },
+          {
+            "description": "Ensure that RFP queries potentially stale replicas even with only key columns in the row filter (CASSANDRA-19938)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Deprecate use of gossip state for paxos electorate verification (CASSANDRA-19904)",
+            "source": "ai_analysis",
+            "category": "maintenance"
+          },
+          {
+            "description": "Fix incorrect nodetool suggestion when gossip mode is running (CASSANDRA-19905)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Fix BETWEEN filtering for reversed clustering columns (CASSANDRA-19878)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Allow getendpoints for system tables and make sure getNaturalReplicas work for MetaStrategy (CASSANDRA-19846)",
+            "source": "ai_analysis",
+            "category": "new_feature"
+          },
+          {
+            "description": "Disallow denylisting keys in system_cluster_metadata (CASSANDRA-19713)",
+            "source": "ai_analysis",
+            "category": "other"
+          },
+          {
+            "description": "Fix gossip status after replacement (CASSANDRA-19712)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Ignore repair requests for system_cluster_metadata (CASSANDRA-19711)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Avoid ClassCastException when verifying tables with reversed partitioner (CASSANDRA-19710)",
+            "source": "ai_analysis",
+            "category": "other"
+          },
+          {
+            "description": "Always repair the full range when repairing system_cluster_metadata (CASSANDRA-19709)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Use table-specific partitioners during Paxos repair (CASSANDRA-19714)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Support querying LocalStrategy tables with any partitioner (CASSANDRA-19692)",
+            "source": "ai_analysis",
+            "category": "new_feature"
+          },
+          {
+            "description": "Replace Stream iteration with for-loop for SimpleRestriction::bindAndGetClusteringElements (CASSANDRA-19679)",
+            "source": "ai_analysis",
+            "category": "new_feature"
+          },
+          {
+            "description": "Add cluster metadata id to gossip syn messages (CASSANDRA-19613)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Improve handling of transient replicas during range movements (CASSANDRA-19344)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Use Transformation.Kind.id in local and distributed log tables (CASSANDRA-19516)",
+            "source": "ai_analysis",
+            "category": "monitoring"
+          },
+          {
+            "description": "Remove period field from ClusterMetadata and metadata log tables (CASSANDRA-19482)",
+            "source": "ai_analysis",
+            "category": "maintenance"
+          },
+          {
+            "description": "Fix StorageService::constructRangeToEndpointMap for non-distributed keyspaces (CASSANDRA-19255)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Harry model and in-JVM tests for partition-restricted 2i queries (CASSANDRA-18275)",
+            "source": "ai_analysis",
+            "category": "other"
+          },
+          {
+            "description": "Transactional Cluster Metadata [CEP-21] (CASSANDRA-18330)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Make source distribution buildable by ant artifacts as doc/scripts/process-native-protocol-specs-in-docker.sh was not executable (CASSANDRA-20802)",
+            "source": "ai_analysis",
+            "category": "other"
+          },
+          {
+            "description": "Ensure replica filtering protection does not trigger unnecessary short read protection reads (CASSANDRA-20639)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Optimize initial skipping logic for SAI queries on large partitions (CASSANDRA-20191)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "SAI marks an index as non-empty when a partial partition/row modifications is flushed due to repair (CASSANDRA-20567)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Avoid fetching entire partitions on unresolved static rows in RFP when no static column predicates exist (CASSANDRA-20243)",
+            "source": "ai_analysis",
+            "category": "other"
+          },
+          {
+            "description": "Fix incorrect results of min / max in-built functions on clustering columns in descending order (CASSANDRA-20295)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Avoid memory allocation in offheap_object's NativeCell.valueSize() and NativeClustering.dataSize() (CASSANDRA-20162)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Streamline the serialized format for index status gossip messages (CASSANDRA-20058)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Batch clusterings into single SAI partition post-filtering reads (CASSANDRA-19497)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Use SinglePartitionReadCommand for index queries that use strict filtering (CASSANDRA-19968)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Fix mixed mode paxos ttl commit hang (CASSANDRA-20514)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Fix paxos mixed mode infinite loop (CASSANDRA-20493)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Add NativeTransportMaxConcurrentConnectionsPerIp to StorageProxyMBean (CASSANDRA-20642)",
+            "source": "ai_analysis",
+            "category": "new_feature"
+          },
+          {
+            "description": "Gossip doesn't converge due to race condition when updating EndpointStates multiple fields (CASSANDRA-20659)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Do not attach rows and partitions to QueryCancellationChecker when already attached (CASSANDRA-20135)",
+            "source": "ai_analysis",
+            "category": "other"
+          },
+          {
+            "description": "IndexOutOfBoundsException when accessing partition where the column was deleted (CASSANDRA-20108)",
+            "source": "ai_analysis",
+            "category": "other"
+          },
+          {
+            "description": "Support UDTs and vectors as clustering keys in descending order (CASSANDRA-20050)",
+            "source": "ai_analysis",
+            "category": "new_feature"
+          },
+          {
+            "description": "Fix CQL in snapshot's schema which did not contained UDTs used as reverse clustering columns (CASSANDRA-20036)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Fix indexing of a frozen collection that is the clustering key and reversed (CASSANDRA-19889)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          }
+        ],
+        "memory_acceleration": [
+          {
+            "description": "Use byte[] directly in QueryOptions instead of ByteBuffer and convert them to ArrayCell instead of BufferCell to reduce allocations (CASSANDRA-20166)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Calculate once and cache the result of ModificationStatement#requiresRead as a perf optimization (CASSANDRA-21040)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Avoid iterating all prepared statements when getting PreparedStatementsCacheSize metric (CASSANDRA-21038)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Extend nodetool tablestats for dictionary memory usage (CASSANDRA-20940)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix ExceptionsTable when stacktrace has zero elements (CASSANDRA-20992)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Expose Metric for Prepared Statement Cache Size (in bytes) (CASSANDRA-20864)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Limit the number of held heap dumps to not consume disk space excessively (CASSANDRA-20457)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Adopt Unsafe::invokeCleaner for Direct ByteBuffer cleaning (CASSANDRA-20677)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Introduce NativeAccessor to avoid new ByteBuffer allocation on flush for each NativeCell (CASSANDRA-20173)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Switch memtable-related off-heap objects to Native Endian and Memory to Little Endian (CASSANDRA-20190)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix marking an SSTable as suspected and BufferPool leakage in case of a corrupted SSTable read during a compaction (CASSANDRA-20396)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Reduce memory allocations in miscellaneous places along the hot write path (CASSANDRA-20167)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Reduce heap pressure when initializing CMS (CASSANDRA-20267)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Reduce heap usage occupied by the metrics (CASSANDRA-19567)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Refactor structure of caching metrics and expose auth cache metrics via JMX (CASSANDRA-17062)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Extend nodetool tpstats and system_views.thread_pools with detailed pool parameters (CASSANDRA-19289)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Heap dump should not be generated on handled exceptions (CASSANDRA-20974)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix MAX_SEGMENT_SIZE < chunkSize in MmappedRegions::updateState (CASSANDRA-20636)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Avoid lambda usage in TrieMemoryIndex range queries and ensure queue size tracking is per column (CASSANDRA-20668)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "zero copy streaming allocates direct memory that isn't used, but does help to fragment the memory space (CASSANDRA-20577)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Don't allocate in ThreadLocalReadAheadBuffer#close() (CASSANDRA-20551)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Heap and GC jvm flags improvements (CASSANDRA-20296)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Avoid memory allocation in offheap_object's NativeCell.valueSize() and NativeClustering.dataSize() (CASSANDRA-20162)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Add flag to avoid invalidating key cache on sstable deletions (CASSANDRA-20068)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Memtable allocation type unslabbed_heap_buffers_logged will cause an assertion error for TrieMemtables and SegmentedTrieMemtables (CASSANDRA-19835)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "IntrusiveStack.accumulate is not accumulating correctly (CASSANDRA-20670)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Backport fix to nodetool gcstats output for direct memory (CASSANDRA-21037)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix memory leak in BufferPoolAllocator when a capacity needs to be extended (CASSANDRA-20753)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix memory leak in BTree.FastBuilder (CASSANDRA-19785)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Improve accuracy of memtable heap usage tracking (CASSANDRA-17298)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Use byte[] directly in QueryOptions instead of ByteBuffer and convert them to ArrayCell instead of BufferCell to reduce allocations (CASSANDRA-20166)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Calculate once and cache the result of ModificationStatement#requiresRead as a perf optimization (CASSANDRA-21040)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Avoid iterating all prepared statements when getting PreparedStatementsCacheSize metric (CASSANDRA-21038)",
+            "source": "ai_analysis",
+            "category": "monitoring"
+          },
+          {
+            "description": "Extend nodetool tablestats for dictionary memory usage (CASSANDRA-20940)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Fix ExceptionsTable when stacktrace has zero elements (CASSANDRA-20992)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Expose Metric for Prepared Statement Cache Size (in bytes) (CASSANDRA-20864)",
+            "source": "ai_analysis",
+            "category": "new_feature"
+          },
+          {
+            "description": "Limit the number of held heap dumps to not consume disk space excessively (CASSANDRA-20457)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Adopt Unsafe::invokeCleaner for Direct ByteBuffer cleaning (CASSANDRA-20677)",
+            "source": "ai_analysis",
+            "category": "other"
+          },
+          {
+            "description": "Introduce NativeAccessor to avoid new ByteBuffer allocation on flush for each NativeCell (CASSANDRA-20173)",
+            "source": "ai_analysis",
+            "category": "new_feature"
+          },
+          {
+            "description": "Switch memtable-related off-heap objects to Native Endian and Memory to Little Endian (CASSANDRA-20190)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Fix marking an SSTable as suspected and BufferPool leakage in case of a corrupted SSTable read during a compaction (CASSANDRA-20396)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Reduce memory allocations in miscellaneous places along the hot write path (CASSANDRA-20167)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Reduce heap pressure when initializing CMS (CASSANDRA-20267)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Reduce heap usage occupied by the metrics (CASSANDRA-19567)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Refactor structure of caching metrics and expose auth cache metrics via JMX (CASSANDRA-17062)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Extend nodetool tpstats and system_views.thread_pools with detailed pool parameters (CASSANDRA-19289)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Heap dump should not be generated on handled exceptions (CASSANDRA-20974)",
+            "source": "ai_analysis",
+            "category": "other"
+          },
+          {
+            "description": "Fix MAX_SEGMENT_SIZE < chunkSize in MmappedRegions::updateState (CASSANDRA-20636)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Avoid lambda usage in TrieMemoryIndex range queries and ensure queue size tracking is per column (CASSANDRA-20668)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "zero copy streaming allocates direct memory that isn't used, but does help to fragment the memory space (CASSANDRA-20577)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Don't allocate in ThreadLocalReadAheadBuffer#close() (CASSANDRA-20551)",
+            "source": "ai_analysis",
+            "category": "other"
+          },
+          {
+            "description": "Heap and GC jvm flags improvements (CASSANDRA-20296)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Avoid memory allocation in offheap_object's NativeCell.valueSize() and NativeClustering.dataSize() (CASSANDRA-20162)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Add flag to avoid invalidating key cache on sstable deletions (CASSANDRA-20068)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Memtable allocation type unslabbed_heap_buffers_logged will cause an assertion error for TrieMemtables and SegmentedTrieMemtables (CASSANDRA-19835)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "IntrusiveStack.accumulate is not accumulating correctly (CASSANDRA-20670)",
+            "source": "ai_analysis",
+            "category": "other"
+          },
+          {
+            "description": "Backport fix to nodetool gcstats output for direct memory (CASSANDRA-21037)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Fix memory leak in BufferPoolAllocator when a capacity needs to be extended (CASSANDRA-20753)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Fix memory leak in BTree.FastBuilder (CASSANDRA-19785)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Improve accuracy of memtable heap usage tracking (CASSANDRA-17298)",
+            "source": "ai_analysis",
+            "category": "performance"
+          }
+        ],
+        "blockchain_web3": [
+          {
+            "description": "Schema annotations escape validation on CREATE and ALTER DDL statements (CASSANDRA-21046)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Reject PrepareJoin if tokens are already assigned (CASSANDRA-21006)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Rewrite constraint framework to remove column specification from constraint definition, introduce SQL-like NOT NULL (CASSANDRA-20563)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Unregistering a node should also remove it from tokenMap if it is there and recalculate the placements (CASSANDRA-20346)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Avoid adding LEFT nodes to tokenMap on upgrade from gossip (CASSANDRA-20344)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Avoid prepared statement invalidation race when committing schema changes (CASSANDRA-20116)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "In simulation tests, correctly set the tokens of replacement nodes (CASSANDRA-19997)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "CEP-24 Password validation / generation (CASSANDRA-17457)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Relax validation of snapshot name as a part of SSTable files path validation (CASSANDRA-20649)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Run audit_logging_options through santiation and validation on startup (CASSANDRA-20208)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix cleanup of old incremental repair sessions in case of owned token range changes or a table deleting (CASSANDRA-20877)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fixed incorrect error message constant for keyspace name length validation (CASSANDRA-20915)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Safer handling of out-of-range tokens (CASSANDRA-13704)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Schema annotations escape validation on CREATE and ALTER DDL statements (CASSANDRA-21046)",
+            "source": "ai_analysis",
+            "category": "new_feature"
+          },
+          {
+            "description": "Reject PrepareJoin if tokens are already assigned (CASSANDRA-21006)",
+            "source": "ai_analysis",
+            "category": "other"
+          },
+          {
+            "description": "Rewrite constraint framework to remove column specification from constraint definition, introduce SQL-like NOT NULL (CASSANDRA-20563)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Unregistering a node should also remove it from tokenMap if it is there and recalculate the placements (CASSANDRA-20346)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Avoid adding LEFT nodes to tokenMap on upgrade from gossip (CASSANDRA-20344)",
+            "source": "ai_analysis",
+            "category": "maintenance"
+          },
+          {
+            "description": "Avoid prepared statement invalidation race when committing schema changes (CASSANDRA-20116)",
+            "source": "ai_analysis",
+            "category": "new_feature"
+          },
+          {
+            "description": "In simulation tests, correctly set the tokens of replacement nodes (CASSANDRA-19997)",
+            "source": "ai_analysis",
+            "category": "other"
+          },
+          {
+            "description": "CEP-24 Password validation / generation (CASSANDRA-17457)",
+            "source": "ai_analysis",
+            "category": "security"
+          },
+          {
+            "description": "Relax validation of snapshot name as a part of SSTable files path validation (CASSANDRA-20649)",
+            "source": "ai_analysis",
+            "category": "maintenance"
+          },
+          {
+            "description": "Run audit_logging_options through santiation and validation on startup (CASSANDRA-20208)",
+            "source": "ai_analysis",
+            "category": "testing"
+          },
+          {
+            "description": "Fix cleanup of old incremental repair sessions in case of owned token range changes or a table deleting (CASSANDRA-20877)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Fixed incorrect error message constant for keyspace name length validation (CASSANDRA-20915)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Safer handling of out-of-range tokens (CASSANDRA-13704)",
+            "source": "ai_analysis",
+            "category": "performance"
+          }
+        ],
+        "security_privacy": [
+          {
+            "description": "Introducing comments and security labels for schema elements (CASSANDRA-20943)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Allow CQL client certificate authentication to work without sending an AUTHENTICATE request (CASSANDRA-18857)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Redact security-sensitive information in system_views.settings (CASSANDRA-20856)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Introducing comments and security labels for schema elements (CASSANDRA-20943)",
+            "source": "ai_analysis",
+            "category": "new_feature"
+          },
+          {
+            "description": "Allow CQL client certificate authentication to work without sending an AUTHENTICATE request (CASSANDRA-18857)",
+            "source": "ai_analysis",
+            "category": "security"
+          },
+          {
+            "description": "Redact security-sensitive information in system_views.settings (CASSANDRA-20856)",
+            "source": "ai_analysis",
+            "category": "security"
+          }
+        ],
+        "ai_ml_integration": [
+          {
+            "description": "Harry model and in-JVM tests for partition-restricted 2i queries (CASSANDRA-18275)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Harry model and in-JVM tests for partition-restricted 2i queries (CASSANDRA-18275)",
+            "source": "ai_analysis",
+            "category": "other"
+          }
+        ],
+        "vector_search": [
+          {
+            "description": "Fix CQLSSTableWriter serialization of vector of date and time (CASSANDRA-20979)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Add guardrail for enabling usage of VectorType (CASSANDRA-19903)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Support UDTs and vectors as clustering keys in descending order (CASSANDRA-20050)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix CQLSSTableWriter serialization of vector of date and time (CASSANDRA-20979)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Add guardrail for enabling usage of VectorType (CASSANDRA-19903)",
+            "source": "ai_analysis",
+            "category": "new_feature"
+          },
+          {
+            "description": "Support UDTs and vectors as clustering keys in descending order (CASSANDRA-20050)",
+            "source": "ai_analysis",
+            "category": "new_feature"
+          }
+        ]
+      },
+      "innovation_trends": {
+        "established_trends": [
+          {
+            "category": "distributed_computing",
+            "count": 128,
+            "percentage": 58.18
+          },
+          {
+            "category": "memory_acceleration",
+            "count": 60,
+            "percentage": 27.27
+          }
+        ],
+        "emerging_trends": [
+          {
+            "category": "blockchain_web3",
+            "count": 26,
+            "percentage": 11.82
+          }
+        ],
+        "category_frequency": {
+          "distributed_computing": 128,
+          "memory_acceleration": 60,
+          "blockchain_web3": 26,
+          "security_privacy": 6,
+          "ai_ml_integration": 2,
+          "vector_search": 6
+        }
+      },
+      "top_innovations": [
+        {
+          "description": "Avoid adding LEFT nodes to tokenMap on upgrade from gossip (CASSANDRA-20344)",
+          "categories": [
+            "distributed_computing",
+            "blockchain_web3"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Harry model and in-JVM tests for partition-restricted 2i queries (CASSANDRA-18275)",
+          "categories": [
+            "ai_ml_integration",
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Avoid memory allocation in offheap_object's NativeCell.valueSize() and NativeClustering.dataSize() (CASSANDRA-20162)",
+          "categories": [
+            "memory_acceleration",
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Support UDTs and vectors as clustering keys in descending order (CASSANDRA-20050)",
+          "categories": [
+            "vector_search",
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Avoid adding LEFT nodes to tokenMap on upgrade from gossip (CASSANDRA-20344)",
+          "categories": [
+            "distributed_computing",
+            "blockchain_web3"
+          ],
+          "category": "maintenance",
+          "source": "ai_analysis"
+        },
+        {
+          "description": "Harry model and in-JVM tests for partition-restricted 2i queries (CASSANDRA-18275)",
+          "categories": [
+            "ai_ml_integration",
+            "distributed_computing"
+          ],
+          "category": "other",
+          "source": "ai_analysis"
+        },
+        {
+          "description": "Avoid memory allocation in offheap_object's NativeCell.valueSize() and NativeClustering.dataSize() (CASSANDRA-20162)",
+          "categories": [
+            "memory_acceleration",
+            "distributed_computing"
+          ],
+          "category": "performance",
+          "source": "ai_analysis"
+        },
+        {
+          "description": "Support UDTs and vectors as clustering keys in descending order (CASSANDRA-20050)",
+          "categories": [
+            "vector_search",
+            "distributed_computing"
+          ],
+          "category": "new_feature",
+          "source": "ai_analysis"
+        },
+        {
+          "description": "Ensure peers with LEFT status are expired from gossip state (CASSANDRA-21035)",
+          "categories": [
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Use byte[] directly in QueryOptions instead of ByteBuffer and convert them to ArrayCell instead of BufferCell to reduce allocations (CASSANDRA-20166)",
+          "categories": [
+            "memory_acceleration"
+          ],
+          "source": "changes"
+        }
+      ],
+      "generation_date": "2026-01-02T03:09:50.236133"
+    },
+    "MongoDB": {
+      "total_innovations": 6,
+      "categories_detected": [
+        "blockchain_web3",
+        "memory_acceleration"
+      ],
+      "category_counts": {
+        "blockchain_web3": 4,
+        "memory_acceleration": 2
+      },
+      "category_details": {
+        "blockchain_web3": [
+          {
+            "description": "SERVER-108699 Check BSON size in collection validation",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "SERVER-114867 Define RSA_PSS_SALTLEN_DIGEST if not defined by OpenSSL",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "SERVER-108699 Check BSON size in collection validation",
+            "source": "ai_analysis",
+            "category": "testing"
+          },
+          {
+            "description": "SERVER-114867 Define RSA_PSS_SALTLEN_DIGEST if not defined by OpenSSL",
+            "source": "ai_analysis",
+            "category": "other"
+          }
+        ],
+        "memory_acceleration": [
+          {
+            "description": "SERVER-106360 Disable stacktrace symbolization for resmoke tasks by default",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "SERVER-106360 Disable stacktrace symbolization for resmoke tasks by default",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          }
+        ]
+      },
+      "innovation_trends": {
+        "established_trends": [
+          {
+            "category": "blockchain_web3",
+            "count": 4,
+            "percentage": 66.67
+          },
+          {
+            "category": "memory_acceleration",
+            "count": 2,
+            "percentage": 33.33
+          }
+        ],
+        "emerging_trends": [],
+        "category_frequency": {
+          "blockchain_web3": 4,
+          "memory_acceleration": 2
+        }
+      },
+      "top_innovations": [
+        {
+          "description": "SERVER-108699 Check BSON size in collection validation",
+          "categories": [
+            "blockchain_web3"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "SERVER-106360 Disable stacktrace symbolization for resmoke tasks by default",
+          "categories": [
+            "memory_acceleration"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "SERVER-114867 Define RSA_PSS_SALTLEN_DIGEST if not defined by OpenSSL",
+          "categories": [
+            "blockchain_web3"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "SERVER-108699 Check BSON size in collection validation",
+          "categories": [
+            "blockchain_web3"
+          ],
+          "category": "testing",
+          "source": "ai_analysis"
+        },
+        {
+          "description": "SERVER-106360 Disable stacktrace symbolization for resmoke tasks by default",
+          "categories": [
+            "memory_acceleration"
+          ],
+          "category": "bug_fix",
+          "source": "ai_analysis"
+        },
+        {
+          "description": "SERVER-114867 Define RSA_PSS_SALTLEN_DIGEST if not defined by OpenSSL",
+          "categories": [
+            "blockchain_web3"
+          ],
+          "category": "other",
+          "source": "ai_analysis"
+        }
+      ],
+      "generation_date": "2026-01-02T03:09:51.226663"
+    },
+    "Neo4j": {
+      "total_innovations": 0,
+      "categories_detected": [],
+      "category_counts": {},
+      "category_details": {},
+      "innovation_trends": {
+        "established_trends": [],
+        "emerging_trends": [],
+        "category_frequency": {}
+      },
+      "top_innovations": [],
+      "generation_date": "2026-01-02T03:09:51.654634"
+    },
+    "Redis": {
+      "total_innovations": 20,
+      "categories_detected": [
+        "memory_acceleration",
+        "distributed_computing"
+      ],
+      "category_counts": {
+        "memory_acceleration": 8,
+        "distributed_computing": 14
+      },
+      "category_details": {
+        "memory_acceleration": [
+          {
+            "description": "Major changes compared to 8.2: DIGEST\n,\nDELEX\n;\nSET\nextensions - atomic compare-and-set and compare-and-delete for string keys\nMSETEX\n- atomically set multiple string keys and update their expiration\nXREADGROUP\n- new\nCLAIM\noption for reading both idle pending and incoming stream entries\nCLUSTER MIGRATION\n- atomic slot migration\nCLUSTER SLOT-STATS\n- per-slot usage metrics: key count, CPU time, and network I/O\nRedis query engine:\nFT.HYBRID\n- hybrid search and fused scoring\nRedis query engine: I/O threading with performance boost for search and query commands (\nFT.*\n)\nI/O threading: substantial throughput increase (e.g. >30% for caching use cases (10%\nSET\n, 90%\nGET\n), 4 cores)\nJSON: substantial memory reduction for homogenous arrays (up to 92%)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Major changes compared to 8.2: JSON: substantial memory reduction for homogenous arrays (up to 92%)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Bug fixes (compared to 8.4-RC1): #14524\nXREADGROUP CLAIM\nreturns strings instead of integers\n#14529\nAdd variable key-spec flags to\nSET IF*\nand\nDELEX\n#P928\nPotential memory leak (MOD-11484)\n#T1801\n,\n#T1805\nmacOS build failures (MOD-12293)\n#J1438\nJSON.NUMINCRBY\n- wrong result on integer array with non-integer increment (MOD-12282)\n#J1437\nThread safety issue related to ASM and shared strings (MOD-12013)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Bug fixes (compared to 8.4-RC1): #P928\nPotential memory leak (MOD-11484)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Major changes compared to 8.2: DIGEST\n,\nDELEX\n;\nSET\nextensions - atomic compare-and-set and compare-and-delete for string keys\nMSETEX\n- atomically set multiple string keys and update their expiration\nXREADGROUP\n- new\nCLAIM\noption for reading both idle pending and incoming stream entries\nCLUSTER MIGRATION\n- atomic slot migration\nCLUSTER SLOT-STATS\n- per-slot usage metrics: key count, CPU time, and network I/O\nRedis query engine:\nFT.HYBRID\n- hybrid search and fused scoring\nRedis query engine: I/O threading with performance boost for search and query commands (\nFT.*\n)\nI/O threading: substantial throughput increase (e.g. >30% for caching use cases (10%\nSET\n, 90%\nGET\n), 4 cores)\nJSON: substantial memory reduction for homogenous arrays (up to 92%)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Major changes compared to 8.2: JSON: substantial memory reduction for homogenous arrays (up to 92%)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Bug fixes (compared to 8.4-RC1): #14524\nXREADGROUP CLAIM\nreturns strings instead of integers\n#14529\nAdd variable key-spec flags to\nSET IF*\nand\nDELEX\n#P928\nPotential memory leak (MOD-11484)\n#T1801\n,\n#T1805\nmacOS build failures (MOD-12293)\n#J1438\nJSON.NUMINCRBY\n- wrong result on integer array with non-integer increment (MOD-12282)\n#J1437\nThread safety issue related to ASM and shared strings (MOD-12013)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Bug fixes (compared to 8.4-RC1): #P928\nPotential memory leak (MOD-11484)",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          }
+        ],
+        "distributed_computing": [
+          {
+            "description": "Major changes compared to 8.2: DIGEST\n,\nDELEX\n;\nSET\nextensions - atomic compare-and-set and compare-and-delete for string keys\nMSETEX\n- atomically set multiple string keys and update their expiration\nXREADGROUP\n- new\nCLAIM\noption for reading both idle pending and incoming stream entries\nCLUSTER MIGRATION\n- atomic slot migration\nCLUSTER SLOT-STATS\n- per-slot usage metrics: key count, CPU time, and network I/O\nRedis query engine:\nFT.HYBRID\n- hybrid search and fused scoring\nRedis query engine: I/O threading with performance boost for search and query commands (\nFT.*\n)\nI/O threading: substantial throughput increase (e.g. >30% for caching use cases (10%\nSET\n, 90%\nGET\n), 4 cores)\nJSON: substantial memory reduction for homogenous arrays (up to 92%)",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "known bugs and limitations: When executing\nFT.SEARCH\n,\nFT.AGGREGATE\n,\nFT.CURSOR\n,\nFT.HYBRID\n,\nTS.MGET\n,\nTS.MRANGE\n,\nTS.MREVRANGE\n, and\nTS.QUERYINDEX\nwhile an atomic slot migration process is in progress, the results may be partial or contain duplicates\nFT.PROFILE\n,\nFT.EXPLAIN\n, and\nFT.EXPLACINCLI\ndo not contain the\nFT.HYBRID\noption\nMetrics from\nFT.HYBRID\ncommand are not displayed on\nFT.INFO\nand\nINFO\nFT.HYBRID\n: the\nEXPLAINSCORE\n,\nSHARD_K_RATIO\n,\nYIELD_DISTANCE_AS\n, and\nWITHCURSOR\noptions are not supported\nFT.HYBRID\n: post-filtering (after\nCOMBINE\nstep) using\nFILTER\nis not supported\nFT.HYBRID\n: the default response format considers only\nkey_id\nand\nscore\n. This may change for delivering the entire document content",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "known bugs and limitations: FT.HYBRID\n: the\nEXPLAINSCORE\n,\nSHARD_K_RATIO\n,\nYIELD_DISTANCE_AS\n, and\nWITHCURSOR\noptions are not supported",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Major changes compared to 8.2: CLUSTER MIGRATION\n- atomic slot migration",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Major changes compared to 8.2: CLUSTER SLOT-STATS\n- per-slot usage metrics: key count, CPU time, and network I/O",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Binary distributions: Alpine and Debian Docker images -\nhttps://hub.docker.com/_/redis\nInstall using snap - see\nhttps://github.com/redis/redis-snap\nInstall using brew - see\nhttps://github.com/redis/homebrew-redis\nInstall using RPM - see\nhttps://github.com/redis/redis-rpm\nInstall using Debian APT - see\nhttps://github.com/redis/redis-debian",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Binary distributions: Alpine and Debian Docker images -\nhttps://hub.docker.com/_/redis",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Major changes compared to 8.2: DIGEST\n,\nDELEX\n;\nSET\nextensions - atomic compare-and-set and compare-and-delete for string keys\nMSETEX\n- atomically set multiple string keys and update their expiration\nXREADGROUP\n- new\nCLAIM\noption for reading both idle pending and incoming stream entries\nCLUSTER MIGRATION\n- atomic slot migration\nCLUSTER SLOT-STATS\n- per-slot usage metrics: key count, CPU time, and network I/O\nRedis query engine:\nFT.HYBRID\n- hybrid search and fused scoring\nRedis query engine: I/O threading with performance boost for search and query commands (\nFT.*\n)\nI/O threading: substantial throughput increase (e.g. >30% for caching use cases (10%\nSET\n, 90%\nGET\n), 4 cores)\nJSON: substantial memory reduction for homogenous arrays (up to 92%)",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "known bugs and limitations: When executing\nFT.SEARCH\n,\nFT.AGGREGATE\n,\nFT.CURSOR\n,\nFT.HYBRID\n,\nTS.MGET\n,\nTS.MRANGE\n,\nTS.MREVRANGE\n, and\nTS.QUERYINDEX\nwhile an atomic slot migration process is in progress, the results may be partial or contain duplicates\nFT.PROFILE\n,\nFT.EXPLAIN\n, and\nFT.EXPLACINCLI\ndo not contain the\nFT.HYBRID\noption\nMetrics from\nFT.HYBRID\ncommand are not displayed on\nFT.INFO\nand\nINFO\nFT.HYBRID\n: the\nEXPLAINSCORE\n,\nSHARD_K_RATIO\n,\nYIELD_DISTANCE_AS\n, and\nWITHCURSOR\noptions are not supported\nFT.HYBRID\n: post-filtering (after\nCOMBINE\nstep) using\nFILTER\nis not supported\nFT.HYBRID\n: the default response format considers only\nkey_id\nand\nscore\n. This may change for delivering the entire document content",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "known bugs and limitations: FT.HYBRID\n: the\nEXPLAINSCORE\n,\nSHARD_K_RATIO\n,\nYIELD_DISTANCE_AS\n, and\nWITHCURSOR\noptions are not supported",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Major changes compared to 8.2: CLUSTER MIGRATION\n- atomic slot migration",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Major changes compared to 8.2: CLUSTER SLOT-STATS\n- per-slot usage metrics: key count, CPU time, and network I/O",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Binary distributions: Alpine and Debian Docker images -\nhttps://hub.docker.com/_/redis\nInstall using snap - see\nhttps://github.com/redis/redis-snap\nInstall using brew - see\nhttps://github.com/redis/homebrew-redis\nInstall using RPM - see\nhttps://github.com/redis/redis-rpm\nInstall using Debian APT - see\nhttps://github.com/redis/redis-debian",
+            "source": "ai_analysis",
+            "category": "other"
+          },
+          {
+            "description": "Binary distributions: Alpine and Debian Docker images -\nhttps://hub.docker.com/_/redis",
+            "source": "ai_analysis",
+            "category": "other"
+          }
+        ]
+      },
+      "innovation_trends": {
+        "established_trends": [
+          {
+            "category": "memory_acceleration",
+            "count": 8,
+            "percentage": 40.0
+          },
+          {
+            "category": "distributed_computing",
+            "count": 14,
+            "percentage": 70.0
+          }
+        ],
+        "emerging_trends": [],
+        "category_frequency": {
+          "memory_acceleration": 8,
+          "distributed_computing": 14
+        }
+      },
+      "top_innovations": [
+        {
+          "description": "Major changes compared to 8.2: DIGEST\n,\nDELEX\n;\nSET\nextensions - atomic compare-and-set and compare-and-delete for string keys\nMSETEX\n- atomically set multiple string keys and update their expiration\nXREADGROUP\n- new\nCLAIM\noption for reading both idle pending and incoming stream entries\nCLUSTER MIGRATION\n- atomic slot migration\nCLUSTER SLOT-STATS\n- per-slot usage metrics: key count, CPU time, and network I/O\nRedis query engine:\nFT.HYBRID\n- hybrid search and fused scoring\nRedis query engine: I/O threading with performance boost for search and query commands (\nFT.*\n)\nI/O threading: substantial throughput increase (e.g. >30% for caching use cases (10%\nSET\n, 90%\nGET\n), 4 cores)\nJSON: substantial memory reduction for homogenous arrays (up to 92%)",
+          "categories": [
+            "memory_acceleration",
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Major changes compared to 8.2: DIGEST\n,\nDELEX\n;\nSET\nextensions - atomic compare-and-set and compare-and-delete for string keys\nMSETEX\n- atomically set multiple string keys and update their expiration\nXREADGROUP\n- new\nCLAIM\noption for reading both idle pending and incoming stream entries\nCLUSTER MIGRATION\n- atomic slot migration\nCLUSTER SLOT-STATS\n- per-slot usage metrics: key count, CPU time, and network I/O\nRedis query engine:\nFT.HYBRID\n- hybrid search and fused scoring\nRedis query engine: I/O threading with performance boost for search and query commands (\nFT.*\n)\nI/O threading: substantial throughput increase (e.g. >30% for caching use cases (10%\nSET\n, 90%\nGET\n), 4 cores)\nJSON: substantial memory reduction for homogenous arrays (up to 92%)",
+          "categories": [
+            "memory_acceleration",
+            "distributed_computing"
+          ],
+          "category": "performance",
+          "source": "ai_analysis"
+        },
+        {
+          "description": "Major changes compared to 8.2: JSON: substantial memory reduction for homogenous arrays (up to 92%)",
+          "categories": [
+            "memory_acceleration"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Bug fixes (compared to 8.4-RC1): #14524\nXREADGROUP CLAIM\nreturns strings instead of integers\n#14529\nAdd variable key-spec flags to\nSET IF*\nand\nDELEX\n#P928\nPotential memory leak (MOD-11484)\n#T1801\n,\n#T1805\nmacOS build failures (MOD-12293)\n#J1438\nJSON.NUMINCRBY\n- wrong result on integer array with non-integer increment (MOD-12282)\n#J1437\nThread safety issue related to ASM and shared strings (MOD-12013)",
+          "categories": [
+            "memory_acceleration"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Bug fixes (compared to 8.4-RC1): #P928\nPotential memory leak (MOD-11484)",
+          "categories": [
+            "memory_acceleration"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "known bugs and limitations: When executing\nFT.SEARCH\n,\nFT.AGGREGATE\n,\nFT.CURSOR\n,\nFT.HYBRID\n,\nTS.MGET\n,\nTS.MRANGE\n,\nTS.MREVRANGE\n, and\nTS.QUERYINDEX\nwhile an atomic slot migration process is in progress, the results may be partial or contain duplicates\nFT.PROFILE\n,\nFT.EXPLAIN\n, and\nFT.EXPLACINCLI\ndo not contain the\nFT.HYBRID\noption\nMetrics from\nFT.HYBRID\ncommand are not displayed on\nFT.INFO\nand\nINFO\nFT.HYBRID\n: the\nEXPLAINSCORE\n,\nSHARD_K_RATIO\n,\nYIELD_DISTANCE_AS\n, and\nWITHCURSOR\noptions are not supported\nFT.HYBRID\n: post-filtering (after\nCOMBINE\nstep) using\nFILTER\nis not supported\nFT.HYBRID\n: the default response format considers only\nkey_id\nand\nscore\n. This may change for delivering the entire document content",
+          "categories": [
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "known bugs and limitations: FT.HYBRID\n: the\nEXPLAINSCORE\n,\nSHARD_K_RATIO\n,\nYIELD_DISTANCE_AS\n, and\nWITHCURSOR\noptions are not supported",
+          "categories": [
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Major changes compared to 8.2: CLUSTER MIGRATION\n- atomic slot migration",
+          "categories": [
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Major changes compared to 8.2: CLUSTER SLOT-STATS\n- per-slot usage metrics: key count, CPU time, and network I/O",
+          "categories": [
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Binary distributions: Alpine and Debian Docker images -\nhttps://hub.docker.com/_/redis\nInstall using snap - see\nhttps://github.com/redis/redis-snap\nInstall using brew - see\nhttps://github.com/redis/homebrew-redis\nInstall using RPM - see\nhttps://github.com/redis/redis-rpm\nInstall using Debian APT - see\nhttps://github.com/redis/redis-debian",
+          "categories": [
+            "distributed_computing"
+          ],
+          "source": "changes"
+        }
+      ],
+      "generation_date": "2026-01-02T03:09:51.819913"
+    },
+    "Tidb": {
+      "total_innovations": 58,
+      "categories_detected": [
+        "memory_acceleration",
+        "distributed_computing",
+        "vector_search",
+        "blockchain_web3"
+      ],
+      "category_counts": {
+        "memory_acceleration": 22,
+        "distributed_computing": 34,
+        "vector_search": 4,
+        "blockchain_web3": 16
+      },
+      "category_details": {
+        "memory_acceleration": [
+          {
+            "description": "TiKV\nChange the log level of certain automatically recoverable errors in the BR module from ERROR to WARN to reduce unnecessary alerts #18493 @YuJuncen\nChange the log level of certain TiKV errors from ERROR to WARN to reduce unnecessary alerts #18745 @exit-code-1\nSplit the GC check process in the Raft module into two phases to improve the efficiency of garbage collection for redundant MVCC versions in Regions #18695 @v01dstar\nCalculate MVCC redundancy based on GC safe points and RocksDB statistics to improve the efficiency and accuracy of compaction #18697 @v01dstar\nChange the GC handling logic for Region MVCC to be executed by GC worker threads, unifying the overall GC processing logic #18727 @v01dstar\nOptimize the calculation method of the default gRPC thread pool size by making it dynamically calculated based on total CPU quota instead of a fixed value, avoiding performance bottlenecks caused by insufficient gRPC threads #18613 @LykxSassinator\nOptimize the tail latency of async snapshot and write operations in environments with a large number of SST files #18743 @Connor1996",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Split the GC check process in the Raft module into two phases to improve the efficiency of garbage collection for redundant MVCC versions in Regions #18695 @v01dstar",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Optimize the calculation method of the default gRPC thread pool size by making it dynamically calculated based on total CPU quota instead of a fixed value, avoiding performance bottlenecks caused by insufficient gRPC threads #18613 @LykxSassinator",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "PD\nReduce unnecessary error logs #9370 @bufferflies\nUpgrade the Golang version from 1.23.0 to 1.23.12 and update related dependencies #9788 @JmPotato\nSupport scattering Regions at the table level to achieve balanced distribution across scatter-role and engine dimensions #8986 @bufferflies",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Reduce unnecessary error logs #9370 @bufferflies",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Support scattering Regions at the table level to achieve balanced distribution across scatter-role and engine dimensions #8986 @bufferflies",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "TiDB\nFix the issue that the use index hint does not take effect when tidb_isolation_read_engines is set to tiflash #60869 @Lloyd-Pottiger\nFix the issue that max_execution_time does not take effect for SELECT FOR UPDATE statements #62960 @ekexium\nFix the issue that row count estimates across months or years can be significantly overestimated #50080 @terry1purcell\nFix the issue that the handling of Decimal types in prepared statements is inconsistent with MySQL #62602 @ChangRui-Ryan\nFix the issue that the short path in the TRUNCATE() function is incorrectly processed #57608 @xzhangxian1008\nFix the issue that spilled files might not be fully deleted when the Out Of Quota For Local Temporary Space error is triggered #63216 @xzhangxian1008\nFix the issue that queries using regular expressions against INFORMATION_SCHEMA tables might return incorrect results #62347 @River2000i\nFix the issue that TiDB does not return an error when it fails to get a timestamp from PD #58871 @joechenrh\nFix the issue that query results differ between the owner TiDB and non-owner TiDB instances during executing MODIFY COLUMN statements #60264 @tangenta\nFix the issue that ADMIN ALTER DDL JOBS statements display incorrect parameter values after dynamically modifying parameters #63201 @fzzf678\nFix the issue that the GC safe point does not advance when adding an index within a transaction #62424 @wjhuang2016\nFix the issue that ingesting excessively large SST files into L0 triggers flow control #63466 @CbcWestwolf\nFix the issue that global sorting is blocked when the CPU-to-memory ratio is 1:2 #60951 @wjhuang2016\nFix the issue that pending Distributed eXecution Framework (DXF) tasks cannot be canceled when the number of tasks exceeds 16 #63896 @D3Hunter\nFix the issue that after the DXF task is canceled, other tasks fail to exit #63927 @D3Hunter\nFix the issue that enabling the Apply operator concurrency (tidb_enable_parallel_apply = on) causes plan generation failure due to a missing clone implementation #59863 @hawkingrei\nFix the issue that using the ATAN2 function might produce incorrect results #60093 @guo-shaoge\nFix the issue that select 1 from dual cannot use the instance-level plan cache #63075 @time-and-fate\nFix the issue that changing the join order might cause the planner to fail #61715 @hawkingrei\nFix the issue that using the set_var hint with bindings prevents variables from being restored to their original settings #59822 @wddevries\nFix the issue that setting ONLY_FULL_GROUP_BY to a negative value causes validation failure #62617 @AilinKid\nFix the issue that the ONLY_FULL_GROUP_BY check is case-insensitive #62672 @AilinKid\nFix the issue that the DP join order algorithm might generate an incorrect plan #63353 @winoros\nFix the issue that rewriting an outer join to an inner join might produce incorrect results #61327 @hawkingrei\nFix the issue that executing certain queries might cause an internal panic #58600 @Defined2014\nFix the issue that the global index might read incorrect data during certain ALTER PARTITION operations #64084 @mjonss\nFix the issue that the global index might return incorrect results in some cases #61083 @Defined2014\nFix the issue that character_set_results truncates incorrect characters instead of replacing them #61085 @xhebox\nFix the issue that running ADD COLUMN and UPDATE statements concurrently might cause errors #60047 @L-maple\nFix the issue that Merge Join might omit filter conditions when calculating costs #62917 @qw4990",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix the issue that global sorting is blocked when the CPU-to-memory ratio is 1:2 #60951 @wjhuang2016",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix the issue that select 1 from dual cannot use the instance-level plan cache #63075 @time-and-fate",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "PD\nFix the issue that the PD Client retry strategy is not initialized correctly #9013 @rleungx\nFix the issue that the TSO HTTP API /config and /members return incorrect results #9797 @lhy1024\nFix the incorrect error handling logic of TSO Follower Proxy #9188 @Tema\nFix the issue that splitting buckets still works even after bucket reporting is disabled #9726 @bufferflies\nFix the issue that the Resource Manager incorrectly allocates tokens, causing queries to be stuck #9455 @JmPotato\nFix the issue that Placement Rules do not take effect after PD leader switches #9602 @okJiang\nFix the issue that PD might fail to parse large numeric values in scientific notation, which consequently causes some TTL-related configurations to not take effect #9343 @lhy1024",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix the issue that splitting buckets still works even after bucket reporting is disabled #9726 @bufferflies",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "TiKV\nChange the log level of certain automatically recoverable errors in the BR module from ERROR to WARN to reduce unnecessary alerts #18493 @YuJuncen\nChange the log level of certain TiKV errors from ERROR to WARN to reduce unnecessary alerts #18745 @exit-code-1\nSplit the GC check process in the Raft module into two phases to improve the efficiency of garbage collection for redundant MVCC versions in Regions #18695 @v01dstar\nCalculate MVCC redundancy based on GC safe points and RocksDB statistics to improve the efficiency and accuracy of compaction #18697 @v01dstar\nChange the GC handling logic for Region MVCC to be executed by GC worker threads, unifying the overall GC processing logic #18727 @v01dstar\nOptimize the calculation method of the default gRPC thread pool size by making it dynamically calculated based on total CPU quota instead of a fixed value, avoiding performance bottlenecks caused by insufficient gRPC threads #18613 @LykxSassinator\nOptimize the tail latency of async snapshot and write operations in environments with a large number of SST files #18743 @Connor1996",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Split the GC check process in the Raft module into two phases to improve the efficiency of garbage collection for redundant MVCC versions in Regions #18695 @v01dstar",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Optimize the calculation method of the default gRPC thread pool size by making it dynamically calculated based on total CPU quota instead of a fixed value, avoiding performance bottlenecks caused by insufficient gRPC threads #18613 @LykxSassinator",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "PD\nReduce unnecessary error logs #9370 @bufferflies\nUpgrade the Golang version from 1.23.0 to 1.23.12 and update related dependencies #9788 @JmPotato\nSupport scattering Regions at the table level to achieve balanced distribution across scatter-role and engine dimensions #8986 @bufferflies",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Reduce unnecessary error logs #9370 @bufferflies",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Support scattering Regions at the table level to achieve balanced distribution across scatter-role and engine dimensions #8986 @bufferflies",
+            "source": "ai_analysis",
+            "category": "new_feature"
+          },
+          {
+            "description": "TiDB\nFix the issue that the use index hint does not take effect when tidb_isolation_read_engines is set to tiflash #60869 @Lloyd-Pottiger\nFix the issue that max_execution_time does not take effect for SELECT FOR UPDATE statements #62960 @ekexium\nFix the issue that row count estimates across months or years can be significantly overestimated #50080 @terry1purcell\nFix the issue that the handling of Decimal types in prepared statements is inconsistent with MySQL #62602 @ChangRui-Ryan\nFix the issue that the short path in the TRUNCATE() function is incorrectly processed #57608 @xzhangxian1008\nFix the issue that spilled files might not be fully deleted when the Out Of Quota For Local Temporary Space error is triggered #63216 @xzhangxian1008\nFix the issue that queries using regular expressions against INFORMATION_SCHEMA tables might return incorrect results #62347 @River2000i\nFix the issue that TiDB does not return an error when it fails to get a timestamp from PD #58871 @joechenrh\nFix the issue that query results differ between the owner TiDB and non-owner TiDB instances during executing MODIFY COLUMN statements #60264 @tangenta\nFix the issue that ADMIN ALTER DDL JOBS statements display incorrect parameter values after dynamically modifying parameters #63201 @fzzf678\nFix the issue that the GC safe point does not advance when adding an index within a transaction #62424 @wjhuang2016\nFix the issue that ingesting excessively large SST files into L0 triggers flow control #63466 @CbcWestwolf\nFix the issue that global sorting is blocked when the CPU-to-memory ratio is 1:2 #60951 @wjhuang2016\nFix the issue that pending Distributed eXecution Framework (DXF) tasks cannot be canceled when the number of tasks exceeds 16 #63896 @D3Hunter\nFix the issue that after the DXF task is canceled, other tasks fail to exit #63927 @D3Hunter\nFix the issue that enabling the Apply operator concurrency (tidb_enable_parallel_apply = on) causes plan generation failure due to a missing clone implementation #59863 @hawkingrei\nFix the issue that using the ATAN2 function might produce incorrect results #60093 @guo-shaoge\nFix the issue that select 1 from dual cannot use the instance-level plan cache #63075 @time-and-fate\nFix the issue that changing the join order might cause the planner to fail #61715 @hawkingrei\nFix the issue that using the set_var hint with bindings prevents variables from being restored to their original settings #59822 @wddevries\nFix the issue that setting ONLY_FULL_GROUP_BY to a negative value causes validation failure #62617 @AilinKid\nFix the issue that the ONLY_FULL_GROUP_BY check is case-insensitive #62672 @AilinKid\nFix the issue that the DP join order algorithm might generate an incorrect plan #63353 @winoros\nFix the issue that rewriting an outer join to an inner join might produce incorrect results #61327 @hawkingrei\nFix the issue that executing certain queries might cause an internal panic #58600 @Defined2014\nFix the issue that the global index might read incorrect data during certain ALTER PARTITION operations #64084 @mjonss\nFix the issue that the global index might return incorrect results in some cases #61083 @Defined2014\nFix the issue that character_set_results truncates incorrect characters instead of replacing them #61085 @xhebox\nFix the issue that running ADD COLUMN and UPDATE statements concurrently might cause errors #60047 @L-maple\nFix the issue that Merge Join might omit filter conditions when calculating costs #62917 @qw4990",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Fix the issue that global sorting is blocked when the CPU-to-memory ratio is 1:2 #60951 @wjhuang2016",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Fix the issue that select 1 from dual cannot use the instance-level plan cache #63075 @time-and-fate",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "PD\nFix the issue that the PD Client retry strategy is not initialized correctly #9013 @rleungx\nFix the issue that the TSO HTTP API /config and /members return incorrect results #9797 @lhy1024\nFix the incorrect error handling logic of TSO Follower Proxy #9188 @Tema\nFix the issue that splitting buckets still works even after bucket reporting is disabled #9726 @bufferflies\nFix the issue that the Resource Manager incorrectly allocates tokens, causing queries to be stuck #9455 @JmPotato\nFix the issue that Placement Rules do not take effect after PD leader switches #9602 @okJiang\nFix the issue that PD might fail to parse large numeric values in scientific notation, which consequently causes some TTL-related configurations to not take effect #9343 @lhy1024",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Fix the issue that splitting buckets still works even after bucket reporting is disabled #9726 @bufferflies",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          }
+        ],
+        "distributed_computing": [
+          {
+            "description": "TiKV\nChange the log level of certain automatically recoverable errors in the BR module from ERROR to WARN to reduce unnecessary alerts #18493 @YuJuncen\nChange the log level of certain TiKV errors from ERROR to WARN to reduce unnecessary alerts #18745 @exit-code-1\nSplit the GC check process in the Raft module into two phases to improve the efficiency of garbage collection for redundant MVCC versions in Regions #18695 @v01dstar\nCalculate MVCC redundancy based on GC safe points and RocksDB statistics to improve the efficiency and accuracy of compaction #18697 @v01dstar\nChange the GC handling logic for Region MVCC to be executed by GC worker threads, unifying the overall GC processing logic #18727 @v01dstar\nOptimize the calculation method of the default gRPC thread pool size by making it dynamically calculated based on total CPU quota instead of a fixed value, avoiding performance bottlenecks caused by insufficient gRPC threads #18613 @LykxSassinator\nOptimize the tail latency of async snapshot and write operations in environments with a large number of SST files #18743 @Connor1996",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Split the GC check process in the Raft module into two phases to improve the efficiency of garbage collection for redundant MVCC versions in Regions #18695 @v01dstar",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Optimize the tail latency of async snapshot and write operations in environments with a large number of SST files #18743 @Connor1996",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "TiFlash\nSkip unnecessary data reads to improve TableScan performance #9875 @gengliqi\nOptimize TableScan performance on wide tables with many columns and sparse data (that is, lots of NULL or empty values) in TiFlash #10361 @JaySon-Huang\nReduce TiFlash CPU overhead caused by adding vector indexes in clusters with many tables #10357 @Lloyd-Pottiger\nMinimize unnecessary log output when processing useless Raft commands to reduce log volume #10467 @JaySon-Huang\nImprove TableScan performance on small partitioned tables in TiFlash #10487 @JaySon-Huang",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Reduce TiFlash CPU overhead caused by adding vector indexes in clusters with many tables #10357 @Lloyd-Pottiger",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Minimize unnecessary log output when processing useless Raft commands to reduce log volume #10467 @JaySon-Huang",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Improve TableScan performance on small partitioned tables in TiFlash #10487 @JaySon-Huang",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "TiDB\nFix the issue that the use index hint does not take effect when tidb_isolation_read_engines is set to tiflash #60869 @Lloyd-Pottiger\nFix the issue that max_execution_time does not take effect for SELECT FOR UPDATE statements #62960 @ekexium\nFix the issue that row count estimates across months or years can be significantly overestimated #50080 @terry1purcell\nFix the issue that the handling of Decimal types in prepared statements is inconsistent with MySQL #62602 @ChangRui-Ryan\nFix the issue that the short path in the TRUNCATE() function is incorrectly processed #57608 @xzhangxian1008\nFix the issue that spilled files might not be fully deleted when the Out Of Quota For Local Temporary Space error is triggered #63216 @xzhangxian1008\nFix the issue that queries using regular expressions against INFORMATION_SCHEMA tables might return incorrect results #62347 @River2000i\nFix the issue that TiDB does not return an error when it fails to get a timestamp from PD #58871 @joechenrh\nFix the issue that query results differ between the owner TiDB and non-owner TiDB instances during executing MODIFY COLUMN statements #60264 @tangenta\nFix the issue that ADMIN ALTER DDL JOBS statements display incorrect parameter values after dynamically modifying parameters #63201 @fzzf678\nFix the issue that the GC safe point does not advance when adding an index within a transaction #62424 @wjhuang2016\nFix the issue that ingesting excessively large SST files into L0 triggers flow control #63466 @CbcWestwolf\nFix the issue that global sorting is blocked when the CPU-to-memory ratio is 1:2 #60951 @wjhuang2016\nFix the issue that pending Distributed eXecution Framework (DXF) tasks cannot be canceled when the number of tasks exceeds 16 #63896 @D3Hunter\nFix the issue that after the DXF task is canceled, other tasks fail to exit #63927 @D3Hunter\nFix the issue that enabling the Apply operator concurrency (tidb_enable_parallel_apply = on) causes plan generation failure due to a missing clone implementation #59863 @hawkingrei\nFix the issue that using the ATAN2 function might produce incorrect results #60093 @guo-shaoge\nFix the issue that select 1 from dual cannot use the instance-level plan cache #63075 @time-and-fate\nFix the issue that changing the join order might cause the planner to fail #61715 @hawkingrei\nFix the issue that using the set_var hint with bindings prevents variables from being restored to their original settings #59822 @wddevries\nFix the issue that setting ONLY_FULL_GROUP_BY to a negative value causes validation failure #62617 @AilinKid\nFix the issue that the ONLY_FULL_GROUP_BY check is case-insensitive #62672 @AilinKid\nFix the issue that the DP join order algorithm might generate an incorrect plan #63353 @winoros\nFix the issue that rewriting an outer join to an inner join might produce incorrect results #61327 @hawkingrei\nFix the issue that executing certain queries might cause an internal panic #58600 @Defined2014\nFix the issue that the global index might read incorrect data during certain ALTER PARTITION operations #64084 @mjonss\nFix the issue that the global index might return incorrect results in some cases #61083 @Defined2014\nFix the issue that character_set_results truncates incorrect characters instead of replacing them #61085 @xhebox\nFix the issue that running ADD COLUMN and UPDATE statements concurrently might cause errors #60047 @L-maple\nFix the issue that Merge Join might omit filter conditions when calculating costs #62917 @qw4990",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix the issue that pending Distributed eXecution Framework (DXF) tasks cannot be canceled when the number of tasks exceeds 16 #63896 @D3Hunter",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix the issue that the global index might read incorrect data during certain ALTER PARTITION operations #64084 @mjonss",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix the issue that running ADD COLUMN and UPDATE statements concurrently might cause errors #60047 @L-maple",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "TiFlash\nFix the issue that queries might fail when queried columns contain a large number of NULL values #10340 @Lloyd-Pottiger\nFix the issue that TiFlash generates inflated statistics for RU consumption #10380 @JinheLin\nFix the issue that TiFlash might encounter OOM when slow queries exist under the disaggregated storage and compute architecture #10278 @JaySon-Huang\nFix the issue that TiFlash might retry indefinitely when a network partition occurs between TiFlash and S3 under the disaggregated storage and compute architecture #10424 @JaySon-Huang\nFix the issue that the FLOOR() and CEIL() functions might return incorrect results when their parameters are of the DECIMAL type #10365 @ChangRui-Ryan",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix the issue that TiFlash might retry indefinitely when a network partition occurs between TiFlash and S3 under the disaggregated storage and compute architecture #10424 @JaySon-Huang",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Tools\nBackup & Restore (BR)\nFix the issue that zstd compression in log backup does not take effect, causing the output to remain uncompressed #18836 @3pointer\nFix the issue that the flush operation occasionally becomes slow when backing up data to Azure Blob Storage #18410 @YuJuncen\nFix the issue that log truncate might occur when file deletion fails #63358 @YuJuncen\nFix the issue that setting --checksum to false during backup might cause the count column in the mysql.stats_meta table to become 0 after restore #60978 @Leavrth\nReduce the possibility of BR failing to restore data from S3-compatible storage services when the bandwidth limits on these services are enabled #18846 @kennytm\nFix the issue that log backup observer might lose the observation on a Region, causing the log backup progress to fail to advance #18243 @Leavrth\nFix the issue that causes restore point creation to fail when backed-up tables include certain special schemas #63663 @RidRisR\nTiCDC\nFix a panic that could occur when configuring a column-type partition dispatcher that includes virtual columns #12241 @wk989898\nFix a panic that could occur when closing the DDL puller #12244 @wk989898\nSupport filtering unsupported DDL types through the ignore-txn-start-ts parameter in the filter configuration #12286 @asddongmen\nFix the issue that changefeed tasks might get stuck when using Azure Blob Storage as the downstream #12277 @zurakutsia\nFix the issue that DROP FOREIGN KEY DDL is not replicated to the downstream #12328 @3AceShowHand\nFix the issue that TiCDC might panic when encountering rollback and prewrite entries during Region subscription #19048 @3AceShowHand\nFix the issue that assertion errors in TiKV might cause TiCDC to panic #18498 @tharanga",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "TiCDC\nFix a panic that could occur when configuring a column-type partition dispatcher that includes virtual columns #12241 @wk989898\nFix a panic that could occur when closing the DDL puller #12244 @wk989898\nSupport filtering unsupported DDL types through the ignore-txn-start-ts parameter in the filter configuration #12286 @asddongmen\nFix the issue that changefeed tasks might get stuck when using Azure Blob Storage as the downstream #12277 @zurakutsia\nFix the issue that DROP FOREIGN KEY DDL is not replicated to the downstream #12328 @3AceShowHand\nFix the issue that TiCDC might panic when encountering rollback and prewrite entries during Region subscription #19048 @3AceShowHand\nFix the issue that assertion errors in TiKV might cause TiCDC to panic #18498 @tharanga",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix a panic that could occur when configuring a column-type partition dispatcher that includes virtual columns #12241 @wk989898",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix the issue that DROP FOREIGN KEY DDL is not replicated to the downstream #12328 @3AceShowHand",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "TiKV\nChange the log level of certain automatically recoverable errors in the BR module from ERROR to WARN to reduce unnecessary alerts #18493 @YuJuncen\nChange the log level of certain TiKV errors from ERROR to WARN to reduce unnecessary alerts #18745 @exit-code-1\nSplit the GC check process in the Raft module into two phases to improve the efficiency of garbage collection for redundant MVCC versions in Regions #18695 @v01dstar\nCalculate MVCC redundancy based on GC safe points and RocksDB statistics to improve the efficiency and accuracy of compaction #18697 @v01dstar\nChange the GC handling logic for Region MVCC to be executed by GC worker threads, unifying the overall GC processing logic #18727 @v01dstar\nOptimize the calculation method of the default gRPC thread pool size by making it dynamically calculated based on total CPU quota instead of a fixed value, avoiding performance bottlenecks caused by insufficient gRPC threads #18613 @LykxSassinator\nOptimize the tail latency of async snapshot and write operations in environments with a large number of SST files #18743 @Connor1996",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Split the GC check process in the Raft module into two phases to improve the efficiency of garbage collection for redundant MVCC versions in Regions #18695 @v01dstar",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Optimize the tail latency of async snapshot and write operations in environments with a large number of SST files #18743 @Connor1996",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "TiFlash\nSkip unnecessary data reads to improve TableScan performance #9875 @gengliqi\nOptimize TableScan performance on wide tables with many columns and sparse data (that is, lots of NULL or empty values) in TiFlash #10361 @JaySon-Huang\nReduce TiFlash CPU overhead caused by adding vector indexes in clusters with many tables #10357 @Lloyd-Pottiger\nMinimize unnecessary log output when processing useless Raft commands to reduce log volume #10467 @JaySon-Huang\nImprove TableScan performance on small partitioned tables in TiFlash #10487 @JaySon-Huang",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Reduce TiFlash CPU overhead caused by adding vector indexes in clusters with many tables #10357 @Lloyd-Pottiger",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Minimize unnecessary log output when processing useless Raft commands to reduce log volume #10467 @JaySon-Huang",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Improve TableScan performance on small partitioned tables in TiFlash #10487 @JaySon-Huang",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "TiDB\nFix the issue that the use index hint does not take effect when tidb_isolation_read_engines is set to tiflash #60869 @Lloyd-Pottiger\nFix the issue that max_execution_time does not take effect for SELECT FOR UPDATE statements #62960 @ekexium\nFix the issue that row count estimates across months or years can be significantly overestimated #50080 @terry1purcell\nFix the issue that the handling of Decimal types in prepared statements is inconsistent with MySQL #62602 @ChangRui-Ryan\nFix the issue that the short path in the TRUNCATE() function is incorrectly processed #57608 @xzhangxian1008\nFix the issue that spilled files might not be fully deleted when the Out Of Quota For Local Temporary Space error is triggered #63216 @xzhangxian1008\nFix the issue that queries using regular expressions against INFORMATION_SCHEMA tables might return incorrect results #62347 @River2000i\nFix the issue that TiDB does not return an error when it fails to get a timestamp from PD #58871 @joechenrh\nFix the issue that query results differ between the owner TiDB and non-owner TiDB instances during executing MODIFY COLUMN statements #60264 @tangenta\nFix the issue that ADMIN ALTER DDL JOBS statements display incorrect parameter values after dynamically modifying parameters #63201 @fzzf678\nFix the issue that the GC safe point does not advance when adding an index within a transaction #62424 @wjhuang2016\nFix the issue that ingesting excessively large SST files into L0 triggers flow control #63466 @CbcWestwolf\nFix the issue that global sorting is blocked when the CPU-to-memory ratio is 1:2 #60951 @wjhuang2016\nFix the issue that pending Distributed eXecution Framework (DXF) tasks cannot be canceled when the number of tasks exceeds 16 #63896 @D3Hunter\nFix the issue that after the DXF task is canceled, other tasks fail to exit #63927 @D3Hunter\nFix the issue that enabling the Apply operator concurrency (tidb_enable_parallel_apply = on) causes plan generation failure due to a missing clone implementation #59863 @hawkingrei\nFix the issue that using the ATAN2 function might produce incorrect results #60093 @guo-shaoge\nFix the issue that select 1 from dual cannot use the instance-level plan cache #63075 @time-and-fate\nFix the issue that changing the join order might cause the planner to fail #61715 @hawkingrei\nFix the issue that using the set_var hint with bindings prevents variables from being restored to their original settings #59822 @wddevries\nFix the issue that setting ONLY_FULL_GROUP_BY to a negative value causes validation failure #62617 @AilinKid\nFix the issue that the ONLY_FULL_GROUP_BY check is case-insensitive #62672 @AilinKid\nFix the issue that the DP join order algorithm might generate an incorrect plan #63353 @winoros\nFix the issue that rewriting an outer join to an inner join might produce incorrect results #61327 @hawkingrei\nFix the issue that executing certain queries might cause an internal panic #58600 @Defined2014\nFix the issue that the global index might read incorrect data during certain ALTER PARTITION operations #64084 @mjonss\nFix the issue that the global index might return incorrect results in some cases #61083 @Defined2014\nFix the issue that character_set_results truncates incorrect characters instead of replacing them #61085 @xhebox\nFix the issue that running ADD COLUMN and UPDATE statements concurrently might cause errors #60047 @L-maple\nFix the issue that Merge Join might omit filter conditions when calculating costs #62917 @qw4990",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Fix the issue that pending Distributed eXecution Framework (DXF) tasks cannot be canceled when the number of tasks exceeds 16 #63896 @D3Hunter",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Fix the issue that the global index might read incorrect data during certain ALTER PARTITION operations #64084 @mjonss",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Fix the issue that running ADD COLUMN and UPDATE statements concurrently might cause errors #60047 @L-maple",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "TiFlash\nFix the issue that queries might fail when queried columns contain a large number of NULL values #10340 @Lloyd-Pottiger\nFix the issue that TiFlash generates inflated statistics for RU consumption #10380 @JinheLin\nFix the issue that TiFlash might encounter OOM when slow queries exist under the disaggregated storage and compute architecture #10278 @JaySon-Huang\nFix the issue that TiFlash might retry indefinitely when a network partition occurs between TiFlash and S3 under the disaggregated storage and compute architecture #10424 @JaySon-Huang\nFix the issue that the FLOOR() and CEIL() functions might return incorrect results when their parameters are of the DECIMAL type #10365 @ChangRui-Ryan",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Fix the issue that TiFlash might retry indefinitely when a network partition occurs between TiFlash and S3 under the disaggregated storage and compute architecture #10424 @JaySon-Huang",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Tools\nBackup & Restore (BR)\nFix the issue that zstd compression in log backup does not take effect, causing the output to remain uncompressed #18836 @3pointer\nFix the issue that the flush operation occasionally becomes slow when backing up data to Azure Blob Storage #18410 @YuJuncen\nFix the issue that log truncate might occur when file deletion fails #63358 @YuJuncen\nFix the issue that setting --checksum to false during backup might cause the count column in the mysql.stats_meta table to become 0 after restore #60978 @Leavrth\nReduce the possibility of BR failing to restore data from S3-compatible storage services when the bandwidth limits on these services are enabled #18846 @kennytm\nFix the issue that log backup observer might lose the observation on a Region, causing the log backup progress to fail to advance #18243 @Leavrth\nFix the issue that causes restore point creation to fail when backed-up tables include certain special schemas #63663 @RidRisR\nTiCDC\nFix a panic that could occur when configuring a column-type partition dispatcher that includes virtual columns #12241 @wk989898\nFix a panic that could occur when closing the DDL puller #12244 @wk989898\nSupport filtering unsupported DDL types through the ignore-txn-start-ts parameter in the filter configuration #12286 @asddongmen\nFix the issue that changefeed tasks might get stuck when using Azure Blob Storage as the downstream #12277 @zurakutsia\nFix the issue that DROP FOREIGN KEY DDL is not replicated to the downstream #12328 @3AceShowHand\nFix the issue that TiCDC might panic when encountering rollback and prewrite entries during Region subscription #19048 @3AceShowHand\nFix the issue that assertion errors in TiKV might cause TiCDC to panic #18498 @tharanga",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "TiCDC\nFix a panic that could occur when configuring a column-type partition dispatcher that includes virtual columns #12241 @wk989898\nFix a panic that could occur when closing the DDL puller #12244 @wk989898\nSupport filtering unsupported DDL types through the ignore-txn-start-ts parameter in the filter configuration #12286 @asddongmen\nFix the issue that changefeed tasks might get stuck when using Azure Blob Storage as the downstream #12277 @zurakutsia\nFix the issue that DROP FOREIGN KEY DDL is not replicated to the downstream #12328 @3AceShowHand\nFix the issue that TiCDC might panic when encountering rollback and prewrite entries during Region subscription #19048 @3AceShowHand\nFix the issue that assertion errors in TiKV might cause TiCDC to panic #18498 @tharanga",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Fix a panic that could occur when configuring a column-type partition dispatcher that includes virtual columns #12241 @wk989898",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Fix the issue that DROP FOREIGN KEY DDL is not replicated to the downstream #12328 @3AceShowHand",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          }
+        ],
+        "vector_search": [
+          {
+            "description": "TiFlash\nSkip unnecessary data reads to improve TableScan performance #9875 @gengliqi\nOptimize TableScan performance on wide tables with many columns and sparse data (that is, lots of NULL or empty values) in TiFlash #10361 @JaySon-Huang\nReduce TiFlash CPU overhead caused by adding vector indexes in clusters with many tables #10357 @Lloyd-Pottiger\nMinimize unnecessary log output when processing useless Raft commands to reduce log volume #10467 @JaySon-Huang\nImprove TableScan performance on small partitioned tables in TiFlash #10487 @JaySon-Huang",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Reduce TiFlash CPU overhead caused by adding vector indexes in clusters with many tables #10357 @Lloyd-Pottiger",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "TiFlash\nSkip unnecessary data reads to improve TableScan performance #9875 @gengliqi\nOptimize TableScan performance on wide tables with many columns and sparse data (that is, lots of NULL or empty values) in TiFlash #10361 @JaySon-Huang\nReduce TiFlash CPU overhead caused by adding vector indexes in clusters with many tables #10357 @Lloyd-Pottiger\nMinimize unnecessary log output when processing useless Raft commands to reduce log volume #10467 @JaySon-Huang\nImprove TableScan performance on small partitioned tables in TiFlash #10487 @JaySon-Huang",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Reduce TiFlash CPU overhead caused by adding vector indexes in clusters with many tables #10357 @Lloyd-Pottiger",
+            "source": "ai_analysis",
+            "category": "performance"
+          }
+        ],
+        "blockchain_web3": [
+          {
+            "description": "TiDB\nFix the issue that the use index hint does not take effect when tidb_isolation_read_engines is set to tiflash #60869 @Lloyd-Pottiger\nFix the issue that max_execution_time does not take effect for SELECT FOR UPDATE statements #62960 @ekexium\nFix the issue that row count estimates across months or years can be significantly overestimated #50080 @terry1purcell\nFix the issue that the handling of Decimal types in prepared statements is inconsistent with MySQL #62602 @ChangRui-Ryan\nFix the issue that the short path in the TRUNCATE() function is incorrectly processed #57608 @xzhangxian1008\nFix the issue that spilled files might not be fully deleted when the Out Of Quota For Local Temporary Space error is triggered #63216 @xzhangxian1008\nFix the issue that queries using regular expressions against INFORMATION_SCHEMA tables might return incorrect results #62347 @River2000i\nFix the issue that TiDB does not return an error when it fails to get a timestamp from PD #58871 @joechenrh\nFix the issue that query results differ between the owner TiDB and non-owner TiDB instances during executing MODIFY COLUMN statements #60264 @tangenta\nFix the issue that ADMIN ALTER DDL JOBS statements display incorrect parameter values after dynamically modifying parameters #63201 @fzzf678\nFix the issue that the GC safe point does not advance when adding an index within a transaction #62424 @wjhuang2016\nFix the issue that ingesting excessively large SST files into L0 triggers flow control #63466 @CbcWestwolf\nFix the issue that global sorting is blocked when the CPU-to-memory ratio is 1:2 #60951 @wjhuang2016\nFix the issue that pending Distributed eXecution Framework (DXF) tasks cannot be canceled when the number of tasks exceeds 16 #63896 @D3Hunter\nFix the issue that after the DXF task is canceled, other tasks fail to exit #63927 @D3Hunter\nFix the issue that enabling the Apply operator concurrency (tidb_enable_parallel_apply = on) causes plan generation failure due to a missing clone implementation #59863 @hawkingrei\nFix the issue that using the ATAN2 function might produce incorrect results #60093 @guo-shaoge\nFix the issue that select 1 from dual cannot use the instance-level plan cache #63075 @time-and-fate\nFix the issue that changing the join order might cause the planner to fail #61715 @hawkingrei\nFix the issue that using the set_var hint with bindings prevents variables from being restored to their original settings #59822 @wddevries\nFix the issue that setting ONLY_FULL_GROUP_BY to a negative value causes validation failure #62617 @AilinKid\nFix the issue that the ONLY_FULL_GROUP_BY check is case-insensitive #62672 @AilinKid\nFix the issue that the DP join order algorithm might generate an incorrect plan #63353 @winoros\nFix the issue that rewriting an outer join to an inner join might produce incorrect results #61327 @hawkingrei\nFix the issue that executing certain queries might cause an internal panic #58600 @Defined2014\nFix the issue that the global index might read incorrect data during certain ALTER PARTITION operations #64084 @mjonss\nFix the issue that the global index might return incorrect results in some cases #61083 @Defined2014\nFix the issue that character_set_results truncates incorrect characters instead of replacing them #61085 @xhebox\nFix the issue that running ADD COLUMN and UPDATE statements concurrently might cause errors #60047 @L-maple\nFix the issue that Merge Join might omit filter conditions when calculating costs #62917 @qw4990",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix the issue that setting ONLY_FULL_GROUP_BY to a negative value causes validation failure #62617 @AilinKid",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix the issue that executing certain queries might cause an internal panic #58600 @Defined2014",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix the issue that the global index might return incorrect results in some cases #61083 @Defined2014",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "PD\nFix the issue that the PD Client retry strategy is not initialized correctly #9013 @rleungx\nFix the issue that the TSO HTTP API /config and /members return incorrect results #9797 @lhy1024\nFix the incorrect error handling logic of TSO Follower Proxy #9188 @Tema\nFix the issue that splitting buckets still works even after bucket reporting is disabled #9726 @bufferflies\nFix the issue that the Resource Manager incorrectly allocates tokens, causing queries to be stuck #9455 @JmPotato\nFix the issue that Placement Rules do not take effect after PD leader switches #9602 @okJiang\nFix the issue that PD might fail to parse large numeric values in scientific notation, which consequently causes some TTL-related configurations to not take effect #9343 @lhy1024",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix the issue that the Resource Manager incorrectly allocates tokens, causing queries to be stuck #9455 @JmPotato",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "TiFlash\nFix the issue that queries might fail when queried columns contain a large number of NULL values #10340 @Lloyd-Pottiger\nFix the issue that TiFlash generates inflated statistics for RU consumption #10380 @JinheLin\nFix the issue that TiFlash might encounter OOM when slow queries exist under the disaggregated storage and compute architecture #10278 @JaySon-Huang\nFix the issue that TiFlash might retry indefinitely when a network partition occurs between TiFlash and S3 under the disaggregated storage and compute architecture #10424 @JaySon-Huang\nFix the issue that the FLOOR() and CEIL() functions might return incorrect results when their parameters are of the DECIMAL type #10365 @ChangRui-Ryan",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Fix the issue that TiFlash might retry indefinitely when a network partition occurs between TiFlash and S3 under the disaggregated storage and compute architecture #10424 @JaySon-Huang",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "TiDB\nFix the issue that the use index hint does not take effect when tidb_isolation_read_engines is set to tiflash #60869 @Lloyd-Pottiger\nFix the issue that max_execution_time does not take effect for SELECT FOR UPDATE statements #62960 @ekexium\nFix the issue that row count estimates across months or years can be significantly overestimated #50080 @terry1purcell\nFix the issue that the handling of Decimal types in prepared statements is inconsistent with MySQL #62602 @ChangRui-Ryan\nFix the issue that the short path in the TRUNCATE() function is incorrectly processed #57608 @xzhangxian1008\nFix the issue that spilled files might not be fully deleted when the Out Of Quota For Local Temporary Space error is triggered #63216 @xzhangxian1008\nFix the issue that queries using regular expressions against INFORMATION_SCHEMA tables might return incorrect results #62347 @River2000i\nFix the issue that TiDB does not return an error when it fails to get a timestamp from PD #58871 @joechenrh\nFix the issue that query results differ between the owner TiDB and non-owner TiDB instances during executing MODIFY COLUMN statements #60264 @tangenta\nFix the issue that ADMIN ALTER DDL JOBS statements display incorrect parameter values after dynamically modifying parameters #63201 @fzzf678\nFix the issue that the GC safe point does not advance when adding an index within a transaction #62424 @wjhuang2016\nFix the issue that ingesting excessively large SST files into L0 triggers flow control #63466 @CbcWestwolf\nFix the issue that global sorting is blocked when the CPU-to-memory ratio is 1:2 #60951 @wjhuang2016\nFix the issue that pending Distributed eXecution Framework (DXF) tasks cannot be canceled when the number of tasks exceeds 16 #63896 @D3Hunter\nFix the issue that after the DXF task is canceled, other tasks fail to exit #63927 @D3Hunter\nFix the issue that enabling the Apply operator concurrency (tidb_enable_parallel_apply = on) causes plan generation failure due to a missing clone implementation #59863 @hawkingrei\nFix the issue that using the ATAN2 function might produce incorrect results #60093 @guo-shaoge\nFix the issue that select 1 from dual cannot use the instance-level plan cache #63075 @time-and-fate\nFix the issue that changing the join order might cause the planner to fail #61715 @hawkingrei\nFix the issue that using the set_var hint with bindings prevents variables from being restored to their original settings #59822 @wddevries\nFix the issue that setting ONLY_FULL_GROUP_BY to a negative value causes validation failure #62617 @AilinKid\nFix the issue that the ONLY_FULL_GROUP_BY check is case-insensitive #62672 @AilinKid\nFix the issue that the DP join order algorithm might generate an incorrect plan #63353 @winoros\nFix the issue that rewriting an outer join to an inner join might produce incorrect results #61327 @hawkingrei\nFix the issue that executing certain queries might cause an internal panic #58600 @Defined2014\nFix the issue that the global index might read incorrect data during certain ALTER PARTITION operations #64084 @mjonss\nFix the issue that the global index might return incorrect results in some cases #61083 @Defined2014\nFix the issue that character_set_results truncates incorrect characters instead of replacing them #61085 @xhebox\nFix the issue that running ADD COLUMN and UPDATE statements concurrently might cause errors #60047 @L-maple\nFix the issue that Merge Join might omit filter conditions when calculating costs #62917 @qw4990",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Fix the issue that setting ONLY_FULL_GROUP_BY to a negative value causes validation failure #62617 @AilinKid",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Fix the issue that executing certain queries might cause an internal panic #58600 @Defined2014",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Fix the issue that the global index might return incorrect results in some cases #61083 @Defined2014",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "PD\nFix the issue that the PD Client retry strategy is not initialized correctly #9013 @rleungx\nFix the issue that the TSO HTTP API /config and /members return incorrect results #9797 @lhy1024\nFix the incorrect error handling logic of TSO Follower Proxy #9188 @Tema\nFix the issue that splitting buckets still works even after bucket reporting is disabled #9726 @bufferflies\nFix the issue that the Resource Manager incorrectly allocates tokens, causing queries to be stuck #9455 @JmPotato\nFix the issue that Placement Rules do not take effect after PD leader switches #9602 @okJiang\nFix the issue that PD might fail to parse large numeric values in scientific notation, which consequently causes some TTL-related configurations to not take effect #9343 @lhy1024",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Fix the issue that the Resource Manager incorrectly allocates tokens, causing queries to be stuck #9455 @JmPotato",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "TiFlash\nFix the issue that queries might fail when queried columns contain a large number of NULL values #10340 @Lloyd-Pottiger\nFix the issue that TiFlash generates inflated statistics for RU consumption #10380 @JinheLin\nFix the issue that TiFlash might encounter OOM when slow queries exist under the disaggregated storage and compute architecture #10278 @JaySon-Huang\nFix the issue that TiFlash might retry indefinitely when a network partition occurs between TiFlash and S3 under the disaggregated storage and compute architecture #10424 @JaySon-Huang\nFix the issue that the FLOOR() and CEIL() functions might return incorrect results when their parameters are of the DECIMAL type #10365 @ChangRui-Ryan",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Fix the issue that TiFlash might retry indefinitely when a network partition occurs between TiFlash and S3 under the disaggregated storage and compute architecture #10424 @JaySon-Huang",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          }
+        ]
+      },
+      "innovation_trends": {
+        "established_trends": [
+          {
+            "category": "memory_acceleration",
+            "count": 22,
+            "percentage": 37.93
+          },
+          {
+            "category": "distributed_computing",
+            "count": 34,
+            "percentage": 58.62
+          },
+          {
+            "category": "blockchain_web3",
+            "count": 16,
+            "percentage": 27.59
+          }
+        ],
+        "emerging_trends": [
+          {
+            "category": "vector_search",
+            "count": 4,
+            "percentage": 6.9
+          }
+        ],
+        "category_frequency": {
+          "memory_acceleration": 22,
+          "distributed_computing": 34,
+          "vector_search": 4,
+          "blockchain_web3": 16
+        }
+      },
+      "top_innovations": [
+        {
+          "description": "TiDB\nFix the issue that the use index hint does not take effect when tidb_isolation_read_engines is set to tiflash #60869 @Lloyd-Pottiger\nFix the issue that max_execution_time does not take effect for SELECT FOR UPDATE statements #62960 @ekexium\nFix the issue that row count estimates across months or years can be significantly overestimated #50080 @terry1purcell\nFix the issue that the handling of Decimal types in prepared statements is inconsistent with MySQL #62602 @ChangRui-Ryan\nFix the issue that the short path in the TRUNCATE() function is incorrectly processed #57608 @xzhangxian1008\nFix the issue that spilled files might not be fully deleted when the Out Of Quota For Local Temporary Space error is triggered #63216 @xzhangxian1008\nFix the issue that queries using regular expressions against INFORMATION_SCHEMA tables might return incorrect results #62347 @River2000i\nFix the issue that TiDB does not return an error when it fails to get a timestamp from PD #58871 @joechenrh\nFix the issue that query results differ between the owner TiDB and non-owner TiDB instances during executing MODIFY COLUMN statements #60264 @tangenta\nFix the issue that ADMIN ALTER DDL JOBS statements display incorrect parameter values after dynamically modifying parameters #63201 @fzzf678\nFix the issue that the GC safe point does not advance when adding an index within a transaction #62424 @wjhuang2016\nFix the issue that ingesting excessively large SST files into L0 triggers flow control #63466 @CbcWestwolf\nFix the issue that global sorting is blocked when the CPU-to-memory ratio is 1:2 #60951 @wjhuang2016\nFix the issue that pending Distributed eXecution Framework (DXF) tasks cannot be canceled when the number of tasks exceeds 16 #63896 @D3Hunter\nFix the issue that after the DXF task is canceled, other tasks fail to exit #63927 @D3Hunter\nFix the issue that enabling the Apply operator concurrency (tidb_enable_parallel_apply = on) causes plan generation failure due to a missing clone implementation #59863 @hawkingrei\nFix the issue that using the ATAN2 function might produce incorrect results #60093 @guo-shaoge\nFix the issue that select 1 from dual cannot use the instance-level plan cache #63075 @time-and-fate\nFix the issue that changing the join order might cause the planner to fail #61715 @hawkingrei\nFix the issue that using the set_var hint with bindings prevents variables from being restored to their original settings #59822 @wddevries\nFix the issue that setting ONLY_FULL_GROUP_BY to a negative value causes validation failure #62617 @AilinKid\nFix the issue that the ONLY_FULL_GROUP_BY check is case-insensitive #62672 @AilinKid\nFix the issue that the DP join order algorithm might generate an incorrect plan #63353 @winoros\nFix the issue that rewriting an outer join to an inner join might produce incorrect results #61327 @hawkingrei\nFix the issue that executing certain queries might cause an internal panic #58600 @Defined2014\nFix the issue that the global index might read incorrect data during certain ALTER PARTITION operations #64084 @mjonss\nFix the issue that the global index might return incorrect results in some cases #61083 @Defined2014\nFix the issue that character_set_results truncates incorrect characters instead of replacing them #61085 @xhebox\nFix the issue that running ADD COLUMN and UPDATE statements concurrently might cause errors #60047 @L-maple\nFix the issue that Merge Join might omit filter conditions when calculating costs #62917 @qw4990",
+          "categories": [
+            "memory_acceleration",
+            "distributed_computing",
+            "blockchain_web3"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "TiDB\nFix the issue that the use index hint does not take effect when tidb_isolation_read_engines is set to tiflash #60869 @Lloyd-Pottiger\nFix the issue that max_execution_time does not take effect for SELECT FOR UPDATE statements #62960 @ekexium\nFix the issue that row count estimates across months or years can be significantly overestimated #50080 @terry1purcell\nFix the issue that the handling of Decimal types in prepared statements is inconsistent with MySQL #62602 @ChangRui-Ryan\nFix the issue that the short path in the TRUNCATE() function is incorrectly processed #57608 @xzhangxian1008\nFix the issue that spilled files might not be fully deleted when the Out Of Quota For Local Temporary Space error is triggered #63216 @xzhangxian1008\nFix the issue that queries using regular expressions against INFORMATION_SCHEMA tables might return incorrect results #62347 @River2000i\nFix the issue that TiDB does not return an error when it fails to get a timestamp from PD #58871 @joechenrh\nFix the issue that query results differ between the owner TiDB and non-owner TiDB instances during executing MODIFY COLUMN statements #60264 @tangenta\nFix the issue that ADMIN ALTER DDL JOBS statements display incorrect parameter values after dynamically modifying parameters #63201 @fzzf678\nFix the issue that the GC safe point does not advance when adding an index within a transaction #62424 @wjhuang2016\nFix the issue that ingesting excessively large SST files into L0 triggers flow control #63466 @CbcWestwolf\nFix the issue that global sorting is blocked when the CPU-to-memory ratio is 1:2 #60951 @wjhuang2016\nFix the issue that pending Distributed eXecution Framework (DXF) tasks cannot be canceled when the number of tasks exceeds 16 #63896 @D3Hunter\nFix the issue that after the DXF task is canceled, other tasks fail to exit #63927 @D3Hunter\nFix the issue that enabling the Apply operator concurrency (tidb_enable_parallel_apply = on) causes plan generation failure due to a missing clone implementation #59863 @hawkingrei\nFix the issue that using the ATAN2 function might produce incorrect results #60093 @guo-shaoge\nFix the issue that select 1 from dual cannot use the instance-level plan cache #63075 @time-and-fate\nFix the issue that changing the join order might cause the planner to fail #61715 @hawkingrei\nFix the issue that using the set_var hint with bindings prevents variables from being restored to their original settings #59822 @wddevries\nFix the issue that setting ONLY_FULL_GROUP_BY to a negative value causes validation failure #62617 @AilinKid\nFix the issue that the ONLY_FULL_GROUP_BY check is case-insensitive #62672 @AilinKid\nFix the issue that the DP join order algorithm might generate an incorrect plan #63353 @winoros\nFix the issue that rewriting an outer join to an inner join might produce incorrect results #61327 @hawkingrei\nFix the issue that executing certain queries might cause an internal panic #58600 @Defined2014\nFix the issue that the global index might read incorrect data during certain ALTER PARTITION operations #64084 @mjonss\nFix the issue that the global index might return incorrect results in some cases #61083 @Defined2014\nFix the issue that character_set_results truncates incorrect characters instead of replacing them #61085 @xhebox\nFix the issue that running ADD COLUMN and UPDATE statements concurrently might cause errors #60047 @L-maple\nFix the issue that Merge Join might omit filter conditions when calculating costs #62917 @qw4990",
+          "categories": [
+            "memory_acceleration",
+            "distributed_computing",
+            "blockchain_web3"
+          ],
+          "category": "performance",
+          "source": "ai_analysis"
+        },
+        {
+          "description": "TiKV\nChange the log level of certain automatically recoverable errors in the BR module from ERROR to WARN to reduce unnecessary alerts #18493 @YuJuncen\nChange the log level of certain TiKV errors from ERROR to WARN to reduce unnecessary alerts #18745 @exit-code-1\nSplit the GC check process in the Raft module into two phases to improve the efficiency of garbage collection for redundant MVCC versions in Regions #18695 @v01dstar\nCalculate MVCC redundancy based on GC safe points and RocksDB statistics to improve the efficiency and accuracy of compaction #18697 @v01dstar\nChange the GC handling logic for Region MVCC to be executed by GC worker threads, unifying the overall GC processing logic #18727 @v01dstar\nOptimize the calculation method of the default gRPC thread pool size by making it dynamically calculated based on total CPU quota instead of a fixed value, avoiding performance bottlenecks caused by insufficient gRPC threads #18613 @LykxSassinator\nOptimize the tail latency of async snapshot and write operations in environments with a large number of SST files #18743 @Connor1996",
+          "categories": [
+            "memory_acceleration",
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Split the GC check process in the Raft module into two phases to improve the efficiency of garbage collection for redundant MVCC versions in Regions #18695 @v01dstar",
+          "categories": [
+            "memory_acceleration",
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "TiFlash\nSkip unnecessary data reads to improve TableScan performance #9875 @gengliqi\nOptimize TableScan performance on wide tables with many columns and sparse data (that is, lots of NULL or empty values) in TiFlash #10361 @JaySon-Huang\nReduce TiFlash CPU overhead caused by adding vector indexes in clusters with many tables #10357 @Lloyd-Pottiger\nMinimize unnecessary log output when processing useless Raft commands to reduce log volume #10467 @JaySon-Huang\nImprove TableScan performance on small partitioned tables in TiFlash #10487 @JaySon-Huang",
+          "categories": [
+            "vector_search",
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Reduce TiFlash CPU overhead caused by adding vector indexes in clusters with many tables #10357 @Lloyd-Pottiger",
+          "categories": [
+            "vector_search",
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "PD\nFix the issue that the PD Client retry strategy is not initialized correctly #9013 @rleungx\nFix the issue that the TSO HTTP API /config and /members return incorrect results #9797 @lhy1024\nFix the incorrect error handling logic of TSO Follower Proxy #9188 @Tema\nFix the issue that splitting buckets still works even after bucket reporting is disabled #9726 @bufferflies\nFix the issue that the Resource Manager incorrectly allocates tokens, causing queries to be stuck #9455 @JmPotato\nFix the issue that Placement Rules do not take effect after PD leader switches #9602 @okJiang\nFix the issue that PD might fail to parse large numeric values in scientific notation, which consequently causes some TTL-related configurations to not take effect #9343 @lhy1024",
+          "categories": [
+            "memory_acceleration",
+            "blockchain_web3"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "TiFlash\nFix the issue that queries might fail when queried columns contain a large number of NULL values #10340 @Lloyd-Pottiger\nFix the issue that TiFlash generates inflated statistics for RU consumption #10380 @JinheLin\nFix the issue that TiFlash might encounter OOM when slow queries exist under the disaggregated storage and compute architecture #10278 @JaySon-Huang\nFix the issue that TiFlash might retry indefinitely when a network partition occurs between TiFlash and S3 under the disaggregated storage and compute architecture #10424 @JaySon-Huang\nFix the issue that the FLOOR() and CEIL() functions might return incorrect results when their parameters are of the DECIMAL type #10365 @ChangRui-Ryan",
+          "categories": [
+            "distributed_computing",
+            "blockchain_web3"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Fix the issue that TiFlash might retry indefinitely when a network partition occurs between TiFlash and S3 under the disaggregated storage and compute architecture #10424 @JaySon-Huang",
+          "categories": [
+            "distributed_computing",
+            "blockchain_web3"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "TiKV\nChange the log level of certain automatically recoverable errors in the BR module from ERROR to WARN to reduce unnecessary alerts #18493 @YuJuncen\nChange the log level of certain TiKV errors from ERROR to WARN to reduce unnecessary alerts #18745 @exit-code-1\nSplit the GC check process in the Raft module into two phases to improve the efficiency of garbage collection for redundant MVCC versions in Regions #18695 @v01dstar\nCalculate MVCC redundancy based on GC safe points and RocksDB statistics to improve the efficiency and accuracy of compaction #18697 @v01dstar\nChange the GC handling logic for Region MVCC to be executed by GC worker threads, unifying the overall GC processing logic #18727 @v01dstar\nOptimize the calculation method of the default gRPC thread pool size by making it dynamically calculated based on total CPU quota instead of a fixed value, avoiding performance bottlenecks caused by insufficient gRPC threads #18613 @LykxSassinator\nOptimize the tail latency of async snapshot and write operations in environments with a large number of SST files #18743 @Connor1996",
+          "categories": [
+            "memory_acceleration",
+            "distributed_computing"
+          ],
+          "category": "performance",
+          "source": "ai_analysis"
+        }
+      ],
+      "generation_date": "2026-01-02T03:09:52.661531"
+    },
+    "YugabyteDB": {
+      "total_innovations": 22,
+      "categories_detected": [
+        "distributed_computing",
+        "memory_acceleration"
+      ],
+      "category_counts": {
+        "distributed_computing": 18,
+        "memory_acceleration": 8
+      },
+      "category_details": {
+        "distributed_computing": [
+          {
+            "description": "Table-level locking for concurrent DDL and DML EA",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Added Table-level locks to support concurrent DDL and DML operations across sessions, improving workload concurrency and reducing conflicts during schema changes.",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Improves cluster balancer observability and throughput by prioritizing recovery of leaderless tablets. GA",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Added CDC Logical Replication support for xCluster feature where both CDC and xCluster can work simultaneously on the same source tables. GA",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "ASH Adds ASH instrumentation to CDC, xCluster, Remote bootstrap, Restore Master, and Connection pooling for better bottleneck identification. EA Adds rss_mem_bytes field to yb_active_session_history for tracing high memory sessions. EA",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Adds ASH instrumentation to CDC, xCluster, Remote bootstrap, Restore Master, and Connection pooling for better bottleneck identification. EA",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Colocated tables with tablespaces . With this enhancement, you can now take advantage of colocated tables for geo-distributed use cases, eliminating the need for trade-offs between distributing data across specific regions. GA",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Enhances bulk load performance on distributed tables by implementing Skip Prefix Locks. EA",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Cluster tablet metadata Offers a global view, yb_tablet_metadata to reveal tablet placement, leadership, and row-specific information for all tables and databases. EA",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Table-level locking for concurrent DDL and DML EA",
+            "source": "ai_analysis",
+            "category": "bug_fix"
+          },
+          {
+            "description": "Added Table-level locks to support concurrent DDL and DML operations across sessions, improving workload concurrency and reducing conflicts during schema changes.",
+            "source": "ai_analysis",
+            "category": "new_feature"
+          },
+          {
+            "description": "Improves cluster balancer observability and throughput by prioritizing recovery of leaderless tablets. GA",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Added CDC Logical Replication support for xCluster feature where both CDC and xCluster can work simultaneously on the same source tables. GA",
+            "source": "ai_analysis",
+            "category": "new_feature"
+          },
+          {
+            "description": "ASH Adds ASH instrumentation to CDC, xCluster, Remote bootstrap, Restore Master, and Connection pooling for better bottleneck identification. EA Adds rss_mem_bytes field to yb_active_session_history for tracing high memory sessions. EA",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Adds ASH instrumentation to CDC, xCluster, Remote bootstrap, Restore Master, and Connection pooling for better bottleneck identification. EA",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Colocated tables with tablespaces . With this enhancement, you can now take advantage of colocated tables for geo-distributed use cases, eliminating the need for trade-offs between distributing data across specific regions. GA",
+            "source": "ai_analysis",
+            "category": "other"
+          },
+          {
+            "description": "Enhances bulk load performance on distributed tables by implementing Skip Prefix Locks. EA",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Cluster tablet metadata Offers a global view, yb_tablet_metadata to reveal tablet placement, leadership, and row-specific information for all tables and databases. EA",
+            "source": "ai_analysis",
+            "category": "performance"
+          }
+        ],
+        "memory_acceleration": [
+          {
+            "description": "ASH Adds ASH instrumentation to CDC, xCluster, Remote bootstrap, Restore Master, and Connection pooling for better bottleneck identification. EA Adds rss_mem_bytes field to yb_active_session_history for tracing high memory sessions. EA",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Adds ASH instrumentation to CDC, xCluster, Remote bootstrap, Restore Master, and Connection pooling for better bottleneck identification. EA",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Adds rss_mem_bytes field to yb_active_session_history for tracing high memory sessions. EA",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "Simplifies ongoing and new tasks in the Catalog Caching area excluding main projects like Hybrid Tables/per-node-catalog cache. GA",
+            "source": "changes",
+            "category": ""
+          },
+          {
+            "description": "ASH Adds ASH instrumentation to CDC, xCluster, Remote bootstrap, Restore Master, and Connection pooling for better bottleneck identification. EA Adds rss_mem_bytes field to yb_active_session_history for tracing high memory sessions. EA",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Adds ASH instrumentation to CDC, xCluster, Remote bootstrap, Restore Master, and Connection pooling for better bottleneck identification. EA",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Adds rss_mem_bytes field to yb_active_session_history for tracing high memory sessions. EA",
+            "source": "ai_analysis",
+            "category": "performance"
+          },
+          {
+            "description": "Simplifies ongoing and new tasks in the Catalog Caching area excluding main projects like Hybrid Tables/per-node-catalog cache. GA",
+            "source": "ai_analysis",
+            "category": "performance"
+          }
+        ]
+      },
+      "innovation_trends": {
+        "established_trends": [
+          {
+            "category": "distributed_computing",
+            "count": 18,
+            "percentage": 81.82
+          },
+          {
+            "category": "memory_acceleration",
+            "count": 8,
+            "percentage": 36.36
+          }
+        ],
+        "emerging_trends": [],
+        "category_frequency": {
+          "distributed_computing": 18,
+          "memory_acceleration": 8
+        }
+      },
+      "top_innovations": [
+        {
+          "description": "ASH Adds ASH instrumentation to CDC, xCluster, Remote bootstrap, Restore Master, and Connection pooling for better bottleneck identification. EA Adds rss_mem_bytes field to yb_active_session_history for tracing high memory sessions. EA",
+          "categories": [
+            "memory_acceleration",
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Adds ASH instrumentation to CDC, xCluster, Remote bootstrap, Restore Master, and Connection pooling for better bottleneck identification. EA",
+          "categories": [
+            "memory_acceleration",
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "ASH Adds ASH instrumentation to CDC, xCluster, Remote bootstrap, Restore Master, and Connection pooling for better bottleneck identification. EA Adds rss_mem_bytes field to yb_active_session_history for tracing high memory sessions. EA",
+          "categories": [
+            "memory_acceleration",
+            "distributed_computing"
+          ],
+          "category": "performance",
+          "source": "ai_analysis"
+        },
+        {
+          "description": "Adds ASH instrumentation to CDC, xCluster, Remote bootstrap, Restore Master, and Connection pooling for better bottleneck identification. EA",
+          "categories": [
+            "memory_acceleration",
+            "distributed_computing"
+          ],
+          "category": "performance",
+          "source": "ai_analysis"
+        },
+        {
+          "description": "Table-level locking for concurrent DDL and DML EA",
+          "categories": [
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Added Table-level locks to support concurrent DDL and DML operations across sessions, improving workload concurrency and reducing conflicts during schema changes.",
+          "categories": [
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Improves cluster balancer observability and throughput by prioritizing recovery of leaderless tablets. GA",
+          "categories": [
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Added CDC Logical Replication support for xCluster feature where both CDC and xCluster can work simultaneously on the same source tables. GA",
+          "categories": [
+            "distributed_computing"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Adds rss_mem_bytes field to yb_active_session_history for tracing high memory sessions. EA",
+          "categories": [
+            "memory_acceleration"
+          ],
+          "source": "changes"
+        },
+        {
+          "description": "Colocated tables with tablespaces . With this enhancement, you can now take advantage of colocated tables for geo-distributed use cases, eliminating the need for trade-offs between distributing data across specific regions. GA",
+          "categories": [
+            "distributed_computing"
+          ],
+          "source": "changes"
+        }
+      ],
+      "generation_date": "2026-01-02T03:09:55.027919"
+    }
+  },
+  "global_trends": {
+    "distributed_computing": {
+      "total": 194,
+      "databases": [
+        "Cassandra",
+        "Redis",
+        "Tidb",
+        "YugabyteDB"
+      ]
+    },
+    "memory_acceleration": {
+      "total": 100,
+      "databases": [
+        "Cassandra",
+        "MongoDB",
+        "Redis",
+        "Tidb",
+        "YugabyteDB"
+      ]
+    },
+    "blockchain_web3": {
+      "total": 46,
+      "databases": [
+        "Cassandra",
+        "MongoDB",
+        "Tidb"
+      ]
+    },
+    "security_privacy": {
+      "total": 6,
+      "databases": [
+        "Cassandra"
+      ]
+    },
+    "ai_ml_integration": {
+      "total": 2,
+      "databases": [
+        "Cassandra"
+      ]
+    },
+    "vector_search": {
+      "total": 10,
+      "databases": [
+        "Cassandra",
+        "Tidb"
+      ]
+    }
+  },
+  "innovation_matrix": {
+    "Cassandra": {
+      "distributed_computing": 128,
+      "memory_acceleration": 60,
+      "blockchain_web3": 26,
+      "security_privacy": 6,
+      "ai_ml_integration": 2,
+      "vector_search": 6
+    },
+    "MongoDB": {
+      "blockchain_web3": 4,
+      "memory_acceleration": 2
+    },
+    "Neo4j": {},
+    "Redis": {
+      "memory_acceleration": 8,
+      "distributed_computing": 14
+    },
+    "Tidb": {
+      "memory_acceleration": 22,
+      "distributed_computing": 34,
+      "vector_search": 4,
+      "blockchain_web3": 16
+    },
+    "YugabyteDB": {
+      "distributed_computing": 18,
+      "memory_acceleration": 8
+    }
+  }
+}

@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, StaleElementReferenceException
 from webdriver_manager.chrome import ChromeDriverManager
 import json
+import os
 import re
 import time
 
@@ -343,7 +344,7 @@ try:
 
     # ===================== SAUVEGARDE =====================
     # Enregistrer les résultats dans un fichier JSON avec le format demandé
-    with open("..\\..\\..\\..\\..\\API\\sources\\tidb-versions.json", 'w', encoding='utf-8') as f:
+    with open(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..', '..', '..', 'API', 'sources', 'tidb-versions.json')), 'w', encoding='utf-8') as f:
         output = []
         for major in result:
             major_version = major.get('major_version', '')

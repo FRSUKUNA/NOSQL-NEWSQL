@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import json
+import os
 from datetime import datetime
 import time
 from typing import Dict, List, Optional
@@ -303,7 +304,7 @@ def main():
         })
     
     # Sauvegarder dans un fichier JSON avec le format plat
-    output_file = '..\\..\\..\\..\\..\\API\\sources\\neo4j-versions.json'
+    output_file = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..', '..', '..', 'API', 'sources', 'neo4j-versions.json'))
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(output_list, f, indent=4, ensure_ascii=False)
     

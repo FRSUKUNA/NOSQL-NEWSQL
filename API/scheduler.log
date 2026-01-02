@@ -1,0 +1,137 @@
+[2026-01-02 02:02:00] ⏱️ Scheduler lancé pour toutes les 12 heures...
+[2026-01-02 02:02:59] ⏱️ Scheduler lancé pour toutes les 12 heures...
+[2026-01-02 02:02:59] ⏳ Exécution immédiate du pipeline...
+[2026-01-02 02:02:59] ===== JOB DÉMARRÉ =====
+[2026-01-02 02:02:59] PHASE 1 : SCRAPPING
+[2026-01-02 02:02:59] 🚀 Lancement : db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:02:59] ❌ ERREUR : db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:02:59] 🚀 Lancement : db_scraper/spiders/mongodb/mongodb.py
+[2026-01-02 02:02:59] ❌ ERREUR : db_scraper/spiders/mongodb/mongodb.py
+[2026-01-02 02:02:59] 🚀 Lancement : db_scraper/spiders/redis/redis.py
+[2026-01-02 02:02:59] ❌ ERREUR : db_scraper/spiders/redis/redis.py
+[2026-01-02 02:02:59] 🚀 Lancement : db_scraper/spiders/tidb/tidb.py
+[2026-01-02 02:02:59] ❌ ERREUR : db_scraper/spiders/tidb/tidb.py
+[2026-01-02 02:02:59] 🚀 Lancement : db_scraper/spiders/yugabyte/yugabyte.py
+[2026-01-02 02:02:59] ❌ ERREUR : db_scraper/spiders/yugabyte/yugabyte.py
+[2026-01-02 02:02:59] 🚀 Lancement : db_scraper/spiders/Neo4j/Neo4j.py
+[2026-01-02 02:02:59] ❌ ERREUR : db_scraper/spiders/Neo4j/Neo4j.py
+[2026-01-02 02:02:59] 🚀 Lancement : db_scraper/spiders/cockroachdb/cockroachdb.py
+[2026-01-02 02:03:00] ❌ ERREUR : db_scraper/spiders/cockroachdb/cockroachdb.py
+[2026-01-02 02:03:00] PHASE 2 : PIPELINE
+[2026-01-02 02:03:00] 🚀 Lancement : clean.py
+[2026-01-02 02:03:00] ✅ Terminé : clean.py
+[2026-01-02 02:03:00] 🚀 Lancement : etape2.py
+[2026-01-02 02:03:54] ⏱️ Scheduler lancé pour toutes les 12 heures...
+[2026-01-02 02:03:54] ⏳ Exécution immédiate du pipeline...
+[2026-01-02 02:03:54] ===== JOB DÉMARRÉ =====
+[2026-01-02 02:03:54] PHASE 1 : SCRAPPING
+[2026-01-02 02:03:54] 🚀 Lancement : VT/scrapping/db_scraper/db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:03:54] ❌ ERREUR : VT/scrapping/db_scraper/db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:03:54] 🚀 Lancement : VT/scrapping/db_scraper/db_scraper/spiders/mongodb/mongodb.py
+[2026-01-02 02:03:54] ❌ ERREUR : VT/scrapping/db_scraper/db_scraper/spiders/mongodb/mongodb.py
+[2026-01-02 02:03:54] 🚀 Lancement : VT/scrapping/db_scraper/db_scraper/spiders/redis/redis.py
+[2026-01-02 02:03:54] ❌ ERREUR : VT/scrapping/db_scraper/db_scraper/spiders/redis/redis.py
+[2026-01-02 02:03:54] 🚀 Lancement : VT/scrapping/db_scraper/db_scraper/spiders/tidb/tidb.py
+[2026-01-02 02:03:54] ❌ ERREUR : VT/scrapping/db_scraper/db_scraper/spiders/tidb/tidb.py
+[2026-01-02 02:03:54] 🚀 Lancement : VT/scrapping/db_scraper/db_scraper/spiders/yugabyte/yugabyte.py
+[2026-01-02 02:03:54] ❌ ERREUR : VT/scrapping/db_scraper/db_scraper/spiders/yugabyte/yugabyte.py
+[2026-01-02 02:03:54] 🚀 Lancement : VT/scrapping/db_scraper/db_scraper/spiders/Neo4j/Neo4j.py
+[2026-01-02 02:03:54] ❌ ERREUR : VT/scrapping/db_scraper/db_scraper/spiders/Neo4j/Neo4j.py
+[2026-01-02 02:03:54] 🚀 Lancement : VT/scrapping/db_scraper/db_scraper/spiders/cockroachdb/cockroachdb.py
+[2026-01-02 02:03:54] ❌ ERREUR : VT/scrapping/db_scraper/db_scraper/spiders/cockroachdb/cockroachdb.py
+[2026-01-02 02:03:54] PHASE 2 : PIPELINE
+[2026-01-02 02:03:54] 🚀 Lancement : clean.py
+[2026-01-02 02:03:55] ✅ Terminé : clean.py
+[2026-01-02 02:03:55] 🚀 Lancement : etape2.py
+[2026-01-02 02:05:14] ⏱️ Scheduler lancé pour toutes les 12 heures...
+[2026-01-02 02:05:14] ⏳ Exécution immédiate du pipeline...
+[2026-01-02 02:05:14] ===== JOB DÉMARRÉ =====
+[2026-01-02 02:05:14] PHASE 1 : SCRAPPING
+[2026-01-02 02:05:14] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:05:16] ❌ ERREUR : ../scrapping/db_scraper/db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:05:16] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/mongodb/mongodb.py
+[2026-01-02 02:06:15] ⏱️ Scheduler lancé pour toutes les 12 heures...
+[2026-01-02 02:06:15] ⏳ Exécution immédiate du pipeline...
+[2026-01-02 02:06:15] ===== JOB DÉMARRÉ =====
+[2026-01-02 02:06:15] PHASE 1 : SCRAPPING
+[2026-01-02 02:06:15] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:06:16] ❌ ERREUR : ../scrapping/db_scraper/db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:06:16] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/mongodb/mongodb.py
+[2026-01-02 02:08:30] ❌ ERREUR : ../scrapping/db_scraper/db_scraper/spiders/mongodb/mongodb.py
+[2026-01-02 02:08:30] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/redis/redis.py
+[2026-01-02 02:08:53] ⏱️ Scheduler lancé pour toutes les 12 heures...
+[2026-01-02 02:08:53] ⏳ Exécution immédiate du pipeline...
+[2026-01-02 02:08:53] ===== JOB DÉMARRÉ =====
+[2026-01-02 02:08:53] PHASE 1 : SCRAPPING
+[2026-01-02 02:08:53] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:08:53] ❌ ERREUR : ../scrapping/db_scraper/db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:08:53] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/mongodb/mongodb.py
+[2026-01-02 02:10:09] ⏱️ Scheduler lancé pour toutes les 12 heures...
+[2026-01-02 02:10:09] ⏳ Exécution immédiate du pipeline...
+[2026-01-02 02:10:09] ===== JOB DÉMARRÉ =====
+[2026-01-02 02:10:09] PHASE 1 : SCRAPPING
+[2026-01-02 02:10:09] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:10:09] ❌ ERREUR : ../scrapping/db_scraper/db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:10:09] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/mongodb/mongodb.py
+[2026-01-02 02:10:44] ⏱️ Scheduler lancé pour toutes les 12 heures...
+[2026-01-02 02:10:44] ⏳ Exécution immédiate du pipeline...
+[2026-01-02 02:10:44] ===== JOB DÉMARRÉ =====
+[2026-01-02 02:10:44] PHASE 1 : SCRAPPING
+[2026-01-02 02:10:44] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:10:46] ❌ ERREUR : ../scrapping/db_scraper/db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:10:46] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/mongodb/mongodb.py
+[2026-01-02 02:13:07] ❌ ERREUR : ../scrapping/db_scraper/db_scraper/spiders/mongodb/mongodb.py
+[2026-01-02 02:13:07] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/redis/redis.py
+[2026-01-02 02:16:32] ✅ Terminé : ../scrapping/db_scraper/db_scraper/spiders/redis/redis.py
+[2026-01-02 02:16:32] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/tidb/tidb.py
+[2026-01-02 02:18:00] ⏱️ Scheduler lancé pour toutes les 12 heures...
+[2026-01-02 02:18:00] ⏳ Exécution immédiate du pipeline...
+[2026-01-02 02:18:00] ===== JOB DÉMARRÉ =====
+[2026-01-02 02:18:00] PHASE 1 : SCRAPPING
+[2026-01-02 02:18:00] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:18:02] ❌ ERREUR : ../scrapping/db_scraper/db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:18:02] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/mongodb/mongodb.py
+[2026-01-02 02:19:20] ⏱️ Scheduler lancé pour toutes les 12 heures...
+[2026-01-02 02:19:20] ⏳ Exécution immédiate du pipeline...
+[2026-01-02 02:19:20] ===== JOB DÉMARRÉ =====
+[2026-01-02 02:19:20] PHASE 1 : SCRAPPING
+[2026-01-02 02:19:20] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:19:22] ❌ ERREUR : ../scrapping/db_scraper/db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:19:22] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/mongodb/mongodb.py
+[2026-01-02 02:23:36] ⏱️ Scheduler lancé pour toutes les 12 heures...
+[2026-01-02 02:23:36] ⏳ Exécution immédiate du pipeline...
+[2026-01-02 02:23:36] ===== JOB DÉMARRÉ =====
+[2026-01-02 02:23:36] PHASE 1 : SCRAPPING
+[2026-01-02 02:23:36] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:23:40] ✅ Terminé : ../scrapping/db_scraper/db_scraper/spiders/Cassandra/Cassandra.py
+[2026-01-02 02:23:40] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/mongodb/mongodb.py
+[2026-01-02 02:26:26] ✅ Terminé : ../scrapping/db_scraper/db_scraper/spiders/mongodb/mongodb.py
+[2026-01-02 02:26:26] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/redis/redis.py
+[2026-01-02 02:30:43] ✅ Terminé : ../scrapping/db_scraper/db_scraper/spiders/redis/redis.py
+[2026-01-02 02:30:43] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/tidb/tidb.py
+[2026-01-02 02:56:42] ✅ Terminé : ../scrapping/db_scraper/db_scraper/spiders/tidb/tidb.py
+[2026-01-02 02:56:42] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/yugabyte/yugabyte.py
+[2026-01-02 02:58:06] ✅ Terminé : ../scrapping/db_scraper/db_scraper/spiders/yugabyte/yugabyte.py
+[2026-01-02 02:58:06] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/Neo4j/Neo4j.py
+[2026-01-02 02:58:09] ✅ Terminé : ../scrapping/db_scraper/db_scraper/spiders/Neo4j/Neo4j.py
+[2026-01-02 02:58:09] 🚀 Lancement : ../scrapping/db_scraper/db_scraper/spiders/cockroachdb/cockroachdb.py
+[2026-01-02 02:58:12] ✅ Terminé : ../scrapping/db_scraper/db_scraper/spiders/cockroachdb/cockroachdb.py
+[2026-01-02 02:58:12] PHASE 2 : PIPELINE
+[2026-01-02 02:58:12] 🚀 Lancement : clean.py
+[2026-01-02 02:58:12] ✅ Terminé : clean.py
+[2026-01-02 02:58:12] 🚀 Lancement : etape2.py
+[2026-01-02 03:01:03] ✅ Terminé : etape2.py
+[2026-01-02 03:01:03] 🚀 Lancement : etape1.py
+[2026-01-02 03:01:07] ✅ Terminé : etape1.py
+[2026-01-02 03:01:07] 🚀 Lancement : ACID.py
+[2026-01-02 03:09:22] ✅ Terminé : ACID.py
+[2026-01-02 03:09:22] 🚀 Lancement : alert.py
+[2026-01-02 03:09:36] ✅ Terminé : alert.py
+[2026-01-02 03:09:36] 🚀 Lancement : innovation.py
+[2026-01-02 03:09:56] ✅ Terminé : innovation.py
+[2026-01-02 03:09:56] 🚀 Lancement : remove-changes.py
+[2026-01-02 03:09:59] ✅ Terminé : remove-changes.py
+[2026-01-02 03:09:59] 🚀 Lancement : sync.py
+[2026-01-02 03:10:08] ✅ Terminé : sync.py
+[2026-01-02 03:10:08] ===== JOB TERMINÉ =====
+

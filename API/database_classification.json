@@ -1,0 +1,340 @@
+{
+  "classification_date": "2026-01-01T23:38:19.976275",
+  "categories": {
+    "key_value": {
+      "databases": [
+        "Redis"
+      ],
+      "description": "Bases de données clé-valeur",
+      "characteristics": [
+        "Simple key-value pairs",
+        "High performance",
+        "In-memory"
+      ]
+    },
+    "distributed_sql": {
+      "databases": [
+        "CockroachDB",
+        "TiDB",
+        "YugabyteDB"
+      ],
+      "description": "Bases de données SQL distribuées",
+      "characteristics": [
+        "SQL compatibility",
+        "Horizontal scaling",
+        "ACID transactions",
+        "Distributed architecture"
+      ]
+    },
+    "columnar": {
+      "databases": [
+        "Cassandra"
+      ],
+      "description": "Bases de données column-family",
+      "characteristics": [
+        "Wide-column storage",
+        "High write throughput",
+        "Linear scalability",
+        "No single point of failure"
+      ]
+    },
+    "document": {
+      "databases": [
+        "MongoDB"
+      ],
+      "description": "Bases de données document",
+      "characteristics": [
+        "JSON/BSON documents",
+        "Flexible schema",
+        "Rich queries",
+        "Horizontal scaling"
+      ]
+    },
+    "graph": {
+      "databases": [
+        "Neo4j"
+      ],
+      "description": "Bases de données graphe",
+      "characteristics": [
+        "Graph structures",
+        "Relationship-focused",
+        "ACID compliance",
+        "Cypher query language"
+      ]
+    }
+  },
+  "types": {
+    "NewSQL": {
+      "databases": [
+        "CockroachDB",
+        "TiDB",
+        "YugabyteDB",
+        "Neo4j"
+      ],
+      "description": "Bases de données distribuées avec garanties ACID et compatibilité SQL",
+      "characteristics": [
+        "ACID transactions",
+        "SQL interface",
+        "Horizontal scaling",
+        "Consistency guarantees"
+      ]
+    },
+    "NoSQL": {
+      "databases": [
+        "Cassandra",
+        "MongoDB",
+        "Redis"
+      ],
+      "description": "Bases de données non-relationnelles avec focus sur la scalabilité",
+      "characteristics": [
+        "Flexible schema",
+        "Eventual consistency",
+        "High availability",
+        "Horizontal scaling"
+      ]
+    }
+  },
+  "database_classifications": [
+    {
+      "database": "Cassandra",
+      "category": "columnar",
+      "category_info": {
+        "databases": [
+          "Cassandra"
+        ],
+        "description": "Bases de données column-family",
+        "characteristics": [
+          "Wide-column storage",
+          "High write throughput",
+          "Linear scalability",
+          "No single point of failure"
+        ]
+      },
+      "type": "NoSQL",
+      "type_info": {
+        "databases": [
+          "Cassandra",
+          "MongoDB",
+          "Redis"
+        ],
+        "description": "Bases de données non-relationnelles avec focus sur la scalabilité",
+        "characteristics": [
+          "Flexible schema",
+          "Eventual consistency",
+          "High availability",
+          "Horizontal scaling"
+        ]
+      },
+      "major_version": "5.1",
+      "patch_version": "5.1.0",
+      "date": "Date non disponible",
+      "file": "cassandra_versions.json"
+    },
+    {
+      "database": "CockroachDB",
+      "category": "distributed_sql",
+      "category_info": {
+        "databases": [
+          "CockroachDB",
+          "TiDB",
+          "YugabyteDB"
+        ],
+        "description": "Bases de données SQL distribuées",
+        "characteristics": [
+          "SQL compatibility",
+          "Horizontal scaling",
+          "ACID transactions",
+          "Distributed architecture"
+        ]
+      },
+      "type": "NewSQL",
+      "type_info": {
+        "databases": [
+          "CockroachDB",
+          "TiDB",
+          "YugabyteDB",
+          "Neo4j"
+        ],
+        "description": "Bases de données distribuées avec garanties ACID et compatibilité SQL",
+        "characteristics": [
+          "ACID transactions",
+          "SQL interface",
+          "Horizontal scaling",
+          "Consistency guarantees"
+        ]
+      },
+      "major_version": "26.1",
+      "patch_version": "26.1.0-beta.1",
+      "date": "December 17, 2025",
+      "file": "cockroachdb-versions.json"
+    },
+    {
+      "database": "MongoDB",
+      "category": "document",
+      "category_info": {
+        "databases": [
+          "MongoDB"
+        ],
+        "description": "Bases de données document",
+        "characteristics": [
+          "JSON/BSON documents",
+          "Flexible schema",
+          "Rich queries",
+          "Horizontal scaling"
+        ]
+      },
+      "type": "NoSQL",
+      "type_info": {
+        "databases": [
+          "Cassandra",
+          "MongoDB",
+          "Redis"
+        ],
+        "description": "Bases de données non-relationnelles avec focus sur la scalabilité",
+        "characteristics": [
+          "Flexible schema",
+          "Eventual consistency",
+          "High availability",
+          "Horizontal scaling"
+        ]
+      },
+      "major_version": "7.0",
+      "patch_version": "7.0.29",
+      "date": "Upcoming",
+      "file": "mongodb-versions.json"
+    },
+    {
+      "database": "Neo4j",
+      "category": "graph",
+      "category_info": {
+        "databases": [
+          "Neo4j"
+        ],
+        "description": "Bases de données graphe",
+        "characteristics": [
+          "Graph structures",
+          "Relationship-focused",
+          "ACID compliance",
+          "Cypher query language"
+        ]
+      },
+      "type": "NewSQL",
+      "type_info": {
+        "databases": [
+          "CockroachDB",
+          "TiDB",
+          "YugabyteDB",
+          "Neo4j"
+        ],
+        "description": "Bases de données distribuées avec garanties ACID et compatibilité SQL",
+        "characteristics": [
+          "ACID transactions",
+          "SQL interface",
+          "Horizontal scaling",
+          "Consistency guarantees"
+        ]
+      },
+      "major_version": "2025.11",
+      "patch_version": "0",
+      "date": "Date non disponible",
+      "file": "neo4j-versions.json"
+    },
+    {
+      "database": "Redis",
+      "category": "key_value",
+      "category_info": {
+        "databases": [
+          "Redis"
+        ],
+        "description": "Bases de données clé-valeur",
+        "characteristics": [
+          "Simple key-value pairs",
+          "High performance",
+          "In-memory"
+        ]
+      },
+      "type": "NoSQL",
+      "type_info": {
+        "databases": [
+          "Cassandra",
+          "MongoDB",
+          "Redis"
+        ],
+        "description": "Bases de données non-relationnelles avec focus sur la scalabilité",
+        "characteristics": [
+          "Flexible schema",
+          "Eventual consistency",
+          "High availability",
+          "Horizontal scaling"
+        ]
+      },
+      "major_version": "8.4",
+      "patch_version": "8.4.0",
+      "date": "Date non disponible",
+      "file": "redis-versions.json"
+    },
+    {
+      "database": "Tidb",
+      "category": null,
+      "category_info": null,
+      "type": null,
+      "type_info": null,
+      "major_version": "8.5",
+      "patch_version": "8.5.4",
+      "date": "2025-11-27",
+      "file": "tidb-versions.json"
+    },
+    {
+      "database": "YugabyteDB",
+      "category": "distributed_sql",
+      "category_info": {
+        "databases": [
+          "CockroachDB",
+          "TiDB",
+          "YugabyteDB"
+        ],
+        "description": "Bases de données SQL distribuées",
+        "characteristics": [
+          "SQL compatibility",
+          "Horizontal scaling",
+          "ACID transactions",
+          "Distributed architecture"
+        ]
+      },
+      "type": "NewSQL",
+      "type_info": {
+        "databases": [
+          "CockroachDB",
+          "TiDB",
+          "YugabyteDB",
+          "Neo4j"
+        ],
+        "description": "Bases de données distribuées avec garanties ACID et compatibilité SQL",
+        "characteristics": [
+          "ACID transactions",
+          "SQL interface",
+          "Horizontal scaling",
+          "Consistency guarantees"
+        ]
+      },
+      "major_version": "2025",
+      "patch_version": "2025.2.0.0",
+      "date": "2025-12-11",
+      "file": "yugabyte-versions.json"
+    }
+  ],
+  "summary": {
+    "total_databases": 7,
+    "categories": [
+      "columnar",
+      "graph",
+      "distributed_sql",
+      "document",
+      "key_value"
+    ],
+    "types": [
+      "NewSQL",
+      "NoSQL"
+    ]
+  }
+}
