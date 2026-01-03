@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',  # pour Django REST Framework
+    'API'         # ton application où se trouve views.py
 ]
 
 MIDDLEWARE = [
